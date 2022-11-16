@@ -13,10 +13,6 @@ title: Project Template
 
 ---
 
-## Team
--  E/18/010, Avishka Abeywickrama, [e18010@eng.pdn.ac.lk](mailto:name@email.com)
--  E/18/156, Thakshila Jayathilake, [e18156@eng.pdn.ac.lk](mailto:name@email.com)
--  E/18/329, Nirasha Sewwandi, [e18329@eng.pdn.ac.lk](mailto:name@email.com)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
 
@@ -31,7 +27,8 @@ title: Project Template
 4. [Testing](#testing)
 5. [Detailed budget](#detailed-budget)
 6. [Conclusion](#conclusion)
-7. [Links](#links)
+7. [Project Team](#team)
+8. [Links](#links)
 
 ## Introduction
 
@@ -61,6 +58,18 @@ All items and costs
 ## Conclusion
 
 What was achieved, future developments, commercialization plans
+
+## Project Team
+
+### Project Supervisors
+-  Dr. Isuru Nawinne, [isurunawinne@eng.pdn.ac.lk](mailto:name@email.com)
+-  Dr. Mahanama Wickramasinghe, [mahanamaw@eng.pdn.ac.lk](mailto:name@email.com)
+
+### Project Developers
+-  E/18/010, Avishka Abeywickrama, [e18010@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/18/156, Thakshila Jayathilake, [e18156@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/18/329, Nirasha Sewwandi, [e18329@eng.pdn.ac.lk](mailto:name@email.com)
+
 
 ## Links
 
