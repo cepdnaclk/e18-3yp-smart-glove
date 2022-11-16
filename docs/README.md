@@ -3,12 +3,12 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and project title
-repository-name: eYY-3yp-project-template
+repository-name: e18-3yp-smart-glove
 title: Smart Glove
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Smart Glove
 
 ---
 
@@ -60,12 +60,12 @@ What was achieved, future developments, commercialization plans
 
 ## Project Team
 ---
-### Project Supervisors
+#### Project Supervisors
 ---
 -  Dr. Isuru Nawinne, [isurunawinne@eng.pdn.ac.lk](mailto:name@email.com)
 -  Dr. Mahanama Wickramasinghe, [mahanamaw@eng.pdn.ac.lk](mailto:name@email.com)
 
-### Project Developers
+#### Project Developers
 ---
 -  E/18/010, Avishka Abeywickrama, [e18010@eng.pdn.ac.lk](mailto:name@email.com)
 -  E/18/156, Thakshila Jayathilake, [e18156@eng.pdn.ac.lk](mailto:name@email.com)
