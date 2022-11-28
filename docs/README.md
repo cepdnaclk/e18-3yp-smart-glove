@@ -55,9 +55,44 @@ With the use of a smart glove, we can solve the issues that the disabled encount
 
 ### Our Solution
 
+Smart Glove
+
+  - Sign Language & Voice/Text Conversion
+  - Detect signs accurately
+
+  
+Mobile app
+  
+  - Communicate between any of Glove users, Communicative users
+  - Provide long distance communication
+
+### Technologies used
+
+
+### Data & Control flow
+
+<p align="center">
+<img src="" width="600" height="300"></p>
+
 High level diagram + description
 
 # Hardware and Software Designs
+
+### Components
+
+- Controller platform
+Node MCU Microcontroller
+
+- Sensors
+3 - Axis Accelerometer Module (G Sensor) 
+Flex sensors
+
+- Power supply
+Rechargeable battery 
+Switch button (power ON)
+
+### Circuit Diagram
+
 
 Detailed designs with many sub-sections
 
