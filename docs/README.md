@@ -185,6 +185,24 @@ Integration tests
 # System Requirements
 ---
 
+Security
+
+  - Encrypt data (Hash Coding)
+  - Unique model number for each glove
+
+Performance
+
+  - Accuracy of the conversions
+      - Sign language to text
+      - Text / Voice to images
+  - Minimum Latency
+
+Power
+
+  - Rechargeable batteries to power up
+  - 3.3V supply voltage
+
+
 # Testing Plan
 ---
 
