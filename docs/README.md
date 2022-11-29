@@ -123,7 +123,7 @@ Detailed designs with many sub-sections
 
 ### Front End Technology
 
--Why?
+Why?
     -onecode base for all platforms
     -hot reload 
       -make changes in real time
