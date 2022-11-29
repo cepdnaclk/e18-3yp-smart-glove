@@ -123,6 +123,9 @@ Detailed designs with many sub-sections
 
 ### Front End Technology
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/Flutter.png" width="600" height="300"></p>
+
 Why?
   - onecode base for all platforms
   - hot reload - make changes in real time
