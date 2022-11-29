@@ -125,12 +125,8 @@ Detailed designs with many sub-sections
 
 Why?
   - onecode base for all platforms
-  - hot reload 
-      - make changes in real time
-  - rich libraries 
-      - quick loading 
-      - smooth app experience
-
+  - hot reload - make changes in real time
+  - rich libraries - quick loading, smooth app experience
 
 
 ### Back End Technologies
