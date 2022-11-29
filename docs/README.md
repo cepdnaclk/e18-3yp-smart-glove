@@ -123,7 +123,7 @@ Detailed designs with many sub-sections
 
 ### Front End Technology
 
-<p align="center">
+<p align="left">
 <img src="./images/Flutter.png" width="300" height="150"></p>
 
 Why?
@@ -134,7 +134,7 @@ Why?
 
 ### Back End Technologies
 
-<p align="center">
+<p align="left">
 <img src="./images/MongoDB.png" width="300" height="150"></p>
 
 Why?
@@ -142,7 +142,7 @@ Why?
   - Flexible document schemas
   - High performance
 
-<p align="center">
+<p align="left">
 <img src="./images/aws.png" width="300" height="150"></p>
 
 Why?
@@ -179,7 +179,7 @@ Integration tests
       - Correct response data
       - Correct Status code
 
-<p align="center">
+<p align="left">
 <img src="./images/postman.png" width="300" height="150"></p>
 
 # System Requirements
