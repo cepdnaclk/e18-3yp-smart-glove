@@ -22,12 +22,14 @@ title: Smart Glove
 #### Table of Contents
 1. [Introduction](#introduction)
 2. [Solution Architecture](#solution-architecture )
-3. [Hardware & Software Designs](#hardware-and-software-designs)
-4. [Testing](#testing)
-5. [Detailed budget](#detailed-budget)
-6. [Timeline](#timeline)
-7. [Project Team](#team)
-8. [Links](#links)
+3. [Hardware Design](#hardware-design)
+4. [Software Design](#software-design)
+5. [System Requirements](#system-requirements)
+6. [Testing Plan](#testing)
+7. [Detailed budget](#detailed-budget)
+8. [Timeline](#timeline)
+9. [Project Team](#team)
+10. [Links](#links)
 
 # Introduction
 
@@ -52,12 +54,12 @@ With the use of a smart glove, we can solve the issues that the disabled encount
 
 
 # Solution Architecture
-
+---
 ### Our Solution
 
 Smart Glove
 
-  - Sign Language & Voice/Text Conversion
+  - Convert sign language to text
   - Detect signs accurately
 
   
@@ -66,17 +68,36 @@ Mobile app
   - Communicate between any of Glove users, Communicative users
   - Provide long distance communication
 
-### Technologies used
-
-
-### Data & Control flow
+### Data flow and Storage
 
 <p align="center">
 <img src="" width="600" height="300"></p>
 
 High level diagram + description
 
-# Hardware and Software Designs
+### Embedded System
+
+
+### Circuit Diagram
+
+### Overall Control Flow
+
+
+
+### Device Algorithm
+
+
+
+### UI Designs and Control Flow
+
+
+### Back End Control Flow
+
+
+
+
+# Hardware Design
+---
 
 ### Components
 
@@ -91,11 +112,29 @@ Flex sensors
 Rechargeable battery 
 Switch button (power ON)
 
-### Circuit Diagram
+### Hardware Testing
 
 Detailed designs with many sub-sections
 
-# Testing
+
+# Software Design
+---
+
+### Front End Technology
+
+
+### Back End Technologies
+
+
+### Network Technologies
+
+
+### Software Testing
+
+# System Requirements
+---
+
+# Testing Plan
 
 Testing done on hardware and software, detailed + summarized results
 
@@ -113,13 +152,13 @@ All items and costs
 | Switch Button             |  1        |  120             |   120             |
 | Rechargeable Battery      |  1        |  800             |   800             |
 | Node MCU microcontroller  | 10        |   80             |   800             |
-| Total Cost                                               | 33660             |
+| Total Cost                |           |                  | 33660             |
 
 # Timeline
 
 What was achieved, future developments, commercialization plans
 
-## Project Team
+# Project Team
 ---
 #### Project Supervisors
 ---
