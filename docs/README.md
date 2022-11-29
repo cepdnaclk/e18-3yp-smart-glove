@@ -124,12 +124,12 @@ Detailed designs with many sub-sections
 ### Front End Technology
 
 Why?
-    -onecode base for all platforms
-    -hot reload 
-      -make changes in real time
-    -rich libraries 
-      -quick loading 
-      -smooth app experience
+   -onecode base for all platforms
+   -hot reload 
+   -make changes in real time
+   -rich libraries 
+   -quick loading 
+   -smooth app experience
 
 
 
