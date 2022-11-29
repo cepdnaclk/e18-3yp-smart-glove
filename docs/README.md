@@ -32,6 +32,7 @@ title: Smart Glove
 10. [Links](#links)
 
 # Introduction
+---
 
 Currently, around 10% of the world population or roughly 650 million people live with a disability. Among them there are around 15% - 20%  deaf and dumb people. Most of them use sign language to communicate with the outside world. But certain percentage can understand this sign language. So, to overcome this problem we introduce a new product called smart glove which can sensor the movements of the hand. Those sensor values are converted into a text and a speech which can be used  by a third party to understand those sign language movements. Those who do not know how to use sign language can use our application to convert their audios to sign language.
 Also this makes it easier for the average individual to comprehend what he is saying and respond appropriately. The ability to operate home appliances is a feature of this smart gloves that enables people with physical disabilities to live independently. The primary goal of the product is to create a dependable, user-friendly, lightweight smart hand glove system that can reduce barriers for persons with disabilities so they may participate in races.
@@ -55,6 +56,7 @@ With the use of a smart glove, we can solve the issues that the disabled encount
 
 # Solution Architecture
 ---
+
 ### Our Solution
 
 Smart Glove
@@ -135,12 +137,12 @@ Detailed designs with many sub-sections
 ---
 
 # Testing Plan
+---
 
 Testing done on hardware and software, detailed + summarized results
 
 # Detailed budget
-
-All items and costs
+---
 
 | Item                      | Quantity  | Unit Cost (LKR)  | Total Cost (LKR)  |
 | --------------------------|:---------:|:----------------:|------------------:|
@@ -155,11 +157,13 @@ All items and costs
 | Total Cost                |           |                  | 33660             |
 
 # Timeline
+---
 
 What was achieved, future developments, commercialization plans
 
 # Project Team
 ---
+
 #### Project Supervisors
 ---
 -  Dr. Isuru Nawinne, [isurunawinne@eng.pdn.ac.lk](mailto:name@email.com)
@@ -172,7 +176,8 @@ What was achieved, future developments, commercialization plans
 -  E/18/329, Nirasha Sewwandi, [e18329@eng.pdn.ac.lk](mailto:name@email.com)
 
 
-## Links
+# Links
+---
 
 - [Project Repository](https://github.com/cepdnaclk/{{ page.repository-name }}){:target="_blank"}
 - [Project Page](https://cepdnaclk.github.io/{{ page.repository-name}}){:target="_blank"}
