@@ -142,11 +142,45 @@ Why?
   - Flexible document schemas
   - High performance
 
+<p align="center">
+<img src="./images/aws.png" width="300" height="150"></p>
+
+Why?
+  - Easily scalable (up or down)
+  - Pay for what you use
+  - Have complete control
+  - Highly secure
+  - Can access assets from anywhere in the world
+
 
 ### Network Technologies
 
+<p align="center">
+<img src="./images/Network.png" width="300" height="150"></p>
 
 ### Software Testing
+
+#### Front End Testing (Flutter test library)
+
+Unit tests 
+  
+  - Check user sign up and sign in
+      - Only eligible users can access
+      - Check user credentials 
+
+Integration tests
+
+  - Verify app’s performance
+
+
+#### Back End Testing  (Postman)
+
+  - Check functionality of every API endpoint
+      - Correct response data
+      - Correct Status code
+
+<p align="center">
+<img src="./images/postman.png" width="300" height="150"></p>
 
 # System Requirements
 ---
