@@ -25,7 +25,7 @@ title: Smart Glove
 3. [Hardware & Software Designs](#hardware-and-software-designs)
 4. [Testing](#testing)
 5. [Detailed budget](#detailed-budget)
-6. [Conclusion](#conclusion)
+6. [Timeline](#timeline)
 7. [Project Team](#team)
 8. [Links](#links)
 
@@ -93,7 +93,6 @@ Switch button (power ON)
 
 ### Circuit Diagram
 
-
 Detailed designs with many sub-sections
 
 # Testing
@@ -104,11 +103,19 @@ Testing done on hardware and software, detailed + summarized results
 
 All items and costs
 
-| Item          | Quantity  | Unit Cost  | Total  |
-| ------------- |:---------:|:----------:|-------:|
-| Sample item   | 5         | 10 LKR     | 50 LKR |
+| Item                      | Quantity  | Unit Cost (LKR)  | Total Cost (LKR)  |
+| --------------------------|:---------:|:----------------:|------------------:|
+| Node MCU microcontroller  |  1        | 2100             |  2100             |
+| 16-Channel Analog Mux     |  1        |  540             |   540             |
+| 3-Axis Accelerometer      |  1        |  800             |   800             |
+| Flex Sensors              |  5        | 5000             |  2500             |
+| Glove                     |  1        |  500             |   500             |
+| Switch Button             |  1        |  120             |   120             |
+| Rechargeable Battery      |  1        |  800             |   800             |
+| Node MCU microcontroller  | 10        |   80             |   800             |
+| Total Cost                                               | 33660             |
 
-# Conclusion
+# Timeline
 
 What was achieved, future developments, commercialization plans
 
