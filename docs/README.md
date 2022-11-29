@@ -124,7 +124,7 @@ Detailed designs with many sub-sections
 ### Front End Technology
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/Flutter.png" width="600" height="300"></p>
+<img src="./images/Flutter.png" width="700" height="430"></p>
 
 Why?
   - onecode base for all platforms
