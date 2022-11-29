@@ -104,22 +104,57 @@ Mobile app
 # Hardware Design
 ---
 
-### Components
+## Components
 
-- Controller platform
-Node MCU Microcontroller
+### Controller platform
+- Node MCU Microcontroller
+    <p align="left">
+    <img src="https://user-images.githubusercontent.com/73390233/204560770-fb5a943c-e37d-426b-a864-07e7eb4ab475.png" width="300" height="200"></p>
+  
 
-- Sensors
-3 - Axis Accelerometer Module (G Sensor) 
-Flex sensors
+### Sensors
+- 3 - Axis Accelerometer Module (G Sensor)
 
-- Power supply
-Rechargeable battery 
-Switch button (power ON)
+  <p align="left">
+  <img src="https://user-images.githubusercontent.com/73390233/204561322-f7166156-8d7c-4c8c-a8dd-4b57358f7808.png" width="300" height="200"></p>
+- Flex sensors
+
+  <p align="left">
+  <img src="https://user-images.githubusercontent.com/73390233/204561752-b55cec51-8b6c-462c-8591-5818ce815741.png" width="300" height="200"></p>
+
+### Power supply
+- Rechargeable battery
+  <p align="left">
+  <img src="https://user-images.githubusercontent.com/73390233/204559075-fbb33fee-4550-47d1-a420-eb04f0b5ecd9.png" width="200" height="150"></p>
+- Switch button (power ON)
+  <p align="left">
+  <img src="https://user-images.githubusercontent.com/73390233/204558521-5b1e84bc-e60b-4b84-8433-fbe77d9b67c2.png" width="200" height="150"></p>
+
+
+## How Flex Sensor Works
+It is used a resistors to get the flex sensor readings , according to the bending the output valu may changes 
+When the bending is 0, the circuit diagram looks like this
+<p align="left">
+<img src="./images/flex sensor1.png" width="300" height="150"></p>
+This is an example of flex sensor measurement when there is some bending in the sensor(116 degrees)
+<p align="left">
+<img src="./images/flex sensor2.png" width="300" height="150"></p>
+<p align="left">
+<img src="./images/flex snesor3.png" width="200" height="200"></p>
+
+## How Accelerometer Works
+
+The below circuit diagram shows how accelerometer readings can be taken in 3D space. It outputs the X, Y, Z direction reading to the LCD display for the visualization. This is done for the testing of the accelerometer
+<p align="left">
+<img src="./images/accelerometer.png" width="600" height="300"></p>
+
 
 ### Hardware Testing
+- Flex Sensor Testing
+- Accelerometer Testing
+- Overall Hardware Product Testing
 
-Detailed designs with many sub-sections
+
 
 
 # Software Design
