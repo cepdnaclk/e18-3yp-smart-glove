@@ -74,9 +74,13 @@ Mobile app
 ### Data flow and Storage
 
 ### Embedded System
+<p align="center">
+<img src="./images/EmbeddedSystem.png" width="600" height="300"></p>
 
 
 ### Circuit Diagram
+<p align="center">
+<img src="./images/circuit2.png" width="600" height="300"></p>
 
 ### Overall Control Flow
 <p align="center">
