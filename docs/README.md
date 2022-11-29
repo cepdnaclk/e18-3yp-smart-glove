@@ -70,12 +70,8 @@ Mobile app
   - Communicate between any of Glove users, Communicative users
   - Provide long distance communication
 
+
 ### Data flow and Storage
-
-<p align="center">
-<img src="" width="600" height="300"></p>
-
-High level diagram + description
 
 ### Embedded System
 
@@ -83,11 +79,14 @@ High level diagram + description
 ### Circuit Diagram
 
 ### Overall Control Flow
+<p align="center">
+<img src="https://user-images.githubusercontent.com/73567971/204489307-aa4a20ae-41c1-4c4e-9280-9ef95648460b.png" width="600" height="300"></p>
 
 
 
 ### Device Algorithm
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/73567971/204488129-b9f57153-b902-4368-bc1f-f13935ae5482.png" width="600" height="300"></p>
 
 
 ### UI Designs and Control Flow
