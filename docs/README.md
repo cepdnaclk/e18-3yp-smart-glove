@@ -96,6 +96,9 @@ This is the overall circuit diagram for the device. It has Node MCU microcontoll
 
 ### UI Designs and Control Flow
 
+<video src="./videos/UIDesigns.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
 
 
 ### Back End Control Flow
