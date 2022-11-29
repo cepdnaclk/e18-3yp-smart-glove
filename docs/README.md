@@ -124,7 +124,7 @@ Detailed designs with many sub-sections
 ### Front End Technology
 
 <p align="center">
-<img src="./images/Flutter.png" width="700" height="430"></p>
+<img src="./images/Flutter.png" width="300" height="150"></p>
 
 Why?
   - onecode base for all platforms
@@ -133,6 +133,14 @@ Why?
 
 
 ### Back End Technologies
+
+<p align="center">
+<img src="./images/MongoDB.png" width="300" height="150"></p>
+
+Why?
+  - Full cloud based developer data platform
+  - Flexible document schemas
+  - High performance
 
 
 ### Network Technologies
