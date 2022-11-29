@@ -95,10 +95,13 @@ This is the overall circuit diagram for the device. It has Node MCU microcontoll
 
 
 ### UI Designs and Control Flow
+<p align="center">
+<img src="./images/backendControlFlow.png" width="600" height="300"></p>
 
 
 ### Back End Control Flow
-
+<p align="center">
+<img src="./images/backendControlFlow.png" width="600" height="300"></p>
 
 
 
