@@ -259,6 +259,7 @@ Power
 
 
 ## Hardware Testing
+
 | Test                      | Method                       | Outcome                                                       |
 | --------------------------|:----------------------------:|:-------------------------------------------------------------:|
 | Calibration Testing       | Manual calibration           | Ensure that all components are working fine                   | 
