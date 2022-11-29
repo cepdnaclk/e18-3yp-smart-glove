@@ -123,19 +123,19 @@ Detailed designs with many sub-sections
 
 ### Front End Technology
 
-Mobile app
+Why?
   
   - Communicate between any of Glove users, Communicative users
   - Provide long distance communication
 
 
 Why?
-  -onecode base for all platforms
-  -hot reload 
-  -make changes in real time
-  -rich libraries 
-  -quick loading 
-  -smooth app experience
+  - onecode base for all platforms
+  - hot reload 
+  - make changes in real time
+  - rich libraries 
+  - quick loading 
+  - smooth app experience
 
 
 
