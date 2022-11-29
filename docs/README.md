@@ -79,6 +79,7 @@ Mobile app
 
 
 ### Circuit Diagram
+This is the overall circuit diagram for the device. It has Node MCU microcontoller, 16 channel analog multiplexer, acclerometer and flex sensors. Since Node MCU microcontroller has a WiFi module, rather than using arduino board the selection was done to choose this microcontroller. So, the below diagram shows how flex sensor inputs and accelerometer inputs are taken by this microcontroller. The 16 channel analog multiplexer is used because the Node MCU microcontroller has only one analog input. So, n=it is needed to increase this to 8 for 5 flex sensors and 3 inputs of X,Y,Z from accelerometer. By considering the further improvements the decision was taken as 16 channel MUX rather than 8 channel MUX.
 <p align="center">
 <img src="./images/circuit2.png" width="600" height="300"></p>
 
@@ -151,8 +152,11 @@ The below circuit diagram shows how accelerometer readings can be taken in 3D sp
 
 ### Hardware Testing
 - Flex Sensor Testing
+    Flex sensors are tested by connecting them to a separate circuit like above and check the functionality of those sensors
 - Accelerometer Testing
+    Accelerometer is tested by connecting it to a separate circuit like above and check the output via a LCD display
 - Overall Hardware Product Testing
+    Check the overall functionality of the device by sending messages to the mobile application. Examine the latency and the accuracy
 
 
 
@@ -244,8 +248,23 @@ Power
 
 # Testing Plan
 ---
+## Software Testing
 
-Testing done on hardware and software, detailed + summarized results
+| Test                      | Method                       | Outcome                                |
+| --------------------------|:----------------------------:|:--------------------------------------:|
+| Authority Testing         | Flutter test library         | Prevent Unauthorized Access            | 
+| API Testing               | POSTMAN                      | Accuracy of the requests               |
+| Unit Testing              | Flutter test library         | Performance of each units in the App   |  
+| Integration Testing       | Flutter test library         | Overall Performance of the App         |  
+
+
+## Hardware Testing
+| Test                      | Method                       | Outcome                                                       |
+| --------------------------|:----------------------------:|:-------------------------------------------------------------:|
+| Calibration Testing       | Manual calibration           | Ensure that all components are working fine                   | 
+| Functionality Testing     | Manual Testing               | Accurately detect the sign each hardware checked separately   |
+| Compatibility Testing     | Manual Testing               | Ensure that device is compatible with the system              |  
+| Performance Testing       | Manual Testing               | Detect sign with minimum latency                              |  
 
 # Detailed budget
 ---
