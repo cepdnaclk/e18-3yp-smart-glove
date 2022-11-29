@@ -156,7 +156,7 @@ Why?
 ### Network Technologies
 
 <p align="center">
-<img src="./images/Network.png" width="300" height="150"></p>
+<img src="./images/Network.png" width="600" height="300"></p>
 
 ### Software Testing
 
