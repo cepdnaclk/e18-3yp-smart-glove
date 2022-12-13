@@ -1,5 +1,6 @@
-name: smartglove
-description: A new Flutter project.
+name: myapp
+description: A exported flutter project from FUNCTION12
+
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -20,7 +21,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=2.18.2 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -36,6 +37,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +65,105 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/page-1/images/wifi.png
+    - assets/page-1/images/question.png
+    - assets/page-1/images/icon.png
+    - assets/page-1/images/wifi-S82.png
+    - assets/page-1/images/signal.png
+    - assets/page-1/images/signal-b3p.png
+    - assets/page-1/images/battery-three-quarters.png
+    - assets/page-1/images/icon-YQJ.png
+    - assets/page-1/images/vector-1.png
+    - assets/page-1/images/group-3.png
+    - assets/page-1/images/frame.png
+    - assets/page-1/images/battery-three-quarters-BfY.png
+    - assets/page-1/images/battery-three-quarters-bw8.png
+    - assets/page-1/images/signal-8jL.png
+    - assets/page-1/images/ellipse-3.png
+    - assets/page-1/images/signal-nD8.png
+    - assets/page-1/images/signal-N1Y.png
+    - assets/page-1/images/frame-sJJ.png
+    - assets/page-1/images/battery-three-quarters-GeN.png
+    - assets/page-1/images/wifi-S8A.png
+    - assets/page-1/images/wifi-aM8.png
+    - assets/page-1/images/battery-three-quarters-VAr.png
+    - assets/page-1/images/signmsg-removebg-preview-1.png
+    - assets/page-1/images/ellipse-3-TPQ.png
+    - assets/page-1/images/signal-ZxE.png
+    - assets/page-1/images/vector-2.png
+    - assets/page-1/images/ellipse-1.png
+    - assets/page-1/images/battery-three-quarters-b3G.png
+    - assets/page-1/images/ellipse-1-Lcz.png
+    - assets/page-1/images/ellipse-3-t58.png
+    - assets/page-1/images/frame-zdx.png
+    - assets/page-1/images/frame-iZx.png
+    - assets/page-1/images/ellipse-1-3cE.png
+    - assets/page-1/images/ellipse-3-e6E.png
+    - assets/page-1/images/hello-removebg-preview-1.png
+    - assets/page-1/images/battery-three-quarters-kgr.png
+    - assets/page-1/images/frame-4Bk.png
+    - assets/page-1/images/frame-BnA.png
+    - assets/page-1/images/battery-three-quarters-BVt.png
+    - assets/page-1/images/wifi-JaW.png
+    - assets/page-1/images/frame-E7C.png
+    - assets/page-1/images/wifi-eNW.png
+    - assets/page-1/images/frame-x5Y.png
+    - assets/page-1/images/battery-three-quarters-BsQ.png
+    - assets/page-1/images/frame-2Dg.png
+    - assets/page-1/images/signal-yGe.png
+    - assets/page-1/images/image-bg.png
+    - assets/page-1/images/frame-BUN.png
+    - assets/page-1/images/group.png
+    - assets/page-1/images/wifi-wSr.png
+    - assets/page-1/images/ellipse-1-Muk.png
+    - assets/page-1/images/ellipse-1-qNr.png
+    - assets/page-1/images/group-xTU.png
+    - assets/page-1/images/frame-gFc.png
+    - assets/page-1/images/voice-1.png
+    - assets/page-1/images/battery-three-quarters-sFx.png
+    - assets/page-1/images/signmsg-removebg-preview-1-KbY.png
+    - assets/page-1/images/ellipse-3-PK8.png
+    - assets/page-1/images/wifi-VXp.png
+    - assets/page-1/images/image-bg-VUW.png
+    - assets/page-1/images/download-1.png
+    - assets/page-1/images/image-bg-QUJ.png
+    - assets/page-1/images/signal-5aS.png
+    - assets/page-1/images/ellipse-3-Bri.png
+    - assets/page-1/images/image-bg-FXg.png
+    - assets/page-1/images/image-bg-N9x.png
+    - assets/page-1/images/ellipse-1-tpS.png
+    - assets/page-1/images/battery-three-quarters-kGA.png
+    - assets/page-1/images/frame-ib4.png
+    - assets/page-1/images/ellipse-1-LNW.png
+    - assets/page-1/images/hello-removebg-preview-1-82n.png
+    - assets/page-1/images/ellipse-1-uhk.png
+    - assets/page-1/images/frame-Sxa.png
+    - assets/page-1/images/ellipse-3-aYz.png
+    - assets/page-1/images/ellipse-1-D3Y.png
+    - assets/page-1/images/group-6cS.png
+    - assets/page-1/images/connectedlogo-removebg-preview-1.png
+    - assets/page-1/images/voice-1-TEz.png
+    - assets/page-1/images/ellipse-1-4x2.png
+    - assets/page-1/images/ellipse-3-7ei.png
+    - assets/page-1/images/wifi-KRC.png
+    - assets/page-1/images/image-bg-wVk.png
+    - assets/page-1/images/ellipse-1-XmL.png
+    - assets/page-1/images/frame-oAS.png
+    - assets/page-1/images/image-bg-Lo4.png
+    - assets/page-1/images/ellipse-3-dZC.png
+    - assets/page-1/images/trytoconnect-removebg-preview-1.png
+    - assets/page-1/images/ellipse-3-syU.png
+    - assets/page-1/images/signal-pZG.png
+    - assets/page-1/images/trytoconnect-removebg-preview-1-hKY.png
+    - assets/page-1/images/wifi-kyG.png
+    - assets/page-1/images/mute-removebg-preview-1.png
+    - assets/page-1/images/image-bg-fgn.png
+    - assets/page-1/images/download-1-rpA.png
+    - assets/page-1/images/signal-odU.png
+    - assets/page-1/images/ellipse-3-eh8.png
+    - assets/page-1/images/signal-E6e.png
+    - assets/page-1/images/wifi-wa2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

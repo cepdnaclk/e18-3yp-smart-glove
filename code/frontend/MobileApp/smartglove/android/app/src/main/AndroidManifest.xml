@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smartglove">
+    package="com.example.test">
    <application
-        android:label="smartglove"
+        android:label="test"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
