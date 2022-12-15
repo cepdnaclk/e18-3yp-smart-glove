@@ -12,36 +12,43 @@ class Scene extends StatelessWidget {
     double baseWidth = 360;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Container(
-      width: double.infinity,
+    return SizedBox(
       child: Container(
         // getstartedfEr (67:21)
         width: double.infinity,
+        //height: double.infinity,
         decoration: const BoxDecoration(
           color: Color(0xffc7d2d1),
         ),
+        // height: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               // autogroupmluuN9G (2CEsAw8kMoKdbDFLjHmLUu)
-              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 40 * fem),
+              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0* fem),
               width: 478.73 * fem,
               height: 442.68 * fem,
               child: Stack(
                 children: [
                   Positioned(
                     // ellipse1TAi (67:27)
-                    left: 0 * fem,
-                    top: 0 * fem,
+                    left: -111 * fem,
+                    top: -190 * fem,
+                    
                     child: Align(
                       child: SizedBox(
                         width: 478.73 * fem,
-                        height: 376.73 * fem,
+                        height: 380.73 * fem,
+                        
                         child: Image.asset(
+                          
+                          
+                        
                           'assets/page-1/images/ellipse-1-LNW.png',
-                          width: 478.73 * fem,
-                          height: 376.73 * fem,
+                          color: Colors.white.withOpacity(0.5), colorBlendMode: BlendMode.modulate,
+                          width: 578.73 * fem,
+                          height: 476.73 * fem,
                         ),
                       ),
                     ),
@@ -50,7 +57,7 @@ class Scene extends StatelessWidget {
                     // notificationXAa (67:33)
                     left: 11 * fem,
                     top: 14 * fem,
-                    child: Container(
+                    child: SizedBox(
                       width: 339 * fem,
                       height: 16 * fem,
                       child: Row(
@@ -75,7 +82,7 @@ class Scene extends StatelessWidget {
                           Container(
                             // signaluB8 (I67:33;1:3)
                             margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 6.14 * fem, 0 * fem),
+                                0 * fem, 0 * fem, 0 * fem, 0 * fem),
                             width: 14.17 * fem,
                             height: 16 * fem,
                             child: Image.asset(
@@ -96,7 +103,7 @@ class Scene extends StatelessWidget {
                               height: 14 * fem,
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             // batterythreequartershMt (I67:33;1:7)
                             width: 15.31 * fem,
                             height: 10 * fem,
@@ -140,29 +147,47 @@ class Scene extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Positioned.fill(
+                    
+                    top:392 * fem,
+                    //margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 87 * fem),
+                    child: Text(
+                      'GET THINGS DONE WITH VOICE4U',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 20 * ffem,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2125 * ffem / fem,
+                        letterSpacing: 1 * fem,
+                        color: const Color(0xff000000),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            Container(
-              // getthingsdonewithvoice4uAen (99:308)
-              margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 87 * fem),
-              child: Text(
-                'GET THINGS DONE WITH VOICE4U',
-                style: SafeGoogleFont(
-                  'Inter',
-                  fontSize: 20 * ffem,
-                  fontWeight: FontWeight.w700,
-                  height: 1.2125 * ffem / fem,
-                  letterSpacing: 1 * fem,
-                  color: const Color(0xff000000),
-                ),
-              ),
-            ),
+            // Container(
+            //   // getthingsdonewithvoice4uAen (99:308)
+            //   margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 87 * fem),
+            //   child: Text(
+            //     'GET THINGS DONE WITH VOICE4U',
+            //     textAlign: TextAlign.center,
+            //     style: SafeGoogleFont(
+            //       'Inter',
+            //       fontSize: 20 * ffem,
+            //       fontWeight: FontWeight.w700,
+            //       height: 1.2125 * ffem / fem,
+            //       letterSpacing: 1 * fem,
+            //       color: const Color(0xff000000),
+            //     ),
+            //   ),
+            // ),
             Center(
               // youcanconvertsignsintoatextorv (99:309)
               child: Container(
                 margin:
-                    EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 45 * fem),
+                    EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 20 * fem),
                 constraints: BoxConstraints(
                   maxWidth: 167 * fem,
                 ),
@@ -178,26 +203,48 @@ class Scene extends StatelessWidget {
                     color: const Color(0xff000000),
                   ),
                 ),
+                
               ),
             ),
-            Container(
+            SizedBox(
               // autogroupqp9brAE (2CEsNWdnoaqX4beC3vQp9B)
-              width: 523.24 * fem,
+              
+              width: 423.24 * fem,
               height: 395.88 * fem,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                    'assets/page-1/images/ellipse-3-syU.png',
-                  ),
-                ),
-              ),
+              
+              // decoration: const BoxDecoration(
+              //   image: DecorationImage(
+                 
+              //     fit: BoxFit.cover,
+              //     image: AssetImage(
+              //       'assets/page-1/images/ellipse-3-syU.png',
+              //     ),
+              //   ),
+              // ),
               child: Stack(
                 children: [
                   Positioned(
+                    // ellipse1TAi (67:27)
+                    left:-55* fem,
+                    top:46* fem,
+                    child: Align(
+                      child: SizedBox(
+                        width: 510.73 * fem,
+                        height: 376.73 * fem,
+                        child: Image.asset(
+                          'assets/page-1/images/ellipse-3-syU.png',
+                          color: Colors.white.withOpacity(0.6), colorBlendMode: BlendMode.modulate,
+                          
+                          width: 578.73 * fem,
+                          height: 376.73 * fem,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
                     // rectangle37M4 (67:29)
                     left: 37 * fem,
-                    top: 61 * fem,
+                    top: 81 * fem,
                     child: Align(
                       child: SizedBox(
                         width: 298 * fem,
@@ -220,7 +267,7 @@ class Scene extends StatelessWidget {
                   Positioned(
                     // getstarted9oY (67:32)
                     left: 112 * fem,
-                    top: 75 * fem,
+                    top: 95 * fem,
                     child: Align(
                       child: SizedBox(
                         width: 136 * fem,
@@ -240,6 +287,7 @@ class Scene extends StatelessWidget {
                   ),
                 ],
               ),
+            
             ),
           ],
         ),
