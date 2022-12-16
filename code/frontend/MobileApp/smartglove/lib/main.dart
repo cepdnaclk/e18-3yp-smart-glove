@@ -20,7 +20,7 @@ import 'dbHelper/mongoDB.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await MongoDatabase.connect();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
