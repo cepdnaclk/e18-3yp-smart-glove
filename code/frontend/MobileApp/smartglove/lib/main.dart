@@ -15,7 +15,13 @@ import 'package:myapp/page-1/ChatDefault.dart';
 // import 'package:myapp/page-1/renamechat.dart';
 // import 'package:myapp/page-1/getstarted.dart';
 
-void main() => runApp(MyApp());
+import 'dbHelper/mongoDB.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
