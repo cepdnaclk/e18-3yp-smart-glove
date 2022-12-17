@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/page-1/signin.dart';
 import 'package:myapp/utils.dart';
 
-class Scene extends StatelessWidget {
-  const Scene({super.key});
+class GetStarted extends StatefulWidget {
+  @override
+  GetStarted_ createState() => GetStarted_();
+}
+
+// ignore: camel_case_types
+class GetStarted_ extends State<GetStarted> {
+  //const Scene({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +28,13 @@ class Scene extends StatelessWidget {
           color: Color(0xffc7d2d1),
         ),
         // height: double.infinity,
+        child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               // autogroupmluuN9G (2CEsAw8kMoKdbDFLjHmLUu)
-              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0* fem),
+              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
               width: 478.73 * fem,
               height: 442.68 * fem,
               child: Stack(
@@ -35,18 +43,15 @@ class Scene extends StatelessWidget {
                     // ellipse1TAi (67:27)
                     left: -111 * fem,
                     top: -190 * fem,
-                    
+
                     child: Align(
                       child: SizedBox(
                         width: 478.73 * fem,
                         height: 380.73 * fem,
-                        
                         child: Image.asset(
-                          
-                          
-                        
                           'assets/page-1/images/ellipse-1-LNW.png',
-                          color: Colors.white.withOpacity(0.5), colorBlendMode: BlendMode.modulate,
+                          color: Colors.white.withOpacity(0.5),
+                          colorBlendMode: BlendMode.modulate,
                           width: 578.73 * fem,
                           height: 476.73 * fem,
                         ),
@@ -148,8 +153,7 @@ class Scene extends StatelessWidget {
                     ),
                   ),
                   Positioned.fill(
-                    
-                    top:392 * fem,
+                    top: 392 * fem,
                     //margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 87 * fem),
                     child: Text(
                       'GET THINGS DONE WITH VOICE4U',
@@ -203,18 +207,17 @@ class Scene extends StatelessWidget {
                     color: const Color(0xff000000),
                   ),
                 ),
-                
               ),
             ),
             SizedBox(
               // autogroupqp9brAE (2CEsNWdnoaqX4beC3vQp9B)
-              
+
               width: 423.24 * fem,
               height: 395.88 * fem,
-              
+
               // decoration: const BoxDecoration(
               //   image: DecorationImage(
-                 
+
               //     fit: BoxFit.cover,
               //     image: AssetImage(
               //       'assets/page-1/images/ellipse-3-syU.png',
@@ -223,24 +226,25 @@ class Scene extends StatelessWidget {
               // ),
               child: Stack(
                 children: [
-                  Positioned(
-                    // ellipse1TAi (67:27)
-                    left:-55* fem,
-                    top:46* fem,
-                    child: Align(
-                      child: SizedBox(
-                        width: 510.73 * fem,
-                        height: 376.73 * fem,
-                        child: Image.asset(
-                          'assets/page-1/images/ellipse-3-syU.png',
-                          color: Colors.white.withOpacity(0.6), colorBlendMode: BlendMode.modulate,
-                          
-                          width: 578.73 * fem,
-                          height: 376.73 * fem,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   // ellipse1TAi (67:27)
+                  //   left:-55* fem,
+                  //   top:100* fem,
+                  //   child: Align(
+                  //     child: SizedBox(
+                  //       width: 510.73 * fem,
+                  //       height: 376.73 * fem,
+                  //       child: Image.asset(
+                  //         'assets/page-1/images/ellipse-3-syU.png',
+                  //         color: Colors.white.withOpacity(0.6), colorBlendMode: BlendMode.modulate,
+
+                  //         width: 578.73 * fem,
+                  //         height: 376.73 * fem,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+
                   Positioned(
                     // rectangle37M4 (67:29)
                     left: 37 * fem,
@@ -250,7 +254,11 @@ class Scene extends StatelessWidget {
                         width: 298 * fem,
                         height: 57 * fem,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context,MaterialPageRoute(
+                              
+                                builder: (context) => Signin()));
+                          },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
                           ),
@@ -287,11 +295,13 @@ class Scene extends StatelessWidget {
                   ),
                 ],
               ),
-            
             ),
           ],
+        ),
         ),
       ),
     );
   }
+
+  
 }

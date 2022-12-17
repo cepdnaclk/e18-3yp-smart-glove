@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // title: 'Flutter',
-      // debugShowCheckedModeBanner: false,
+       debugShowCheckedModeBanner: false,
       // scrollBehavior: MyCustomScrollBehavior(),
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
