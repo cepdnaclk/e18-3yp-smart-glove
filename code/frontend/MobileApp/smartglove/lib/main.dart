@@ -7,15 +7,19 @@ import 'package:myapp/utils.dart';
 //import 'package:myapp/page-1/newchat.dart';
 //import 'package:myapp/page-1/signin.dart';
 ///import 'package:myapp/page-1/register.dart';
-// import 'package:myapp/page-1/chats1.dart';
-// import 'package:myapp/page-1/chats2.dart';
+//import 'package:myapp/page-1/chats1.dart';
+import 'package:myapp/page-1/ChatDefault.dart';
 //import 'package:myapp/page-1/chatinterface.dart';
 // import 'package:myapp/page-1/chatinterface2.dart';
 // import 'package:myapp/page-1/connectedchatinterface.dart';
 // import 'package:myapp/page-1/renamechat.dart';
-import 'package:myapp/page-1/getstarted2.dart';
+// import 'package:myapp/page-1/getstarted2.dart';
 
-void main() {
+import 'dbHelper/mongoDB.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
   runApp(MyApp());
 }
 
@@ -27,13 +31,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // title: 'Flutter',
       // debugShowCheckedModeBanner: false,
-      // scrollBehavior: MyCustomScrollBehavior(),
+      // // scrollBehavior: MyCustomScrollBehavior(),
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
       // ),
-      // home: const Scaffold(
+      // home: Scaffold(
       //   body: SingleChildScrollView(
-      //     child: Scene(),
+      //     child: ChatDefault(),
       home: GetStarted2(),
       //  ),
     );
