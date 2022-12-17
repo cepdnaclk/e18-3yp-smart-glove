@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
-import 'package:myapp/page-1/register2.dart';
+import 'package:myapp/page-1/signin2.dart';
 
-class BodySignIn extends StatelessWidget {
+class BodyRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,24 +19,50 @@ class BodySignIn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children:<Widget>[
           Text(
-                      'Welcome to',
-                    //  textAlign: TextAlign.center,
+                      'Create New Account',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont (
+                        'Inter',
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2125,
+                        color: Color(0xff0c0c0c),
+                      ),
+                    ),
+          Text(
+                      '',
+                    //  'GET THINGS DONE WITH VOICE4U',
+                      textAlign: TextAlign.center,
                       style: SafeGoogleFont(
-                                                'Inter',
-                                                fontSize: 32,
-                                                fontWeight: FontWeight.w700,
-                                                height: 1.2125,
-                                                color: Color(0xff0c0c0c),
-                                              ),
-                    ),                          
-          Align(
-            alignment: Alignment.topRight,
-          child: Image.asset(
-              //'assets/page-1/images/mute-removebg-preview-1.png',
-              'assets/page-1/images/download-1-rpA.png',
-              height:size.height*0.14,
-          ),
-          ),
+                        'Inter',
+                        fontSize: 20 ,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2125 ,
+                        letterSpacing: 1,
+                        color: const Color(0xff000000),
+                      ),
+                    ),
+                    Text(
+                      '',
+                    //  'GET THINGS DONE WITH VOICE4U',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 20 ,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2125 ,
+                        letterSpacing: 1,
+                        color: const Color(0xff000000),
+                      ),
+                    ),
+          // Align(
+          //   alignment: Alignment.topRight,
+          // child: Image.asset(
+          //     //'assets/page-1/images/mute-removebg-preview-1.png',
+          //     'assets/page-1/images/download-1-rpA.png',
+          //     height:size.height*0.14,
+          // ),
+          // ),
           // Align (
           //   alignment: Alignment.topLeft,
           // child: Text(
@@ -50,39 +76,13 @@ class BodySignIn extends StatelessWidget {
           //       ),
           //     ),
           // ),
-          Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-                    Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
           TextFormField(
             decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder( //<-- SEE HERE
               borderSide: BorderSide(
               width: 3, color: const Color(0xff52c9c2)), 
               ),
-              hintText: ' Username',
+              hintText: 'Enter your username',
               hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             // decoration: const InputDecoration(
@@ -90,32 +90,6 @@ class BodySignIn extends StatelessWidget {
             //   labelText: 'Enter your username',
             // ),
           ),
-          Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-                    Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
           // Align (
             
           //   alignment: Alignment.topLeft,
@@ -130,19 +104,74 @@ class BodySignIn extends StatelessWidget {
           //       ),
           //     ),
           // ),
+          Text(
+                      '',
+                    //  'GET THINGS DONE WITH VOICE4U',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 20 ,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2125 ,
+                        letterSpacing: 1,
+                        color: const Color(0xff000000),
+                      ),
+                    ),
           TextFormField(
             decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder( //<-- SEE HERE
               borderSide: BorderSide(
               width: 3, color: const Color(0xff52c9c2)), 
               ),
-              hintText: ' Password',
+              hintText: 'Enter your email',
               hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            // decoration: const InputDecoration(
-            //   border: UnderlineInputBorder(),
-            //   labelText: 'Enter your username',
-            // ),
+          ),
+          Text(
+                      '',
+                    //  'GET THINGS DONE WITH VOICE4U',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 20 ,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2125 ,
+                        letterSpacing: 1,
+                        color: const Color(0xff000000),
+                      ),
+                    ),
+          TextFormField(
+            decoration: const InputDecoration(
+              enabledBorder: UnderlineInputBorder( //<-- SEE HERE
+              borderSide: BorderSide(
+              width: 3, color: const Color(0xff52c9c2)), 
+              ),
+              hintText: 'Enter password',
+              hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Text(
+                      '',
+                    //  'GET THINGS DONE WITH VOICE4U',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 20 ,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2125 ,
+                        letterSpacing: 1,
+                        color: const Color(0xff000000),
+                      ),
+                    ),
+          TextFormField(
+            decoration: const InputDecoration(
+              enabledBorder: UnderlineInputBorder( //<-- SEE HERE
+              borderSide: BorderSide(
+              width: 3, color: const Color(0xff52c9c2)), 
+              ),
+              hintText: 'Confirm password',
+              hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
           
                     Text(
@@ -172,24 +201,26 @@ class BodySignIn extends StatelessWidget {
                         color: const Color(0xff000000),
                       ),
                     ),
-          FloatingActionButton.extended(
-             heroTag: "btn1",
-                            label: Text('Signin',style: SafeGoogleFont(
-                            'Inter',
-                            fontSize:18,
-                            fontWeight: FontWeight.w700,
-                            height: 1.2125 ,
-                            color: const Color(0xff0b0c0c),
-                          ),), // <-- Text
-  backgroundColor: const Color(0xff52c9c2),
-  //color: const Color(0xff52c9c2),
+          
+                FloatingActionButton.extended(
+                  heroTag: "btn2",
+                  label: Text('Register',style: SafeGoogleFont(
+                                            'Inter',
+                                            fontSize:18,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1.2125 ,
+                                            color: const Color(0xff0b0c0c),
+                                          ),), // <-- Text
+                  backgroundColor: const Color(0xff52c9c2),
+                  //color: const Color(0xff52c9c2),
 
-  // icon: Icon( // <-- Icon
-  //   Icons.download,
-  //   size: 24.0,
-  // ),
-  onPressed: () {},
-),
+                  // icon: Icon( // <-- Icon
+                  //   Icons.download,
+                  //   size: 24.0,
+                  // ),
+                  onPressed: () {},
+                ),
+          
 
 Text(
                       '',
@@ -205,7 +236,7 @@ Text(
                       ),
                     ),
 Text(
-                          'Don’t have an account?',
+                          'Already have an account?',
                           style: SafeGoogleFont(
                             'Inter',
                             fontSize: 16,
@@ -227,10 +258,10 @@ Text(
                         color: const Color(0xff000000),
                       ),
                     ),
-                    
-FloatingActionButton.extended(
-  heroTag: "btn2",
-  label: Text('Register',style: SafeGoogleFont(
+
+                    FloatingActionButton.extended(
+             heroTag: "btn1",
+                            label: Text('Signin',style: SafeGoogleFont(
                             'Inter',
                             fontSize:18,
                             fontWeight: FontWeight.w700,
@@ -247,9 +278,12 @@ FloatingActionButton.extended(
   onPressed: () {
     Navigator.push(context,MaterialPageRoute(
                                                   
-                        builder: (context) => Register()));
+    builder: (context) => SignIn()));
+    
   },
 ),
+                    
+
           // Positioned(
           //           // getstarted9oY (67:32)
           //           left: 112 ,
