@@ -8,12 +8,12 @@ import 'package:myapp/utils.dart';
 //import 'package:myapp/page-1/signin.dart';
 ///import 'package:myapp/page-1/register.dart';
 //import 'package:myapp/page-1/chats1.dart';
-import 'package:myapp/page-1/ChatDefault.dart';
+//import 'package:myapp/page-1/ChatDefault.dart';
 //import 'package:myapp/page-1/chatinterface.dart';
 // import 'package:myapp/page-1/chatinterface2.dart';
 // import 'package:myapp/page-1/connectedchatinterface.dart';
 // import 'package:myapp/page-1/renamechat.dart';
-// import 'package:myapp/page-1/getstarted2.dart';
+ import 'package:myapp/page-1/getstarted2.dart';
 
 import 'dbHelper/mongoDB.dart';
 

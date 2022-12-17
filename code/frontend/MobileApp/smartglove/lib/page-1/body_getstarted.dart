@@ -8,7 +8,7 @@ import 'package:myapp/page-1/signin2.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
-import 'package:myapp/page-1/body_signin.dart';
+import 'package:myapp/page-1/body_register.dart';
 class BodyGetStarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -84,26 +84,28 @@ class BodyGetStarted extends StatelessWidget {
                         color: const Color(0xff000000),
                       ),
                     ),
-          FloatingActionButton.extended(
-  label: Text('GET STARTED',style: SafeGoogleFont(
-                            'Inter',
-                            fontSize:18,
-                            fontWeight: FontWeight.w700,
-                            height: 1.2125 ,
-                            color: const Color(0xff0b0c0c),
-                          ),), // <-- Text
-  backgroundColor: const Color(0xff52c9c2),
+
+                    //Get started button - directed to SIGN IN
+                FloatingActionButton.extended(
+                      label: Text('GET STARTED',style: SafeGoogleFont(
+                      'Inter',
+                      fontSize:18,
+                      fontWeight: FontWeight.w700,
+                      height: 1.2125 ,
+                      color: const Color(0xff0b0c0c),
+                    ),), // <-- Text
+                      backgroundColor: const Color(0xff52c9c2),
   //color: const Color(0xff52c9c2),
 
   // icon: Icon( // <-- Icon
   //   Icons.download,
   //   size: 24.0,
   // ),
-  onPressed: () {
-     Navigator.push(context,MaterialPageRoute(
-                              
-    builder: (context) => SignIn()));
-  },
+                      onPressed: () {
+                        Navigator.push(context,MaterialPageRoute(
+                                                  
+                        builder: (context) => SignIn()));
+                      },
 ),
           // Positioned(
           //           // getstarted9oY (67:32)
