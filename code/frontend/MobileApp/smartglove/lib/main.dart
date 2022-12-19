@@ -6,6 +6,15 @@ import 'package:flutter/material.dart'
         Widget,
         WidgetsFlutterBinding,
         runApp;
+import 'package:flutter/material.dart'
+    show
+        BuildContext,
+        Key,
+        MaterialApp,
+        StatelessWidget,
+        Widget,
+        WidgetsFlutterBinding,
+        runApp;
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,19 +32,19 @@ import 'package:myapp/utils.dart';
 // import 'package:myapp/page-1/renamechat.dart';
 import 'package:myapp/page-1/getstarted2.dart';
 
-//import 'dbHelper/mongoDB.dart';
+import 'dbHelper/mongoDB.dart';
 
 void main() async {
   //WidgetsFlutterBinding.ensureInitialized();
   //await MongoDatabase.connect();
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await MongoDatabase.connect();
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
+  runApp(const MyApp());
 }
 
 // ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
-  //const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
