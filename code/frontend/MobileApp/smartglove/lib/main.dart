@@ -1,4 +1,11 @@
-import 'package:flutter/material.dart' show BuildContext, MaterialApp, StatelessWidget, Widget, WidgetsFlutterBinding, runApp;
+import 'package:flutter/material.dart'
+    show
+        BuildContext,
+        MaterialApp,
+        StatelessWidget,
+        Widget,
+        WidgetsFlutterBinding,
+        runApp;
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +41,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // title: 'Flutter',
-       debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       // scrollBehavior: MyCustomScrollBehavior(),
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
