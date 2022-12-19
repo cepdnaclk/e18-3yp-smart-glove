@@ -2,17 +2,28 @@
 
 //import 'dart:html';
 
+//import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:myapp/MongoDBModel.dart';
+import 'package:myapp/dbHelper/mongodb.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
 import 'package:myapp/page-1/signin2.dart';
+import 'package:mongo_dart/mongo_dart.dart' as M;
 
 class BodyRegister extends StatelessWidget {
+
+  final userNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // ignore: unused_local_variable
+    //Size size = MediaQuery.of(context).size;
     // ignore: dead_code
     return Background(
       child: Column(
@@ -77,6 +88,7 @@ class BodyRegister extends StatelessWidget {
           //     ),
           // ),
           TextFormField(
+            controller: userNameController,
             decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder( //<-- SEE HERE
               borderSide: BorderSide(
@@ -118,6 +130,7 @@ class BodyRegister extends StatelessWidget {
                       ),
                     ),
           TextFormField(
+            controller: emailController,
             decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder( //<-- SEE HERE
               borderSide: BorderSide(
@@ -141,6 +154,7 @@ class BodyRegister extends StatelessWidget {
                       ),
                     ),
           TextFormField(
+            controller: passwordController,
             decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder( //<-- SEE HERE
               borderSide: BorderSide(
@@ -218,7 +232,9 @@ class BodyRegister extends StatelessWidget {
                   //   Icons.download,
                   //   size: 24.0,
                   // ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _insertData(userNameController.text,emailController.text,passwordController.text);
+                  },
                 ),
           
 
@@ -338,6 +354,24 @@ Text(
         ]
       ));
   }
+
+  Future<void> _insertData(String userName, String email, String password) async{
+    var id = M.ObjectId();
+    final data = MongoDbModel(id: id, userName: userName, email: email, password: password);
+    var result = await MongoDatabase.insert(data);
+
+    //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Inserted ID " + id.$oid)));
+    _clearAll();
+    
+    //return null;
+  }
+
+  void _clearAll(){
+    userNameController.text = "";
+    emailController.text = "";
+    passwordController.text = "";
+  } 
+
 }
 
 // class Background extends StatelessWidget {
