@@ -8,6 +8,8 @@ import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
 import 'package:myapp/page-1/register2.dart';
+import 'package:myapp/page-1/chatinterface2.dart';
+
 
 class BodySignIn extends StatelessWidget {
   @override
@@ -188,7 +190,11 @@ class BodySignIn extends StatelessWidget {
   //   Icons.download,
   //   size: 24.0,
   // ),
-  onPressed: () {},
+  onPressed: () {
+    Navigator.push(context,MaterialPageRoute(
+                                                  
+    builder: (context) => ChatInterface2()));
+  },
 ),
 
 Text(

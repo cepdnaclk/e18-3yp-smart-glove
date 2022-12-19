@@ -15,13 +15,13 @@ import 'package:myapp/page-1/register.dart';
 // import 'package:myapp/page-1/renamechat.dart';
  import 'package:myapp/page-1/getstarted2.dart';
 
-import 'dbHelper/mongoDB.dart';
+//import 'dbHelper/mongoDB.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await MongoDatabase.connect();
-  runApp(MyApp());
-}
+ void main()  {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await MongoDatabase.connect();
+   runApp(MyApp());
+ }
 
 class MyApp extends StatelessWidget {
   //const MyApp({super.key});
