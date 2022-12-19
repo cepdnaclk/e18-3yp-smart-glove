@@ -15,7 +15,6 @@ import 'package:myapp/page-1/signin2.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
 
 class BodyRegister extends StatelessWidget {
-
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -26,352 +25,359 @@ class BodyRegister extends StatelessWidget {
     //Size size = MediaQuery.of(context).size;
     // ignore: dead_code
     return Background(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children:<Widget>[
-          Text(
-                      'Create New Account',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont (
-                        'Inter',
-                        fontSize: 32,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125,
-                        color: Color(0xff0c0c0c),
-                      ),
-                    ),
-          Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-                    Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-          // Align(
-          //   alignment: Alignment.topRight,
-          // child: Image.asset(
-          //     //'assets/page-1/images/mute-removebg-preview-1.png',
-          //     'assets/page-1/images/download-1-rpA.png',
-          //     height:size.height*0.14,
-          // ),
-          // ),
-          // Align (
-          //   alignment: Alignment.topLeft,
-          // child: Text(
-          //       'Username',
-          //       style: SafeGoogleFont(
-          //         'Inter',
-          //         fontSize: 24,
-          //         fontWeight: FontWeight.w500,
-          //         height: 1.2125 ,
-          //         color: Color(0xff000000),
-          //       ),
-          //     ),
-          // ),
-          TextFormField(
-            controller: userNameController,
-            decoration: const InputDecoration(
-              enabledBorder: UnderlineInputBorder( //<-- SEE HERE
-              borderSide: BorderSide(
-              width: 3, color: const Color(0xff52c9c2)), 
-              ),
-              hintText: 'Enter your username',
-              hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            // decoration: const InputDecoration(
-            //   border: UnderlineInputBorder(),
-            //   labelText: 'Enter your username',
-            // ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+            Widget>[
+      Text(
+        'Create New Account',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 32,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          color: Color(0xff0c0c0c),
+        ),
+      ),
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
+      // Align(
+      //   alignment: Alignment.topRight,
+      // child: Image.asset(
+      //     //'assets/page-1/images/mute-removebg-preview-1.png',
+      //     'assets/page-1/images/download-1-rpA.png',
+      //     height:size.height*0.14,
+      // ),
+      // ),
+      // Align (
+      //   alignment: Alignment.topLeft,
+      // child: Text(
+      //       'Username',
+      //       style: SafeGoogleFont(
+      //         'Inter',
+      //         fontSize: 24,
+      //         fontWeight: FontWeight.w500,
+      //         height: 1.2125 ,
+      //         color: Color(0xff000000),
+      //       ),
+      //     ),
+      // ),
+      TextFormField(
+        controller: userNameController,
+        decoration: const InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            //<-- SEE HERE
+            borderSide: BorderSide(width: 3, color: const Color(0xff52c9c2)),
           ),
-          // Align (
-            
-          //   alignment: Alignment.topLeft,
-          // child: Text(
-          //       'Password',
-          //       style: SafeGoogleFont(
-          //         'Inter',
-          //         fontSize: 24,
-          //         fontWeight: FontWeight.w500,
-          //         height: 1.2125 ,
-          //         color: Color(0xff000000),
-          //       ),
-          //     ),
-          // ),
-          Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-          TextFormField(
-            controller: emailController,
-            decoration: const InputDecoration(
-              enabledBorder: UnderlineInputBorder( //<-- SEE HERE
-              borderSide: BorderSide(
-              width: 3, color: const Color(0xff52c9c2)), 
-              ),
-              hintText: 'Enter your email',
-              hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+          hintText: 'Enter your username',
+          hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        // decoration: const InputDecoration(
+        //   border: UnderlineInputBorder(),
+        //   labelText: 'Enter your username',
+        // ),
+      ),
+      // Align (
+
+      //   alignment: Alignment.topLeft,
+      // child: Text(
+      //       'Password',
+      //       style: SafeGoogleFont(
+      //         'Inter',
+      //         fontSize: 24,
+      //         fontWeight: FontWeight.w500,
+      //         height: 1.2125 ,
+      //         color: Color(0xff000000),
+      //       ),
+      //     ),
+      // ),
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
+      TextFormField(
+        controller: emailController,
+        decoration: const InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            //<-- SEE HERE
+            borderSide: BorderSide(width: 3, color: const Color(0xff52c9c2)),
           ),
-          Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-          TextFormField(
-            controller: passwordController,
-            decoration: const InputDecoration(
-              enabledBorder: UnderlineInputBorder( //<-- SEE HERE
-              borderSide: BorderSide(
-              width: 3, color: const Color(0xff52c9c2)), 
-              ),
-              hintText: 'Enter password',
-              hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+          hintText: 'Enter your email',
+          hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
+      TextFormField(
+        controller: passwordController,
+        decoration: const InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            //<-- SEE HERE
+            borderSide: BorderSide(width: 3, color: const Color(0xff52c9c2)),
           ),
-          Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-          TextFormField(
-            decoration: const InputDecoration(
-              enabledBorder: UnderlineInputBorder( //<-- SEE HERE
-              borderSide: BorderSide(
-              width: 3, color: const Color(0xff52c9c2)), 
-              ),
-              hintText: 'Confirm password',
-              hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+          hintText: 'Enter password',
+          hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
+      TextFormField(
+        decoration: const InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            //<-- SEE HERE
+            borderSide: BorderSide(width: 3, color: const Color(0xff52c9c2)),
           ),
-          
-                    Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-          
-                Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-          
-                FloatingActionButton.extended(
-                  heroTag: "btn2",
-                  label: Text('Register',style: SafeGoogleFont(
-                                            'Inter',
-                                            fontSize:18,
-                                            fontWeight: FontWeight.w700,
-                                            height: 1.2125 ,
-                                            color: const Color(0xff0b0c0c),
-                                          ),), // <-- Text
-                  backgroundColor: const Color(0xff52c9c2),
-                  //color: const Color(0xff52c9c2),
+          hintText: 'Confirm password',
+          hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
 
-                  // icon: Icon( // <-- Icon
-                  //   Icons.download,
-                  //   size: 24.0,
-                  // ),
-                  onPressed: () {
-                    _insertData(userNameController.text,emailController.text,passwordController.text);
-                  },
-                ),
-          
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
 
-Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-Text(
-                          'Already have an account?',
-                          style: SafeGoogleFont(
-                            'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            height: 1.2125 ,
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                        Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
 
-                    FloatingActionButton.extended(
-             heroTag: "btn1",
-                            label: Text('Signin',style: SafeGoogleFont(
-                            'Inter',
-                            fontSize:18,
-                            fontWeight: FontWeight.w700,
-                            height: 1.2125 ,
-                            color: const Color(0xff0b0c0c),
-                          ),), // <-- Text
-  backgroundColor: const Color(0xff52c9c2),
-  //color: const Color(0xff52c9c2),
+      FloatingActionButton.extended(
+        heroTag: "btn2",
+        label: Text(
+          'Register',
+          style: SafeGoogleFont(
+            'Inter',
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            height: 1.2125,
+            color: const Color(0xff0b0c0c),
+          ),
+        ), // <-- Text
+        backgroundColor: const Color(0xff52c9c2),
+        //color: const Color(0xff52c9c2),
 
-  // icon: Icon( // <-- Icon
-  //   Icons.download,
-  //   size: 24.0,
-  // ),
-  onPressed: () {
-    Navigator.push(context,MaterialPageRoute(
-                                                  
-    builder: (context) => SignIn()));
-    
-  },
-),
-                    
+        // icon: Icon( // <-- Icon
+        //   Icons.download,
+        //   size: 24.0,
+        // ),
+        onPressed: () {
+          _insertData(userNameController.text, emailController.text,
+              passwordController.text);
+        },
+      ),
 
-          // Positioned(
-          //           // getstarted9oY (67:32)
-          //           left: 112 ,
-          //           top: 95,
-          //           child: Align(
-          //             child: SizedBox(
-          //               width: 136 ,
-          //               height: 30 ,
-          //               child: Text(
-          //                 'Get Started',
-          //                 style: SafeGoogleFont(
-          //                   'Inter',
-          //                   fontSize: 24 ,
-          //                   fontWeight: FontWeight.w700,
-          //                   height: 1.2125 ,
-          //                   color: const Color(0xff0b0c0c),
-          //                 ),
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          // Positioned(
-          //           // rectangle37M4 (67:29)
-          //           left: 37,
-          //           top: 81 ,
-          //           child: Align(
-          //             child: SizedBox(
-          //               width: 298 ,
-          //               height: 57 ,
-          //               child: TextButton(
-          //                 onPressed: () {
-          //                 //  Navigator.push(context,MaterialPageRoute(
-                              
-          //                  //     builder: (context) => Signin()));
-          //                 },
-          //                 style: TextButton.styleFrom(
-          //                   padding: EdgeInsets.zero,
-          //                 ),
-          //                 child: Container(
-          //                   decoration: BoxDecoration(
-          //                     borderRadius: BorderRadius.circular(30 ),
-          //                     color: const Color(0xff52c9c2),
-          //                   ),
-          //                 ),
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          
-           
-                  
-        ]
-      ));
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
+      Text(
+        'Already have an account?',
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          height: 1.2125,
+          color: Color(0xff000000),
+        ),
+      ),
+      Text(
+        '',
+        //  'GET THINGS DONE WITH VOICE4U',
+        textAlign: TextAlign.center,
+        style: SafeGoogleFont(
+          'Inter',
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          height: 1.2125,
+          letterSpacing: 1,
+          color: const Color(0xff000000),
+        ),
+      ),
+
+      FloatingActionButton.extended(
+        heroTag: "btn1",
+        label: Text(
+          'Signin',
+          style: SafeGoogleFont(
+            'Inter',
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            height: 1.2125,
+            color: const Color(0xff0b0c0c),
+          ),
+        ), // <-- Text
+        backgroundColor: const Color(0xff52c9c2),
+        //color: const Color(0xff52c9c2),
+
+        // icon: Icon( // <-- Icon
+        //   Icons.download,
+        //   size: 24.0,
+        // ),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SignIn()));
+        },
+      ),
+
+      // Positioned(
+      //           // getstarted9oY (67:32)
+      //           left: 112 ,
+      //           top: 95,
+      //           child: Align(
+      //             child: SizedBox(
+      //               width: 136 ,
+      //               height: 30 ,
+      //               child: Text(
+      //                 'Get Started',
+      //                 style: SafeGoogleFont(
+      //                   'Inter',
+      //                   fontSize: 24 ,
+      //                   fontWeight: FontWeight.w700,
+      //                   height: 1.2125 ,
+      //                   color: const Color(0xff0b0c0c),
+      //                 ),
+      //               ),
+      //             ),
+      //           ),
+      //         ),
+      // Positioned(
+      //           // rectangle37M4 (67:29)
+      //           left: 37,
+      //           top: 81 ,
+      //           child: Align(
+      //             child: SizedBox(
+      //               width: 298 ,
+      //               height: 57 ,
+      //               child: TextButton(
+      //                 onPressed: () {
+      //                 //  Navigator.push(context,MaterialPageRoute(
+
+      //                  //     builder: (context) => Signin()));
+      //                 },
+      //                 style: TextButton.styleFrom(
+      //                   padding: EdgeInsets.zero,
+      //                 ),
+      //                 child: Container(
+      //                   decoration: BoxDecoration(
+      //                     borderRadius: BorderRadius.circular(30 ),
+      //                     color: const Color(0xff52c9c2),
+      //                   ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ),
+      //         ),
+    ]));
   }
 
-  Future<void> _insertData(String userName, String email, String password) async{
+  Future<void> _insertData(
+      String userName, String email, String password) async {
+    MongoDatabase database = MongoDatabase();
     var id = M.ObjectId();
-    final data = MongoDbModel(id: id, userName: userName, email: email, password: password);
-    var result = await MongoDatabase.insert(data);
+    final data = MongoDbModel(
+        id: id, userName: userName, email: email, password: password);
+    print(await MongoDatabase.userCollection.find().toList());
+    // var result = await database.insertOne({
+    //   "id": 20,
+    //   "username": "User1",
+    //   "email": "user1@gmail.com",
+    //   "password": "1234",
+    // });
+    //insert(data);
 
     //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Inserted ID " + id.$oid)));
     _clearAll();
-    
+
     //return null;
   }
 
-  void _clearAll(){
+  void _clearAll() {
     userNameController.text = "";
     emailController.text = "";
     passwordController.text = "";
-  } 
-
+  }
 }
 
 // class Background extends StatelessWidget {
