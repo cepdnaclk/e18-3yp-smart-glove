@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' show BuildContext, MaterialApp, Stateless
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/page-1/newchat.dart';
 import 'package:myapp/utils.dart';
 //import 'package:myapp/page-1/invalidmodel.dart';
 //import 'package:myapp/page-1/newchat.dart';
@@ -20,6 +21,8 @@ import 'dbHelper/mongoDB.dart';
 void main() async {
   //WidgetsFlutterBinding.ensureInitialized();
   //await MongoDatabase.connect();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await MongoDatabase.connect();
   runApp(MyApp());
 }
 

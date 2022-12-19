@@ -272,6 +272,19 @@ class ChatDefault extends StatelessWidget {
                 ),
               ),
             ),
+            Positioned(
+              bottom: 120,
+              right: 20,
+              child: Container(
+                width: 70,
+                height: 70,
+                child: Image.asset(
+                  'assets/page-1/images/addChat.png',
+                  width: 20 * fem,
+                  height: 20 * fem,
+                ),
+              ),
+            )
           ],
         ),
       ),
