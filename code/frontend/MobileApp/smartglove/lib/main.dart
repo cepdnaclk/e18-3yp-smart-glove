@@ -14,7 +14,7 @@ import 'package:myapp/page-1/register.dart';
 // import 'package:myapp/page-1/chatinterface2.dart';
 // import 'package:myapp/page-1/connectedchatinterface.dart';
 // import 'package:myapp/page-1/renamechat.dart';
- import 'package:myapp/page-1/getstarted2.dart';
+import 'package:myapp/page-1/getstarted2.dart';
 
 import 'dbHelper/mongoDB.dart';
 
