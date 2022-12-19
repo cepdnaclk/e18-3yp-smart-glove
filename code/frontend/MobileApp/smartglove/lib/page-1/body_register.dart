@@ -2,7 +2,7 @@
 
 //import 'dart:html';
 
-import 'dart:ffi';
+//import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:myapp/MongoDBModel.dart';
@@ -355,7 +355,7 @@ Text(
       ));
   }
 
-  Future<Void?> _insertData(String userName, String email, String password) async{
+  Future<void> _insertData(String userName, String email, String password) async{
     var id = M.ObjectId();
     final data = MongoDbModel(id: id, userName: userName, email: email, password: password);
     var result = await MongoDatabase.insert(data);
@@ -363,7 +363,7 @@ Text(
     //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Inserted ID " + id.$oid)));
     _clearAll();
     
-    return null;
+    //return null;
   }
 
   void _clearAll(){
