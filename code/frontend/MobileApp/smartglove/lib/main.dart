@@ -6,7 +6,7 @@ import 'package:myapp/utils.dart';
 //import 'package:myapp/page-1/invalidmodel.dart';
 //import 'package:myapp/page-1/newchat.dart';
 //import 'package:myapp/page-1/signin.dart';
-///import 'package:myapp/page-1/register.dart';
+import 'package:myapp/page-1/register.dart';
 //import 'package:myapp/page-1/chats1.dart';
 //import 'package:myapp/page-1/ChatDefault.dart';
 //import 'package:myapp/page-1/chatinterface.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       // ),
       // home: Scaffold(
       //   body: SingleChildScrollView(
-      //     child: ChatDefault(),
+      //     child: register(),
       home: GetStarted2(),
       //  ),
     );
