@@ -13,4 +13,11 @@ class MongoDatabase{
     inspect(db);
     userCollection = db.collection(USER_COLLECTION);
   }
+
+  static Future<void> insert() async {
+    try {} catch(e) {
+      print(e.toString());
+    }
+  }
+  
 }

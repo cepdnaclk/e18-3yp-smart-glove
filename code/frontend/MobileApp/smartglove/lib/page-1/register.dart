@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 
-class Scene extends StatelessWidget {
+class register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
@@ -237,7 +237,8 @@ class Scene extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30*fem),
                     ),
                     child: Center(
-                      child: Text(
+                      child: 
+                        Text( 
                         'Register',
                         style: SafeGoogleFont (
                           'Inter',
@@ -292,5 +293,9 @@ class Scene extends StatelessWidget {
         ),
       ),
           );
+  }
+
+  Future<void> _register(String username, String email, String password)async{
+
   }
 }
