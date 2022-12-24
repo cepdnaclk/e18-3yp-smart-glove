@@ -3,6 +3,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/chatinterface2.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
@@ -198,7 +199,10 @@ class BodyNewChat extends StatelessWidget {
                                     ), // <-- Text
                                     backgroundColor: const Color(0xff52c9c2),
 
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                      context, MaterialPageRoute(builder: (context) => ChatInterface2()));
+                                    },
                                   ),
                                 ],
                               ),

@@ -114,6 +114,8 @@ This is the overall circuit diagram for the device. It has Node MCU microcontoll
 # Hardware Design
 ---
 
+## Implementation
+
 ## Components
 
 ### Controller platform
@@ -167,11 +169,49 @@ The below circuit diagram shows how accelerometer readings can be taken in 3D sp
 - Overall Hardware Product Testing
     Check the overall functionality of the device by sending messages to the mobile application. Examine the latency and the accuracy
 
-
+#### Implementation
 
 
 # Software Design
 ---
+
+## Implementation
+
+Implentations UI designs for the mobile app
+
+- Get Started interface
+
+
+<p align="left">
+<img src="./images/getstarted.png" width="250" height="450"></p>
+
+
+- New mobile app user register interface
+
+
+<p align="left">
+<img src="./images/register.png" width="250" height="450"></p>
+
+
+- Already registered user sign in
+
+
+<p align="left">
+<img src="./images/signin.png" width="250" height="450"></p>
+
+
+- Newly users recent chat interface
+
+
+<p align="left">
+<img src="./images/defaultchat.png" width="250" height="450"></p>
+
+
+- Add a chat with a new user 
+
+
+<p align="left">
+<img src="./images/newchat.png" width="250" height="450"></p>
 
 ### Front End Technology
 
@@ -275,6 +315,13 @@ Power
 | Functionality Testing     | Manual Testing               | Accurately detect the sign each hardware checked separately   |
 | Compatibility Testing     | Manual Testing               | Ensure that device is compatible with the system              |  
 | Performance Testing       | Manual Testing               | Detect sign with minimum latency                              |  
+
+
+### NodeMCU & Flex Sensor 
+
+Circuit :
+
+Output :
 
 # Detailed budget
 ---
