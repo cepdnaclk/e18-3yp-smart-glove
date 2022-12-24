@@ -152,6 +152,7 @@ class BodyRegister extends StatelessWidget {
         ),
       ),
       TextFormField(
+        obscureText: true,
         controller: passwordController,
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
@@ -176,6 +177,7 @@ class BodyRegister extends StatelessWidget {
         ),
       ),
       TextFormField(
+        obscureText: true,
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             //<-- SEE HERE
@@ -354,11 +356,11 @@ class BodyRegister extends StatelessWidget {
 
   Future<void> _insertData(
       String userName, String email, String password) async {
-    MongoDatabase database = MongoDatabase();
+    MongoDatabase database = new MongoDatabase();
+    MongoDatabase.connect();
     var id = M.ObjectId();
-    final data = MongoDbModel(
-        id: id, userName: userName, email: email, password: password);
-    print(await MongoDatabase.userCollection.find().toList());
+    final data = MongoDbModel(id: id, userName: userName, email: email, password: password);
+    print(await MongoDatabase.insert(id,userName,email,password));
     // var result = await database.insertOne({
     //   "id": 20,
     //   "username": "User1",

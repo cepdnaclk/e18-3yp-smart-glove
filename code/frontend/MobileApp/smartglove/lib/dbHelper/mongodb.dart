@@ -25,12 +25,25 @@ class MongoDatabase {
     //print(await userCollection.find().toList());
   }
 
-  static Future<String> insert(MongoDbModel data) async {
+   static Future<String> insert(var id,String userName,String email,String password) async {
+    //final db = await Db(uriString);
+
     try {
-      var result = await userCollection.insertOne(data.toJson());
+      //print(await userCollection.find().toList());
+      
+      var result= await userCollection.insertOne(
+      {
+        "id":122,
+        "username": "User2",
+        "email": "user2@gmail.com",
+        "password": "12234",
+      }
+    );
       if (result.isSuccess) {
+        print("Data inserted");
         return "Data inserted";
       } else {
+        print("Data not inserted");
         return "Something is wrong";
       }
     } catch (e) {
