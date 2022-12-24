@@ -361,7 +361,7 @@ class BodyRegister extends StatelessWidget {
     MongoDatabase.connect();
     var id = M.ObjectId();
     final data = MongoDbModel(id: id, userName: userName, email: email, password: password);
-    print(await MongoDatabase.insert(id,userName,email,password));
+    //print(await MongoDatabase.insert(id,userName,email,password));
     // var result = await database.insertOne({
     //   "id": 20,
     //   "username": "User1",
