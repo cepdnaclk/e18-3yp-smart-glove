@@ -5,45 +5,46 @@ import 'package:myapp/MongoDBModel.dart';
 import 'package:myapp/dbHelper/constant.dart';
 
 class MongoDatabase {
+  // ignore: prefer_typing_uninitialized_variables
   static var db, userCollection;
-
+  
   static connect() async {
     db = await Db.create(MONGO_CONN_URL);
     await db.open();
     inspect(db);
-    var status = db.serverStatus();
-    print(status);
+    //var status = db.serverStatus();
+
+    //print(status);
+
     userCollection = db.collection(USER_COLLECTION);
-<<<<<<< HEAD
-    await userCollection.insertOne({
+    //print(userCollection);
+    
+    /* await userCollection.insertOne({
         "id": 2,
-        "username": "Jessica",
-        "email": "jessica12@gmail.com",
-        "password": "jessica1234"
-    });
+        "username": userName,
+        "email": email,
+        "password": password
+    }); */
 
-    print(await userCollection.find().toList());
-}
-
-=======
-    // await userCollection.insertOne(
-    //   {
-    //     "id":2,
-    //     "username": "User1",
-    //     "email": "user1@gmail.com",
-    //     "password": "1234",
-    //   }
-    // );
     //print(await userCollection.find().toList());
+
   }
 
->>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
-  static Future<String> insert(MongoDbModel data) async {
+
+
+  static insert(int id, String userName, String email, String password) async {
+
+    await MongoDatabase.connect();
+    
     try {
       
-      
-      var result = await userCollection.insertOne(data.toJson());
-<<<<<<< HEAD
+      var result = await userCollection.insertOne({
+        "id":id,
+        "username": userName,
+        "email": email,
+        "password": password
+      });
+
       if(result.isSuccess) {
         print("Data inserted");
         return "success";
@@ -51,27 +52,27 @@ class MongoDatabase {
 
       else {
         return "Something is wrong";
-      }
+      } 
       
     }
     
-    catch(e) {
-=======
+    /* catch(e) {
+      var result;
       if (result.isSuccess) {
         return "Data inserted";
       } else {
         return "Something is wrong";
       }
-    } catch (e) {
->>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
+    }  */
+    
+    catch (e) {
       print(e.toString());
       return e.toString();
-    }
+    } 
+
+    
     
   }
-<<<<<<< HEAD
-  
+
 }
-=======
-}
->>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
+
