@@ -131,6 +131,7 @@ class BodySignIn extends StatelessWidget {
       //     ),
       // ),
       TextFormField(
+        obscureText: true,
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             //<-- SEE HERE

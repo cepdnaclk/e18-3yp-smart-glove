@@ -19,6 +19,7 @@ class BodyRegister extends StatelessWidget {
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -154,6 +155,7 @@ class BodyRegister extends StatelessWidget {
                       ),
                     ),
           TextFormField(
+            obscureText: true,
             controller: passwordController,
             decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder( //<-- SEE HERE
@@ -178,6 +180,8 @@ class BodyRegister extends StatelessWidget {
                       ),
                     ),
           TextFormField(
+            controller: confirmPasswordController,
+            obscureText: true,
             decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder( //<-- SEE HERE
               borderSide: BorderSide(
@@ -360,6 +364,8 @@ Text(
     final data = MongoDbModel(id: id, userName: userName, email: email, password: password);
     var result = await MongoDatabase.insert(data);
 
+    //var result = await MongoDatabase.userCollection.insertOne(id, userName, email, password);
+
     //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Inserted ID " + id.$oid)));
     _clearAll();
     
@@ -370,6 +376,7 @@ Text(
     userNameController.text = "";
     emailController.text = "";
     passwordController.text = "";
+    confirmPasswordController.text = "";
   } 
 
 }

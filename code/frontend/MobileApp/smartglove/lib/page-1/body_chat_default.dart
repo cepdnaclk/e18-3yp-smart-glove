@@ -42,7 +42,7 @@ class BodyChatDefault extends StatelessWidget {
           Align(
             alignment: Alignment.topRight,
             child: Text(
-              'MARTINA WOLNA',
+              'Jessica',
               textAlign: TextAlign.right,
               style: SafeGoogleFont(
                 'Roboto',
@@ -55,6 +55,9 @@ class BodyChatDefault extends StatelessWidget {
             ),
           ),
 
+          const SizedBox(
+                                    height: 20, // <-- SEE HERE
+                                  ),
           Align(
             alignment: Alignment.bottomRight,
             child: FloatingActionButton.extended(
