@@ -14,6 +14,18 @@ class MongoDatabase {
     var status = db.serverStatus();
     print(status);
     userCollection = db.collection(USER_COLLECTION);
+<<<<<<< HEAD
+    await userCollection.insertOne({
+        "id": 2,
+        "username": "Jessica",
+        "email": "jessica12@gmail.com",
+        "password": "jessica1234"
+    });
+
+    print(await userCollection.find().toList());
+}
+
+=======
     // await userCollection.insertOne(
     //   {
     //     "id":2,
@@ -25,20 +37,26 @@ class MongoDatabase {
     //print(await userCollection.find().toList());
   }
 
-   static Future<String> insert(var id,String userName,String email,String password) async {
-    //final db = await Db(uriString);
-
+>>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
+  static Future<String> insert(MongoDbModel data) async {
     try {
-      //print(await userCollection.find().toList());
       
-      var result= await userCollection.insertOne(
-      {
-        "id":122,
-        "username": "User2",
-        "email": "user2@gmail.com",
-        "password": "12234",
+      
+      var result = await userCollection.insertOne(data.toJson());
+<<<<<<< HEAD
+      if(result.isSuccess) {
+        print("Data inserted");
+        return "success";
       }
-    );
+
+      else {
+        return "Something is wrong";
+      }
+      
+    }
+    
+    catch(e) {
+=======
       if (result.isSuccess) {
         print("Data inserted");
         return "Data inserted";
@@ -47,8 +65,15 @@ class MongoDatabase {
         return "Something is wrong";
       }
     } catch (e) {
+>>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
       print(e.toString());
       return e.toString();
     }
+    
   }
+<<<<<<< HEAD
+  
 }
+=======
+}
+>>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
