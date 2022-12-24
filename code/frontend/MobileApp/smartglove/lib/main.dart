@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+import 'package:flutter/material.dart' show BuildContext, Key, MaterialApp, StatelessWidget, Widget, WidgetsFlutterBinding, runApp;
+=======
 import 'package:flutter/material.dart'
     show
         BuildContext,
@@ -15,6 +18,7 @@ import 'package:flutter/material.dart'
         Widget,
         WidgetsFlutterBinding,
         runApp;
+>>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,8 +39,11 @@ import 'package:myapp/page-1/getstarted2.dart';
 import 'dbHelper/mongoDB.dart';
 
 void main() async {
+<<<<<<< HEAD
+=======
   //WidgetsFlutterBinding.ensureInitialized();
   //await MongoDatabase.connect();
+>>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
   WidgetsFlutterBinding.ensureInitialized();
   await MongoDatabase.connect();
   runApp(const MyApp());
@@ -45,6 +52,10 @@ void main() async {
 // ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+<<<<<<< HEAD
+  //const MyApp({super.key});
+=======
+>>>>>>> 982d1af7a8039c4f095f270ca48ce13c377361ab
 
   @override
   Widget build(BuildContext context) {
