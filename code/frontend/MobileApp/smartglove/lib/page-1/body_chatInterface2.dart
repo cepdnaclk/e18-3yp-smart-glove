@@ -19,9 +19,7 @@ class BodyChatInterface2 extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-             
           Row(children: [
-             
             Image.asset(
               'assets/page-1/images/image-bg-N9x.png',
               width: 80.24,
@@ -58,75 +56,78 @@ class BodyChatInterface2 extends StatelessWidget {
               ),
             ),
           ]),
-          SizedBox(height: 500),
-          Row(children: [
-          Container(
-            height: 70.0,
-            width: 300.0,
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 187, 181, 181),
-                borderRadius: BorderRadius.all(Radius.circular(10.0))),
-            // ignore: unnecessary_new
-            child: new Row(
-              children:<Widget> [
-                SizedBox(width:5),
-                Image.asset(
-                  'assets/page-1/images/frame-2Dg.png',
-                  width: 26.06,
-                  height: 28.14,
-                ),
-                
-                const SizedBox(width: 10),
-                const Flexible(
-            child: TextField(
-               decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(),
-              hintText: 'Write a Message ...',
-              hintStyle: TextStyle( fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            ),
-          ),
-                Image.asset(
-                  'assets/page-1/images/frame-sJJ.png',
-                  width: 26.06,
-                  height: 28.14,
-                ),
-                Image.asset(
-                  'assets/page-1/images/group-xTU.png',
-                  width: 26.77,
-                  height: 30.23,
-                ),
-                const SizedBox(width: 10),
-              ],
-            ),
-          ),
-          FloatingActionButton.extended(
-            label: Text(
-              'SEND',
-              style: SafeGoogleFont(
-                'Inter',
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                height: 1.2125,
-                color: const Color(0xff0b0c0c),
-              ),
-            ), // <-- Text
-            backgroundColor: const Color(0xff52c9c2),
-            //color: const Color(0xff52c9c2),
+          SizedBox(height: 300),
 
-            // icon: Icon( // <-- Icon
-            //   Icons.download,
-            //   size: 24.0,
-            // ),
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => SignIn()));
-            },
-          ),
+          // ============================ chat body
+
+          // ============================ message write field
+          Row(children: [
+            Container(
+              height: 70.0,
+              width: 300.0,
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 187, 181, 181),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              // ignore: unnecessary_new
+              child: new Row(
+                children: <Widget>[
+                  SizedBox(width: 5),
+                  Image.asset(
+                    'assets/page-1/images/frame-2Dg.png',
+                    width: 26.06,
+                    height: 28.14,
+                  ),
+                  const SizedBox(width: 10),
+                  const Flexible(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(),
+                        hintText: 'Write a Message ...',
+                        hintStyle: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/page-1/images/frame-sJJ.png',
+                    width: 26.06,
+                    height: 28.14,
+                  ),
+                  Image.asset(
+                    'assets/page-1/images/group-xTU.png',
+                    width: 26.77,
+                    height: 30.23,
+                  ),
+                  const SizedBox(width: 10),
+                ],
+              ),
+            ),
+            FloatingActionButton.extended(
+              label: Text(
+                'SEND',
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  color: const Color(0xff0b0c0c),
+                ),
+              ), // <-- Text
+              backgroundColor: const Color(0xff52c9c2),
+              //color: const Color(0xff52c9c2),
+
+              // icon: Icon( // <-- Icon
+              //   Icons.download,
+              //   size: 24.0,
+              // ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SignIn()));
+              },
+            ),
           ]),
-         
+
           //Get started button - directed to SIGN IN
-          
         ]));
   }
 }

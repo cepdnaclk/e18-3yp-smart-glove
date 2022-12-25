@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:myapp/page-1/body_chat_default.dart';
 import 'package:myapp/utils.dart';
 
-import 'body_chat_default.dart';
+import 'body_chat_List_default.dart';
 
 class ChatDefault extends StatelessWidget {
   @override

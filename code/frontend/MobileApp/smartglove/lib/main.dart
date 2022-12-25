@@ -1,4 +1,12 @@
-import 'package:flutter/material.dart' show BuildContext, Key, MaterialApp, StatelessWidget, Widget, WidgetsFlutterBinding, runApp;
+import 'package:flutter/material.dart'
+    show
+        BuildContext,
+        Key,
+        MaterialApp,
+        StatelessWidget,
+        Widget,
+        WidgetsFlutterBinding,
+        runApp;
 import 'package:flutter/material.dart'
     show
         BuildContext,
