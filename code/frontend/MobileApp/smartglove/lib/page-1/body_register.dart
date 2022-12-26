@@ -155,6 +155,7 @@ class BodyRegister extends StatelessWidget {
         ),
       ),
       TextFormField(
+        obscureText: true,
         controller: passwordController,
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
@@ -179,6 +180,7 @@ class BodyRegister extends StatelessWidget {
         ),
       ),
       TextFormField(
+        obscureText: true,
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             //<-- SEE HERE
@@ -380,7 +382,7 @@ class BodyRegister extends StatelessWidget {
         id: id, userName: userName, email: email, password: password);  */
 
     
-    MongoDatabase.insert(id, userName, email, password);
+    //MongoDatabase.insert(id, userName, email, password);
 
     //var result = await MongoDatabase.userCollection.insertOne(id, userName, email, password);
 
