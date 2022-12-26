@@ -64,6 +64,8 @@ static int val=10;
 const int potPin = 4;
 int potValue = 0;
 static char letter;
+int k=0;
+char WORD[100];
 
 /////////////////////////////////////////
 //CONNECTION SETUP FOR WIFI
@@ -75,7 +77,7 @@ StaticJsonDocument<500> doc;
 
 
 
-void POSTData();
+void POSTData(String word);
 void getDevice();
 char findLetter(int X,int Y, int Z);
 
@@ -118,61 +120,78 @@ void loop()
 { 
   getDevice();
   delay(10000);
-  ///////////////
-  //ACCELEROMETER
-  // print the sensor values:
-  int X = analogRead(xpin);
-  Serial.print(X);
-  // print a tab between values:
-  Serial.print("\t");
-  int Y = analogRead(ypin);
-  Serial.print(Y);
-  // print a tab between values:
-  Serial.print("\t");
-  int Z = analogRead(zpin);
-  Serial.print(Z);
-  Serial.print("\t");
-  letter = findLetter(X,Y,Z);
-  Serial.print(letter); 
-  Serial.println();
-  // delay before next reading:
-  delay(100);
-  ///////////////
   
-  Serial.println("Posting...");
-  potValue = analogRead(4);
-  Serial.println(potValue);
-  POSTData();
+  //Combine letters and make a word 
+  while(letter != ' '){
+      ///////////////
+      //ACCELEROMETER
+      // print the sensor values:
+      int X = analogRead(xpin);
+      Serial.print(X);
+      // print a tab between values:
+      Serial.print("\t");
+      int Y = analogRead(ypin);
+      Serial.print(Y);
+      // print a tab between values:
+      Serial.print("\t");
+      int Z = analogRead(zpin);
+      Serial.print(Z);
+      Serial.print("\t");
+
+      //Get sensor data and find the letter
+      letter = findLetter(X,Y,Z);
+      Serial.print(letter); 
+      Serial.println();
+      
+      ///////////////
+      //make a word
+      WORD[k]=letter;
+      k++;
+      delay(1000);
+  }
+
+  //make the word as a string to post
+  String word1 = String(WORD);
+  //POST word to database
+  POSTData(word1);
+
   serializeJsonPretty(doc, Serial);
   Serial.println("\nDone.");
+  //set to initial values
+  k=0;
+  letter = ',';
+
 }
 
 
 
 //FUNCTION TO POST DATA TO MONGODB
-void POSTData()
+void POSTData(String word)
 {
+      Serial.println("Posting...");
       
       if(WiFi.status()== WL_CONNECTED){
-      HTTPClient http;
+          HTTPClient http;
 
-      http.begin(serverName);
-      http.addHeader("Content-Type", "application/json");
+          http.begin(serverName);
+          http.addHeader("Content-Type", "application/json");
 
-      val = analogRead(34);
-      Serial.println(val);
-      String myString1 = String(val);
-      String myString2 = String(letter);
-      http.addHeader("val", myString1);
-      http.addHeader("Letter", myString2);
-      
+          val = analogRead(39);
+          Serial.println(val);
+          String myString1 = String(val);
+          String myString2 = String(letter);
+          http.addHeader("val", myString1);
+          //Send the word as a header
+          http.addHeader("Letter", word);     
 
-      String json;
-      serializeJson(doc, json);
+          String json;
+          serializeJson(doc, json);
 
-      Serial.println(json);
-      int httpResponseCode = http.POST(json);
-      Serial.println(httpResponseCode);
+          Serial.println(json);
+          //POST method call
+          int httpResponseCode = http.POST(json);
+          Serial.println(httpResponseCode);
+
       }
 }
 
