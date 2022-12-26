@@ -14,6 +14,8 @@ import 'package:myapp/page-1/background.dart';
 import 'package:myapp/page-1/signin2.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
 
+int id = 0;
+
 class BodyRegister extends StatelessWidget {
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
@@ -237,8 +239,11 @@ class BodyRegister extends StatelessWidget {
         //   size: 24.0,
         // ),
         onPressed: () {
-          _insertData(userNameController.text, emailController.text,
-              passwordController.text);
+          //print(userNameController.text);
+          id ++;
+          _insertData(id, userNameController.text, emailController.text, passwordController.text);
+          /* _insertData(userNameController.text, emailController.text,
+              passwordController.text); */
         },
       ),
 
@@ -355,20 +360,29 @@ class BodyRegister extends StatelessWidget {
     ]));
   }
 
-  Future<void> _insertData(
-      String userName, String email, String password) async {
-    MongoDatabase database = new MongoDatabase();
-    MongoDatabase.connect();
-    var id = M.ObjectId();
-    final data = MongoDbModel(id: id, userName: userName, email: email, password: password);
-    //print(await MongoDatabase.insert(id,userName,email,password));
-    // var result = await database.insertOne({
-    //   "id": 20,
-    //   "username": "User1",
-    //   "email": "user1@gmail.com",
-    //   "password": "1234",
-    // });
-    //insert(data);
+  Future<void> _insertData(int id, String userName, String email, String password) async {
+    //MongoDatabase database = new MongoDatabase();
+    
+    //print(userName);
+
+     /* await collection.insert({
+        "id": 2,
+        "username": userName,
+        "email": email,
+        "password": password
+    }); */
+
+  
+
+    
+    //var id = M.ObjectId();
+
+    /*
+    final data = MongoDbModel(
+        id: id, userName: userName, email: email, password: password);  */
+
+    
+    //MongoDatabase.insert(id, userName, email, password);
 
     //var result = await MongoDatabase.userCollection.insertOne(id, userName, email, password);
 

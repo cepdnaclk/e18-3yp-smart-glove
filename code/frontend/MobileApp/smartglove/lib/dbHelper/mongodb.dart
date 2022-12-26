@@ -5,44 +5,75 @@ import 'package:myapp/MongoDBModel.dart';
 import 'package:myapp/dbHelper/constant.dart';
 
 class MongoDatabase {
+  // ignore: prefer_typing_uninitialized_variables
   static var db, userCollection;
-
+  
   static connect() async {
     db = await Db.create(MONGO_CONN_URL);
     await db.open();
     inspect(db);
-    var status = db.serverStatus();
-    print(status);
+    //var status = db.serverStatus();
+
+    //print(status);
+
     userCollection = db.collection(USER_COLLECTION);
-    // await userCollection.insertOne(
-    //   {
-    //     "id":2,
-    //     "username": "User1",
-    //     "email": "user1@gmail.com",
-    //     "password": "1234",
-    //   }
-    // );
+    //print(userCollection);
+    
+    /* await userCollection.insertOne({
+        "id": 2,
+        "username": userName,
+        "email": email,
+        "password": password
+    }); */
+
     //print(await userCollection.find().toList());
+
   }
 
-  static Future<String> insert(MongoDbModel data) async {
+
+
+  static insert(int id, String userName, String email, String password) async {
+
+    await MongoDatabase.connect();
+    
     try {
       
-      
-      var result = await userCollection.insertOne(data.toJson());
-      if (result.isSuccess) {
+      var result = await userCollection.insertOne({
+        "id":id,
+        "username": userName,
+        "email": email,
+        "password": password
+      });
+
+      if(result.isSuccess) {
         print("Data inserted");
+        return "success";
+      }
+
+      else {
+        return "Something is wrong";
+      } 
+      
+    }
+    
+    /* catch(e) {
+      var result;
+      if (result.isSuccess) {
         return "Data inserted";
       } else {
         print("Data not inserted");
         return "Something is wrong";
       }
-    } catch (e) {
+    }  */
+    
+    catch (e) {
       print(e.toString());
       return e.toString();
-    }
+    } 
+
+    
     
   }
-  
+
 }
 
