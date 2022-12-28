@@ -21,10 +21,6 @@ class BodyRegister extends StatelessWidget {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
-  Future save() async {
-    await http.post(url);
-  }
-
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
