@@ -5,14 +5,13 @@
 //import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:myapp/MongoDBModel.dart';
 import 'package:myapp/dbHelper/mongodb.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
 import 'package:myapp/page-1/signin2.dart';
-import 'package:mongo_dart/mongo_dart.dart' as M;
+import 'package:http/http.dart' as http;
 
 int id = 0;
 
@@ -20,7 +19,7 @@ class BodyRegister extends StatelessWidget {
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  var confirmPasswordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -157,6 +156,7 @@ class BodyRegister extends StatelessWidget {
       TextFormField(
         obscureText: true,
         controller: passwordController,
+
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             //<-- SEE HERE
@@ -240,6 +240,8 @@ class BodyRegister extends StatelessWidget {
         // ),
         onPressed: () {
           //print(userNameController.text);
+          
+
           id ++;
           _insertData(id, userNameController.text, emailController.text, passwordController.text);
           /* _insertData(userNameController.text, emailController.text,
