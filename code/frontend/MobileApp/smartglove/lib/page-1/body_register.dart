@@ -16,10 +16,26 @@ import 'package:http/http.dart' as http;
 int id = 0;
 
 class BodyRegister extends StatelessWidget {
+  //BodyRegister({required Key key}) : super(key: key);
+  final _formKey = GlobalKey<FormState>();
+
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+
+  Future save() async {
+    var res = await http.post("http://localhost:5000/api/users/register" as Uri, headers: <String,String>{
+      'Context-Type':'application/json;charSet-UTF-8'
+    },
+    body: <String,String>{
+      'userName':userNameController.text,
+      'email':emailController.text,
+      'password':passwordController.text
+    }
+    );
+    print(res.body);
+  }
 
   @override
   Widget build(BuildContext context) {
