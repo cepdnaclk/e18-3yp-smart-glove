@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false}))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json()) */
 
-app.use('/api/users/register',require('./routes/userRoute'))
+app.use('/api/users',require('./routes/userRoutes'))
 
 app.use(errorHandler);
 
