@@ -6,6 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:myapp/dbHelper/mongodb.dart';
+import 'package:myapp/page-1/API.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
@@ -25,15 +26,15 @@ class BodyRegister extends StatelessWidget {
   final confirmPasswordController = TextEditingController();
 
   Future save() async {
-    var res = await http.post("http://localhost:5000/api/users/register" as Uri, headers: <String,String>{
-      'Context-Type':'application/json;charSet-UTF-8'
-    },
-    body: <String,String>{
-      'userName':userNameController.text,
-      'email':emailController.text,
-      'password':passwordController.text
-    }
-    );
+    var res = await http.post("http://localhost:5000/api/users/register" as Uri,
+        headers: <String, String>{
+          'Context-Type': 'application/json;charSet-UTF-8'
+        },
+        body: <String, String>{
+          'userName': userNameController.text,
+          'email': emailController.text,
+          'password': passwordController.text
+        });
     print(res.body);
   }
 
@@ -172,7 +173,6 @@ class BodyRegister extends StatelessWidget {
       TextFormField(
         obscureText: true,
         controller: passwordController,
-
         decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             //<-- SEE HERE
@@ -256,10 +256,10 @@ class BodyRegister extends StatelessWidget {
         // ),
         onPressed: () {
           //print(userNameController.text);
-          
 
-          id ++;
-          _insertData(id, userNameController.text, emailController.text, passwordController.text);
+          id++;
+          _insertData(id, userNameController.text, emailController.text,
+              passwordController.text);
           /* _insertData(userNameController.text, emailController.text,
               passwordController.text); */
         },
@@ -378,33 +378,42 @@ class BodyRegister extends StatelessWidget {
     ]));
   }
 
-  Future<void> _insertData(int id, String userName, String email, String password) async {
+  Future<void> _insertData(
+      int id, String userName, String email, String password) async {
     //MongoDatabase database = new MongoDatabase();
-    
+
     //print(userName);
 
-     /* await collection.insert({
+    /* await collection.insert({
         "id": 2,
         "username": userName,
         "email": email,
         "password": password
     }); */
 
-  
-
-    
     //var id = M.ObjectId();
 
     /*
     final data = MongoDbModel(
         id: id, userName: userName, email: email, password: password);  */
 
-    
     //MongoDatabase.insert(id, userName, email, password);
 
     //var result = await MongoDatabase.userCollection.insertOne(id, userName, email, password);
 
     //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Inserted ID " + id.$oid)));
+    var data = {
+      'userName': userName,
+      'email': email,
+      'password': password,
+    };
+    // var response = CallApi().postData(data);
+    print(CallApi.register({
+      'userName': userName,
+      'email': email,
+      'password': password,
+    }));
+   // print(CallApi().postData(data));
     _clearAll();
 
     //return null;
