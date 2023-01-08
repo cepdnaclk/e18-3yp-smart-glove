@@ -1,11 +1,19 @@
 const express = require('express')
 const User = require('../models/userModel')
+const gloveUser = require('../models/gloveuserModel')
 const router = express.Router()
 const {
     registerUser,
     loginUser,
-    getMe
+    getMe,
+    photoUpload,
+   
   } = require('../controllers/userController')
+  const {
+   
+    valid_glove_User,
+  } = require('../controllers/gloveuserController')
+
 
 
 /* router.route('/').get(getUsers).post(setUsers)
@@ -18,6 +26,8 @@ const { protect } = require('../middleware/authMiddleware')
 router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/me', protect, getMe)
+router.post('/upload', photoUpload)
+router.post('/newChat', valid_glove_User)
 
 
 module.exports = router

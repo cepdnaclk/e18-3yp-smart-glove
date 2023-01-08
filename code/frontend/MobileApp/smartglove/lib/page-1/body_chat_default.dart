@@ -3,7 +3,9 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/chatinterface.dart';
 import 'package:myapp/page-1/newchat.dart';
+import 'package:myapp/page-1/signin2.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';

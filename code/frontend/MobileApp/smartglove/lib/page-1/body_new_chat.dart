@@ -1,15 +1,23 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 //import 'dart:html';
-
+import 'dart:convert';
+import 'package:myapp/page-1/API.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/page-1/chatinterface2.dart';
+import 'package:myapp/page-1/newchat.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
+import 'package:http/http.dart' as http;
 
 class BodyNewChat extends State {
+  //const BodyNewChat({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final modelNumberController = TextEditingController();
+  final nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -155,10 +163,17 @@ class BodyNewChat extends State {
                                     ),
                                   ),
                                   TextFormField(
+                                    controller: modelNumberController,
                                     decoration: const InputDecoration(
                                       border: UnderlineInputBorder(),
                                       labelText: 'Enter model to communicate',
                                     ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Model Number is required';
+                                      }
+                                      return null;
+                                    },
                                   ),
                                   const SizedBox(
                                     height: 20, // <-- SEE HERE
@@ -177,10 +192,17 @@ class BodyNewChat extends State {
                                     ),
                                   ),
                                   TextFormField(
+                                    controller: nameController,
                                     decoration: const InputDecoration(
                                       border: UnderlineInputBorder(),
                                       labelText: 'Enter name you want to save',
                                     ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Username is required';
+                                      }
+                                      return null;
+                                    },
                                   ),
                                   const SizedBox(
                                     height: 20, // <-- SEE HERE
@@ -200,8 +222,13 @@ class BodyNewChat extends State {
                                     backgroundColor: const Color(0xff52c9c2),
 
                                     onPressed: () {
-                                      Navigator.push(
-                                      context, MaterialPageRoute(builder: (context) => ChatInterface2()));
+                                      // if (!(_formKey.currentState!
+                                      //     .validate())) {
+                                      //   return;
+                                      // }
+
+                                      newChat(modelNumberController.text , nameController.text);
+                                     
                                     },
                                   ),
                                 ],
@@ -219,4 +246,56 @@ class BodyNewChat extends State {
           // ),
         ])));
   }
+
+  Future<void> newChat(String modelNumber, String name) async {
+   //console.log(name);
+    var res = await CallApi.newChat({
+      'modelNumber': modelNumber,
+      'name': name,
+    });
+    var state = jsonDecode(res.body)["msg"];
+    if (state == 'success') {
+      //return state;
+      // ignore: use_build_context_synchronously
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ChatInterface2()));
+    }
+    else {
+      Widget okButton = TextButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.pop(context);
+          _clearAll();
+        },
+      );
+
+      // set up the AlertDialog
+      AlertDialog alert = AlertDialog(
+        title: Text("Username or Password is INVALID"),
+        content: Text("Try Again!"),
+        actions: [
+          okButton,
+        ],
+      );
+
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+   
+   
+    return state;
+  }
+  void _clearAll() {
+    modelNumberController.text = "";
+   
+    nameController.text = "";
+  
+  }
+
+ 
 }
