@@ -271,7 +271,7 @@ class BodyNewChat extends State {
 
       // set up the AlertDialog
       AlertDialog alert = AlertDialog(
-        title: Text("Username or Password is INVALID"),
+        title: Text("Model Number is INVALID"),
         content: Text("Try Again!"),
         actions: [
           okButton,

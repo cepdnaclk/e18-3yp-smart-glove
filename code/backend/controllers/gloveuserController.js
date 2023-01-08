@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
 //const User = require('../models/userModel') 
-///const gloveUser = require('../models/gloveuserModel')
+const gloveUser = require('../models/gloveuserModel')
 const valid_gloveUser = require('../models/validGloveUserModel')
 // const multer = require("multer");
 // const path = require("path");
@@ -83,6 +83,7 @@ const valid_gloveUser = require('../models/validGloveUserModel')
 
   const valid_glove_User = asyncHandler(async (req, res) => {
     const { modelNumber, name } = req.body
+    const { model_Number , name_} = req.body
     //print(req.body);
     console.log(modelNumber);
     if (!modelNumber || !name ) {
@@ -97,16 +98,18 @@ const valid_gloveUser = require('../models/validGloveUserModel')
       res.status(400)
       throw new Error('Model does not exists')
     }
-    console.log(modelExists.toString());
+  //  console.log(modelExists.toString());
   
-    // Create user
-    // const user = await gloveUser.create({
-    //     modelNumber,
-    //     name,
+    //Create user
+    console.log("---0"+modelNumber);
+    //await gloveUser.create({modelNumber:"M111",name:"one"});
+    const user = await gloveUser.create({
+      modelNumber,
+      name,
        
-    // })
+    })
   
-    //if (user) {
+    if (user) {
       res.status(201).json({
        
         msg: "success",
@@ -115,10 +118,10 @@ const valid_gloveUser = require('../models/validGloveUserModel')
        // email: email,
        // token: generateToken(user._id),
       })
-    // } else {
-    //   res.status(400)
-    //   throw new Error('Invalid user data')
-    // }
+    } else {
+      res.status(400)
+      throw new Error('Invalid user data')
+    }
 })
 
 
