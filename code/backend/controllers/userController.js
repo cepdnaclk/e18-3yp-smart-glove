@@ -15,11 +15,15 @@ const registerUser = asyncHandler(async (req, res) => {
     }
   
     // Check if user exists
+    const usernameExists = await User.findOne({ userName })
     const userExists = await User.findOne({ email })
-  
     if (userExists) {
       res.status(400)
       throw new Error('User already exists')
+    }
+    if (usernameExists) {
+      res.status(400)
+      throw new Error('Username already exists')
     }
   
     // Hash password
@@ -35,9 +39,11 @@ const registerUser = asyncHandler(async (req, res) => {
   
     if (user) {
       res.status(201).json({
+       
+        msg: "success",
         _id: user.id,
-        userName: user.name,
-        email: user.email,
+        userName: userName,
+        email: email,
         token: generateToken(user._id),
       })
     } else {

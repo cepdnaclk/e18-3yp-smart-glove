@@ -196,7 +196,7 @@ class BodySignIn extends StatelessWidget {
         // ),
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ChatDefault()));
+              context, MaterialPageRoute(builder: (context) => ChatDefault(text : "name")));
         },
       ),
 
