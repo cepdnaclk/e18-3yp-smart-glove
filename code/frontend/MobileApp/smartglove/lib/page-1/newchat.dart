@@ -6,9 +6,15 @@ import 'package:myapp/page-1/body_new_chat.dart';
 // import 'package:myapp/page-1/body_chat_default.dart';
 import 'package:myapp/utils.dart';
 
-class newchat extends StatelessWidget {
+class newchat extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return BodyNewChat();
+  State<StatefulWidget> createState() {
+    BodyNewChat();
+    // TODO: implement createState
+    throw UnimplementedError();
   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return BodyNewChat();
+//   }
 }

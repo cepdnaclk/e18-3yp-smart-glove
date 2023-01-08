@@ -9,7 +9,7 @@ import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
 
-class BodyNewChat extends StatelessWidget {
+class BodyNewChat extends State {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

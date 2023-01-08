@@ -8,8 +8,10 @@ import 'package:myapp/utils.dart';
 import 'body_chat_default.dart';
 
 class ChatDefault extends StatelessWidget {
+  final String text;
+  const ChatDefault({Key? key, required this.text}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BodyChatDefault();
+    return BodyChatDefault(text: text);
   }
 }
