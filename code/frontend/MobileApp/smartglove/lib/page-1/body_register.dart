@@ -493,35 +493,10 @@ class BodyRegister extends State {
             ])));
   }
 
-  Future<void> _insertData(
+    Future<void> _insertData(
       int id, String userName, String email, String password) async {
-    //MongoDatabase database = new MongoDatabase();
-
-    //print(userName);
-
-    /* await collection.insert({
-        "id": 2,
-        "username": userName,
-        "email": email,
-        "password": password
-    }); */
-
-    //var id = M.ObjectId();
-
-    /*
-    final data = MongoDbModel(
-        id: id, userName: userName, email: email, password: password);  */
-
-    //MongoDatabase.insert(id, userName, email, password);
-
-    //var result = await MongoDatabase.userCollection.insertOne(id, userName, email, password);
-
-    //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Inserted ID " + id.$oid)));
-    var data = {
-      'userName': userName,
-      'email': email,
-      'password': password,
-    };
+    
+    
     // var response = CallApi().postData(data);
     var res = await CallApi.register({
       'userName': userName,
@@ -532,6 +507,7 @@ class BodyRegister extends State {
     var name = jsonDecode(res.body)['userName'];
     print(name);
     if (state == 'success') {
+      // ignore: use_build_context_synchronously
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => ChatDefault(text: name)));
     } else {

@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 //import 'dart:html';
+import 'dart:convert';
+import 'dart:html';
 
+import 'package:myapp/page-1/API.dart';
 import 'package:flutter/material.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
@@ -9,308 +12,392 @@ import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/background.dart';
 import 'package:myapp/page-1/register2.dart';
 import 'package:myapp/page-1/chatinterface2.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:myapp/page-1/chatDflt.dart';
 
-class BodySignIn extends StatelessWidget {
+class BodySignIn extends State {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
+  
+ // late BuildContext context;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build( BuildContext context) {
     Size size = MediaQuery.of(context).size;
     // ignore: dead_code
     return Background(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
-            Widget>[
-      Text(
-        'Welcome to',
-        //  textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 32,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          color: Color(0xff0c0c0c),
-        ),
-      ),
-      Align(
-        alignment: Alignment.topRight,
-        child: Image.asset(
-          //'assets/page-1/images/mute-removebg-preview-1.png',
-          'assets/page-1/images/download-1-rpA.png',
-          height: size.height * 0.14,
-        ),
-      ),
-      // Align (
-      //   alignment: Alignment.topLeft,
-      // child: Text(
-      //       'Username',
-      //       style: SafeGoogleFont(
-      //         'Inter',
-      //         fontSize: 24,
-      //         fontWeight: FontWeight.w500,
-      //         height: 1.2125 ,
-      //         color: Color(0xff000000),
-      //       ),
-      //     ),
-      // ),
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
-      TextFormField(
-        decoration: const InputDecoration(
-          enabledBorder: UnderlineInputBorder(
-            //<-- SEE HERE
-            borderSide: BorderSide(width: 3, color: const Color(0xff52c9c2)),
-          ),
-          hintText: ' Username',
-          hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        // decoration: const InputDecoration(
-        //   border: UnderlineInputBorder(),
-        //   labelText: 'Enter your username',
-        // ),
-      ),
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
-      // Align (
+        child: Form(
+            key: _formKey,
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+                    Widget>[
+              Text(
+                'Welcome to',
+                //  textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  color: Color(0xff0c0c0c),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Image.asset(
+                  //'assets/page-1/images/mute-removebg-preview-1.png',
+                  'assets/page-1/images/download-1-rpA.png',
+                  height: size.height * 0.14,
+                ),
+              ),
+              // Align (
+              //   alignment: Alignment.topLeft,
+              // child: Text(
+              //       'Username',
+              //       style: SafeGoogleFont(
+              //         'Inter',
+              //         fontSize: 24,
+              //         fontWeight: FontWeight.w500,
+              //         height: 1.2125 ,
+              //         color: Color(0xff000000),
+              //       ),
+              //     ),
+              // ),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
+              TextFormField(
+                controller: userNameController,
+                decoration: const InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    //<-- SEE HERE
+                    borderSide:
+                        BorderSide(width: 3, color: const Color(0xff52c9c2)),
+                  ),
+                  hintText: ' Username',
+                  hintStyle:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Username is required';
+                  }
+                  return null;
+                },
+                // decoration: const InputDecoration(
+                //   border: UnderlineInputBorder(),
+                //   labelText: 'Enter your username',
+                // ),
+              ),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
+              // Align (
 
-      //   alignment: Alignment.topLeft,
-      // child: Text(
-      //       'Password',
-      //       style: SafeGoogleFont(
-      //         'Inter',
-      //         fontSize: 24,
-      //         fontWeight: FontWeight.w500,
-      //         height: 1.2125 ,
-      //         color: Color(0xff000000),
-      //       ),
-      //     ),
-      // ),
-      TextFormField(
-        obscureText: true,
-        decoration: const InputDecoration(
-          enabledBorder: UnderlineInputBorder(
-            //<-- SEE HERE
-            borderSide: BorderSide(width: 3, color: const Color(0xff52c9c2)),
-          ),
-          hintText: ' Password',
-          hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        // decoration: const InputDecoration(
-        //   border: UnderlineInputBorder(),
-        //   labelText: 'Enter your username',
-        // ),
-      ),
+              //   alignment: Alignment.topLeft,
+              // child: Text(
+              //       'Password',
+              //       style: SafeGoogleFont(
+              //         'Inter',
+              //         fontSize: 24,
+              //         fontWeight: FontWeight.w500,
+              //         height: 1.2125 ,
+              //         color: Color(0xff000000),
+              //       ),
+              //     ),
+              // ),
+              TextFormField(
+                obscureText: true,
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    //<-- SEE HERE
+                    borderSide:
+                        BorderSide(width: 3, color: const Color(0xff52c9c2)),
+                  ),
+                  hintText: ' Password',
+                  hintStyle:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Password is required';
+                  }
+                  return null;
+                },
+                // decoration: const InputDecoration(
+                //   border: UnderlineInputBorder(),
+                //   labelText: 'Enter your username',
+                // ),
+              ),
 
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
 
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
-      FloatingActionButton.extended(
-        heroTag: "btn1",
-        label: Text(
-          'Signin',
-          style: SafeGoogleFont(
-            'Inter',
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            height: 1.2125,
-            color: const Color(0xff0b0c0c),
-          ),
-        ), // <-- Text
-        backgroundColor: const Color(0xff52c9c2),
-        //color: const Color(0xff52c9c2),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
+              FloatingActionButton.extended(
+                heroTag: "btn1",
+                label: Text(
+                  'Signin',
+                  style: SafeGoogleFont(
+                    'Inter',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    height: 1.2125,
+                    color: const Color(0xff0b0c0c),
+                  ),
+                ), // <-- Text
+                backgroundColor: const Color(0xff52c9c2),
+                //color: const Color(0xff52c9c2),
 
-        // icon: Icon( // <-- Icon
-        //   Icons.download,
-        //   size: 24.0,
-        // ),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ChatDefault(text : "name")));
-        },
-      ),
+                // icon: Icon( // <-- Icon
+                //   Icons.download,
+                //   size: 24.0,
+                // ),
+                onPressed: () {
+                  if (!(_formKey.currentState!.validate())) {
+                    return;
+                  }
+                  var res = signIN(userNameController.text, passwordController.text);
+                 
+                  
+                },
+              ),
 
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
-      Text(
-        'Don’t have an account?',
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          height: 1.2125,
-          color: Color(0xff000000),
-        ),
-      ),
-      Text(
-        '',
-        //  'GET THINGS DONE WITH VOICE4U',
-        textAlign: TextAlign.center,
-        style: SafeGoogleFont(
-          'Inter',
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          height: 1.2125,
-          letterSpacing: 1,
-          color: const Color(0xff000000),
-        ),
-      ),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
+              Text(
+                'Don’t have an account?',
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  height: 1.2125,
+                  color: Color(0xff000000),
+                ),
+              ),
+              Text(
+                '',
+                //  'GET THINGS DONE WITH VOICE4U',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2125,
+                  letterSpacing: 1,
+                  color: const Color(0xff000000),
+                ),
+              ),
 
-      FloatingActionButton.extended(
-        heroTag: "btn2",
-        label: Text(
-          'Register',
-          style: SafeGoogleFont(
-            'Inter',
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            height: 1.2125,
-            color: const Color(0xff0b0c0c),
-          ),
-        ), // <-- Text
-        backgroundColor: const Color(0xff52c9c2),
-        //color: const Color(0xff52c9c2),
+              FloatingActionButton.extended(
+                heroTag: "btn2",
+                label: Text(
+                  'Register',
+                  style: SafeGoogleFont(
+                    'Inter',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    height: 1.2125,
+                    color: const Color(0xff0b0c0c),
+                  ),
+                ), // <-- Text
+                backgroundColor: const Color(0xff52c9c2),
+                //color: const Color(0xff52c9c2),
 
-        // icon: Icon( // <-- Icon
-        //   Icons.download,
-        //   size: 24.0,
-        // ),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Register()));
-        },
-      ),
-      // Positioned(
-      //           // getstarted9oY (67:32)
-      //           left: 112 ,
-      //           top: 95,
-      //           child: Align(
-      //             child: SizedBox(
-      //               width: 136 ,
-      //               height: 30 ,
-      //               child: Text(
-      //                 'Get Started',
-      //                 style: SafeGoogleFont(
-      //                   'Inter',
-      //                   fontSize: 24 ,
-      //                   fontWeight: FontWeight.w700,
-      //                   height: 1.2125 ,
-      //                   color: const Color(0xff0b0c0c),
-      //                 ),
-      //               ),
-      //             ),
-      //           ),
-      //         ),
-      // Positioned(
-      //           // rectangle37M4 (67:29)
-      //           left: 37,
-      //           top: 81 ,
-      //           child: Align(
-      //             child: SizedBox(
-      //               width: 298 ,
-      //               height: 57 ,
-      //               child: TextButton(
-      //                 onPressed: () {
-      //                 //  Navigator.push(context,MaterialPageRoute(
+                // icon: Icon( // <-- Icon
+                //   Icons.download,
+                //   size: 24.0,
+                // ),
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => Register()));
+                },
+              ),
+              // Positioned(
+              //           // getstarted9oY (67:32)
+              //           left: 112 ,
+              //           top: 95,
+              //           child: Align(
+              //             child: SizedBox(
+              //               width: 136 ,
+              //               height: 30 ,
+              //               child: Text(
+              //                 'Get Started',
+              //                 style: SafeGoogleFont(
+              //                   'Inter',
+              //                   fontSize: 24 ,
+              //                   fontWeight: FontWeight.w700,
+              //                   height: 1.2125 ,
+              //                   color: const Color(0xff0b0c0c),
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              // Positioned(
+              //           // rectangle37M4 (67:29)
+              //           left: 37,
+              //           top: 81 ,
+              //           child: Align(
+              //             child: SizedBox(
+              //               width: 298 ,
+              //               height: 57 ,
+              //               child: TextButton(
+              //                 onPressed: () {
+              //                 //  Navigator.push(context,MaterialPageRoute(
 
-      //                  //     builder: (context) => Signin()));
-      //                 },
-      //                 style: TextButton.styleFrom(
-      //                   padding: EdgeInsets.zero,
-      //                 ),
-      //                 child: Container(
-      //                   decoration: BoxDecoration(
-      //                     borderRadius: BorderRadius.circular(30 ),
-      //                     color: const Color(0xff52c9c2),
-      //                   ),
-      //                 ),
-      //               ),
-      //             ),
-      //           ),
-      //         ),
-    ]));
+              //                  //     builder: (context) => Signin()));
+              //                 },
+              //                 style: TextButton.styleFrom(
+              //                   padding: EdgeInsets.zero,
+              //                 ),
+              //                 child: Container(
+              //                   decoration: BoxDecoration(
+              //                     borderRadius: BorderRadius.circular(30 ),
+              //                     color: const Color(0xff52c9c2),
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+            ])));
   }
+
+
+  Future<void> signIN(String userName, String password) async {
+   
+    var res = await CallApi.login({
+      'userName': userName,
+      'password': password,
+    });
+    var state = jsonDecode(res.body)["msg"];
+    if (state == 'success') {
+      //return state;
+      // ignore: use_build_context_synchronously
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ChatDefault(text: userName)));
+    }
+    else {
+      Widget okButton = TextButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.pop(context);
+          _clearAll();
+        },
+      );
+
+      // set up the AlertDialog
+      AlertDialog alert = AlertDialog(
+        title: Text("Something went wrong"),
+        content: Text("Try Again!"),
+        actions: [
+          okButton,
+        ],
+      );
+
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+   
+   
+    return state;
+  }
+ 
+  void _clearAll() {
+    userNameController.text = "";
+   
+    passwordController.text = "";
+  
+  }
+
 }
 
 // class Background extends StatelessWidget {
