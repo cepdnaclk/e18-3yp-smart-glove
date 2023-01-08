@@ -11,39 +11,54 @@ class CallApi {
   //String URL = 'http://localhost:5000/api/users/';
 
   static Future<http.Response> register(data) {
-    
     return http.post(
       Uri.parse('http://localhost:5000/api/users/'),
       headers: <String, String>{
-     
         'Access-Control-Allow-Origin': '*', // Required for CORS support to work
-        "Access-Control-Allow-Credentials": true.toString(), // Required for cookies, authorization headers with HTTPS
-        "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Credentials": true
+            .toString(), // Required for cookies, authorization headers with HTTPS
+        "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
         "Access-Control-Allow-Methods": "GET,PUT,PATCH,POST,DELETE",
         'Content-type': 'application/json',
         'Accept': 'application/json',
       },
-
       body: jsonEncode(data),
-      
     );
   }
+
   static Future<http.Response> login(data) {
-    
     return http.post(
       Uri.parse('http://localhost:5000/api/users/login'),
       headers: <String, String>{
-     
         'Access-Control-Allow-Origin': '*', // Required for CORS support to work
-        "Access-Control-Allow-Credentials": true.toString(), // Required for cookies, authorization headers with HTTPS
-        "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Credentials": true
+            .toString(), // Required for cookies, authorization headers with HTTPS
+        "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
         "Access-Control-Allow-Methods": "GET,PUT,PATCH,POST,DELETE",
         'Content-type': 'application/json',
         'Accept': 'application/json',
       },
-     body: jsonEncode(data),
-     
-      
+      body: jsonEncode(data),
+    );
+  }
+
+  static Future<http.Response> newChat(data) {
+    
+    return http.post(
+      Uri.parse('http://localhost:5000/api/users/newChat'),
+      headers: <String, String>{
+        'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+        "Access-Control-Allow-Credentials": true
+            .toString(), // Required for cookies, authorization headers with HTTPS
+        "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Methods": "GET,PUT,PATCH,POST,DELETE",
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode(data),
     );
   }
   // static var client = http.Client();
