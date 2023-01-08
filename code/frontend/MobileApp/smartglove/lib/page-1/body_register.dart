@@ -310,71 +310,29 @@ class BodyRegister extends State {
                   // if (userNameController.text.toString().isEmpty ||
                   //     emailController.text.toString().isEmpty ||
                   //     passwordController.text.toString().isEmpty) {}
+                  
                   if (!(_formKey.currentState!.validate())) {
                     return;
+                  } 
+                  else if (userInput.text != "") {
+                    
+                    alertmsg("Please enter a valid email!");
+
+                    
+                  } 
+                  else if (passwordController.text.toString().length < 8) {
+                    
+                    alertmsg("Please enter a strong password! (Minimum 8 characters)");
+                    
+                  } else if (passwordController.text.toString() != confirmPasswordController.text.toString()) {
+                    
+                    alertmsg("Please enter the same password to confirm!");
+                    
+                  } else {
+                    id++;
+
+                    _insertData(id, userNameController.text,emailController.text, passwordController.text);
                   }
-                  if (passwordController.text.toString().length < 8) {
-                    Widget okButton = TextButton(
-                      child: Text("OK"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        _clearAll();
-                      },
-                    );
-
-                    // set up the AlertDialog
-                    AlertDialog alert = AlertDialog(
-                      title: Text("ERROR"),
-                      content: Text(
-                          "Please enter a strong password! (Minimum 8 characters)"),
-                      actions: [
-                        okButton,
-                      ],
-                    );
-
-                    // show the dialog
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return alert;
-                      },
-                    );
-                  }
-                  if (passwordController.text.toString() !=
-                      confirmPasswordController.text.toString()) {
-                    //AlertDialog(title: Text("Sample Alert Dialog")
-                    Widget okButton = TextButton(
-                      child: Text("OK"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        _clearAll();
-                      },
-                    );
-
-                    // set up the AlertDialog
-                    AlertDialog alert = AlertDialog(
-                      title: Text("ERROR"),
-                      content:
-                          Text("Please enter the same password to confirm!"),
-                      actions: [
-                        okButton,
-                      ],
-                    );
-
-                    // show the dialog
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return alert;
-                      },
-                    );
-                  }
-
-                  id++;
-
-                  _insertData(id, userNameController.text, emailController.text,
-                      passwordController.text);
-
                   /* _insertData(userNameController.text, emailController.text,
               passwordController.text); */
                 },
@@ -493,10 +451,8 @@ class BodyRegister extends State {
             ])));
   }
 
-    Future<void> _insertData(
+  Future<void> _insertData(
       int id, String userName, String email, String password) async {
-    
-    
     // var response = CallApi().postData(data);
     var res = await CallApi.register({
       'userName': userName,
@@ -510,31 +466,12 @@ class BodyRegister extends State {
       // ignore: use_build_context_synchronously
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => ChatDefault(text: name)));
-    } else {
-      Widget okButton = TextButton(
-        child: Text("OK"),
-        onPressed: () {
-          Navigator.pop(context);
-          _clearAll();
-        },
-      );
+    } 
+    else {
 
-      // set up the AlertDialog
-      AlertDialog alert = AlertDialog(
-        title: Text("Something went wrong"),
-        content: Text("Try Again!"),
-        actions: [
-          okButton,
-        ],
-      );
+      alertmsg("Try Again!");
 
-      // show the dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return alert;
-        },
-      );
+      
     }
     // print(CallApi().postData(data));
     _clearAll();
@@ -561,6 +498,33 @@ class BodyRegister extends State {
     } else {
       userInput.text = "";
     }
+  }
+
+  void alertmsg(String msg) {
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+        _clearAll();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Error"),
+      content: Text(msg),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
 

@@ -291,8 +291,8 @@ class BodySignIn extends State {
                 //   size: 24.0,
                 // ),
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => Register()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Register()));
                 },
               ),
               // Positioned(
@@ -371,7 +371,7 @@ class BodySignIn extends State {
 
       // set up the AlertDialog
       AlertDialog alert = AlertDialog(
-        title: Text("Something went wrong"),
+        title: Text("Username or Password is INVALID"),
         content: Text("Try Again!"),
         actions: [
           okButton,
