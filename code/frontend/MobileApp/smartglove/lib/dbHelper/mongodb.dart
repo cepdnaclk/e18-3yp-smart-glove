@@ -61,6 +61,7 @@ class MongoDatabase {
       if (result.isSuccess) {
         return "Data inserted";
       } else {
+        print("Data not inserted");
         return "Something is wrong";
       }
     }  */

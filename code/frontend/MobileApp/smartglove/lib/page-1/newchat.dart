@@ -6,9 +6,19 @@ import 'package:myapp/page-1/body_new_chat.dart';
 // import 'package:myapp/page-1/body_chat_default.dart';
 import 'package:myapp/utils.dart';
 
-class newchat extends StatelessWidget {
+// ignore: camel_case_types
+class newchat extends StatefulWidget {
+  const newchat({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  // ignore: no_logic_in_create_state
+  State<StatefulWidget> createState() {
     return BodyNewChat();
+    
+   
   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return BodyNewChat();
+//   }
 }
