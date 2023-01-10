@@ -12,6 +12,7 @@ import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/background.dart';
 import 'package:myapp/page-1/body_register.dart';
 import 'ChatDflt.dart';
+import 'body_chat_List_d.dart';
 
 class BodyChatDefault extends StatelessWidget {
   final String text;
@@ -62,27 +63,82 @@ class BodyChatDefault extends StatelessWidget {
           const SizedBox(
             height: 20, // <-- SEE HERE
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: FloatingActionButton.extended(
-              heroTag: "btn3",
-              label: Image.asset(
-                'assets/page-1/images/addChat.png',
-                width: 50,
-              ),
-              backgroundColor: const Color(0xff52c9c2),
-              //color: const Color(0xff52c9c2),
 
-              // icon: Icon( // <-- Icon
-              //   Icons.download,
-              //   size: 24.0,
-              // ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => newchat()));
-              },
-            ),
+          FloatingActionButton.extended(
+            heroTag: "btn1",
+            label: Text(
+              'Load Current Chats',
+              style: SafeGoogleFont(
+                'Inter',
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                height: 1.2125,
+                color: const Color(0xff0b0c0c),
+              ),
+            ), // <-- Text
+            backgroundColor: const Color(0xff52c9c2),
+            //color: const Color(0xff52c9c2),
+
+            // icon: Icon( // <-- Icon
+            //   Icons.download,
+            //   size: 24.0,
+            // ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => bodyChatPage()));
+            },
           ),
+
+          const SizedBox(
+            height: 100, // <-- SEE HERE
+          ),
+
+          FloatingActionButton.extended(
+            heroTag: "btn1",
+            label: Text(
+              'Start New Chat',
+              style: SafeGoogleFont(
+                'Inter',
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                height: 1.2125,
+                color: const Color(0xff0b0c0c),
+              ),
+            ), // <-- Text
+            backgroundColor: const Color(0xff52c9c2),
+            //color: const Color(0xff52c9c2),
+
+            // icon: Icon( // <-- Icon
+            //   Icons.download,
+            //   size: 24.0,
+            // ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => newchat()));
+            },
+          ),
+
+          // Align(
+          //   alignment: Alignment.bottomRight,
+          //   child: FloatingActionButton.extended(
+          //     heroTag: "btn3",
+          //     label: Image.asset(
+          //       'assets/page-1/images/addChat.png',
+          //       width: 50,
+          //     ),
+          //     backgroundColor: const Color(0xff52c9c2),
+          //     //color: const Color(0xff52c9c2),
+
+          //     // icon: Icon( // <-- Icon
+          //     //   Icons.download,
+          //     //   size: 24.0,
+          //     // ),
+          //     onPressed: () {
+          //       Navigator.push(context,
+          //           MaterialPageRoute(builder: (context) => newchat()));
+          //     },
+          //   ),
+          // ),
 
           // Positioned(
           //           // getstarted9oY (67:32)
@@ -175,3 +231,4 @@ class BodyChatDefault extends StatelessWidget {
 //     );
 //   }
 // }
+
