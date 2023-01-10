@@ -1,0 +1,1 @@
+module.exports = require('./lib/express-public-url.js');

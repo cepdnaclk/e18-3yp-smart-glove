@@ -20,5 +20,23 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   }
 )
+// const userSchema_chat = mongoose.Schema(
+//   {
+//     modelNumber: {
+//       type: String,
+//       required: [true, 'Please add a model number'],
+//     },
+//     name: {
+//       type: String,
+//       required: [true, 'Please add a name'],
+//       unique: true,
+//     },
+   
+//   },
+//   {
+//     timestamps: true,
+//   }
+// )
 
 module.exports = mongoose.model('User', userSchema)
+// module.exports = mongoose.model('ChatUsers', userSchema_chat)

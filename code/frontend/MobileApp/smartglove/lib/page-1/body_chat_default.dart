@@ -3,15 +3,19 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/chatinterface.dart';
 import 'package:myapp/page-1/newchat.dart';
+import 'package:myapp/page-1/signin2.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
-
+import 'package:myapp/page-1/body_register.dart';
 import 'ChatDflt.dart';
 
 class BodyChatDefault extends StatelessWidget {
+  final String text;
+  BodyChatDefault({Key? key, required this.text}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,7 +46,7 @@ class BodyChatDefault extends StatelessWidget {
           Align(
             alignment: Alignment.topRight,
             child: Text(
-              'Jessica',
+              text,
               textAlign: TextAlign.right,
               style: SafeGoogleFont(
                 'Roboto',
@@ -56,8 +60,8 @@ class BodyChatDefault extends StatelessWidget {
           ),
 
           const SizedBox(
-                                    height: 20, // <-- SEE HERE
-                                  ),
+            height: 20, // <-- SEE HERE
+          ),
           Align(
             alignment: Alignment.bottomRight,
             child: FloatingActionButton.extended(
