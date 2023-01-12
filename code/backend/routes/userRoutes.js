@@ -6,13 +6,18 @@ const {
     registerUser,
     loginUser,
     getMe,
-    photoUpload,
+    
    
   } = require('../controllers/userController')
   const {
    
     valid_glove_User,
   } = require('../controllers/gloveuserController')
+
+  const {
+   
+    photoUpload,
+  } = require('../controllers/imageController')
 
 
 
@@ -28,6 +33,27 @@ router.post('/login', loginUser)
 router.get('/me', protect, getMe)
 router.post('/upload', photoUpload)
 router.post('/newChat', valid_glove_User)
+
+// router.post('/upload_image', upload.single('image'), (req, res, next) => {
+ 
+//     var obj = {
+//         name: req.body.name,
+//         desc: req.body.desc,
+//         img: {
+//             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+//             contentType: 'image/png'
+//         }
+//     }
+//     imgModel.create(obj, (err, item) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             // item.save();
+//             res.redirect('/');
+//         }
+//     });
+// });
 
 
 module.exports = router
