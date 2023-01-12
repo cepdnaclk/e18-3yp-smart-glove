@@ -8,7 +8,9 @@ const port = process.env.PORT || 5000
 const os = require('os');
 const appip = os.networkInterfaces()['Wi-Fi'][0].address;
 const appAddress = 'http://['+appip+']:'+port+'/';
-
+var fs = require('fs');
+var path = require('path');
+require('dotenv/config');
 
  
 // require module
@@ -44,6 +46,10 @@ app.use(express.urlencoded({ extended: true}))
 // add middleware to get the public Url from either the http proxy headers or current request host
 app.use(expressPublicUrl());
 app.use(cors(corsOptions));
+
+ 
+// Set EJS as templating engine
+app.set("view engine", "ejs");
 
 
 /* app.use(cors())
