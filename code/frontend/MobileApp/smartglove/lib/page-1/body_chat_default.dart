@@ -3,6 +3,8 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/models/ChatModel.dart';
+import 'package:myapp/page-1/LoginScreen.dart';
 import 'package:myapp/page-1/chatinterface.dart';
 import 'package:myapp/page-1/newchat.dart';
 import 'package:myapp/page-1/signin2.dart';
@@ -16,7 +18,9 @@ import 'body_chat_List_d.dart';
 
 class BodyChatDefault extends StatelessWidget {
   final String text;
-  BodyChatDefault({Key? key, required this.text}) : super(key: key);
+  final List<ChatModel> chatmodels;
+  BodyChatDefault({Key? key, required this.text, required this.chatmodels})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -64,6 +68,8 @@ class BodyChatDefault extends StatelessWidget {
             height: 20, // <-- SEE HERE
           ),
 
+// COMMENTED FOR TEMPORY TO MAKE REAL TIME CHAT WORK=============================
+
           FloatingActionButton.extended(
             heroTag: "btn1",
             label: Text(
@@ -84,8 +90,12 @@ class BodyChatDefault extends StatelessWidget {
             //   size: 24.0,
             // ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => bodyChatPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => bodyChatPage(
+                            chatmodels: chatmodels,
+                          )));
             },
           ),
 

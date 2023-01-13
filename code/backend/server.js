@@ -52,7 +52,7 @@ var io = require("socket.io")(server,{
 app.use(express.json());
 app.use(cors());
 
-// open connection on a socket io
+// open connection on a socket io socket; object of the client
 io.on("connection",(socket)=>{
     console.log("connected");
     console.log(socket.id,"socket id has joined");
