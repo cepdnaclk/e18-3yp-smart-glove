@@ -13,11 +13,23 @@
 /////////////////////////////////////////
 //ACCELEROMETER CONSTANTS
 
-const int groundpin = 32;             // analog input pin 4 -- ground
-const int powerpin = 33;              // analog input pin 5 -- voltage
-const int xpin = 34;                  // x-axis of the accelerometer
-const int ypin = 35;                  // y-axis
-const int zpin = 36;                  // z-axis (only on 3-axis models)
+// const int groundpin = 32;             // analog input pin 4 -- ground
+// const int powerpin = 33;              // analog input pin 5 -- voltage
+const int xpin = 26;                  // x-axis of the accelerometer
+const int ypin = 25;                  // y-axis
+const int zpin = 33;                  // z-axis (only on 3-axis models)
+
+
+/////////////////////////////////////////
+//Flex Sensor CONSTANTS
+
+//const int groundpin = 32;             // analog input pin 4 -- ground
+//const int powerpin = 33;              // analog input pin 5 -- voltage
+const int f1 = 36;                  // x-axis of the accelerometer
+const int f2 = 39;                  // y-axis
+const int f3 = 34;                  // z-axis (only on 3-axis models)
+const int f4 = 35;          
+const int f5 = 32;
 
 float Words[26][8] = { //Matrix containing all the sensor values
 
@@ -69,8 +81,8 @@ char WORD[100];
 
 /////////////////////////////////////////
 //CONNECTION SETUP FOR WIFI
-const char* ssid = "Galaxy M113910";
-const char* password = "12345678";
+const char* ssid = "Eng-Student";
+const char* password = "3nG5tuDt";
 //CONNECTION SETUP FOR MONGODB
 const char* serverName = "https://ap-south-1.aws.data.mongodb-api.com/app/glove-yrzhx/endpoint/glove1";
 StaticJsonDocument<500> doc;
@@ -89,10 +101,10 @@ void setup()
   ////////////////////
   //ACCELROMETER SETUP
 
-  pinMode(groundpin, OUTPUT);
-  pinMode(powerpin, OUTPUT);
-  digitalWrite(groundpin, LOW);
-  digitalWrite(powerpin, HIGH);
+//  pinMode(groundpin, OUTPUT);
+//  pinMode(powerpin, OUTPUT);
+//  digitalWrite(groundpin, LOW);
+//  digitalWrite(powerpin, HIGH);
   
   ///////////////////
   Serial.begin(115200);
@@ -103,11 +115,11 @@ void setup()
   Serial.print(" with password ");
   Serial.println(password);
 
-  WiFi.begin(ssid, password);
-  while(WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
+//  WiFi.begin(ssid, password);
+//  while(WiFi.status() != WL_CONNECTED) {
+//    delay(500);
+//    Serial.print(".");
+//  }
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
@@ -138,8 +150,26 @@ void loop()
       Serial.print(Z);
       Serial.print("\t");
 
+      int ff1 = analogRead(f1);
+  Serial.print(ff1);
+  // print a tab between values:
+  Serial.print("\t");
+  int ff2 = analogRead(f2);
+  Serial.print(ff2);
+  // print a tab between values:
+  Serial.print("\t");
+  int ff3= analogRead(f3);
+  Serial.print(ff3);
+  Serial.print("\t");
+  int ff4 = analogRead(f4);
+  Serial.print(ff4);
+  Serial.print("\t");
+  int ff5 = analogRead(f5);
+  Serial.print(ff5);
+  Serial.print("\t");
+
       //Get sensor data and find the letter
-      letter = findLetter(X,Y,Z);
+      letter = findLetter(ff1,ff2,ff3,ff4,ff5,X,Y,Z);
       Serial.print(letter); 
       Serial.println();
       
@@ -149,7 +179,12 @@ void loop()
       k++;
       delay(1000);
   }
-
+  letter = ',';
+  WiFi.begin(ssid, password);
+  while(WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
   //make the word as a string to post
   String word1 = String(WORD);
   //POST word to database
@@ -157,6 +192,7 @@ void loop()
 
   serializeJsonPretty(doc, Serial);
   Serial.println("\nDone.");
+  WiFi.disconnect(true);
   //set to initial values
   k=0;
   letter = ',';
@@ -210,7 +246,7 @@ void getDevice()
 
 
 //FUNCTION TO IDENTIFY THE LETTER
-char findLetter(int X, int Y, int Z){
+char findLetter(int f1,int f2, int f3, int f4, int f5, int X, int Y, int Z){
     char letter = ' ';
     if(X<1500){
       X=-1;
@@ -239,9 +275,52 @@ char findLetter(int X, int Y, int Z){
     else{
       Z=1;
     }
+    if(f1<2000){
+      f1=0;
+    }
+    
+    else{
+      f1=1;
+    }
+    if(f2<2500){
+      f2=0;
+    }
+    else if(f2<3000){
+      f2=1;
+    }
+    else{
+      f2=2;
+    }
+    if(f3<2500){
+      f3=0;
+    }
+    else if(Z<3000){
+      f3=1;
+    }
+    else{
+      f3=2;
+    }
+    if(f4<2500){
+      f4=0;
+    }
+    else if(f4<3000){
+      f4=1;
+    }
+    else{
+      f4=2;
+    }
+    if(f5<2500){
+      f5=0;
+    }
+    else if(f5<3000){
+      f5=1;
+    }
+    else{
+      f5=2;
+    }
 
     for (int i = 0; i < 26; i++){ //Iterates through the rows of the matrix
-        if(X == Words[i][5] && Y == Words[i][6] && Z == Words[i][7]){
+        if(f1 == Words[i][0] && f2 == Words[i][1] && f3 == Words[i][2] && f4 == Words[i][3] && f5 == Words[i][4] && X == Words[i][5] && Y == Words[i][6] && Z == Words[i][7]){
             letter = Alphebet[i];
             return letter;
         }

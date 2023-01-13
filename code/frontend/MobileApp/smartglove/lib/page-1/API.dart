@@ -12,7 +12,7 @@ class CallApi {
 
   static Future<http.Response> register(data) {
     return http.post(
-      Uri.parse('http://localhost:5000/api/users/'),
+      Uri.parse('http://52.199.72.52:5000/api/users/'),
       headers: <String, String>{
         'Access-Control-Allow-Origin': '*', // Required for CORS support to work
         "Access-Control-Allow-Credentials": true
@@ -29,7 +29,7 @@ class CallApi {
 
   static Future<http.Response> login(data) {
     return http.post(
-      Uri.parse('http://localhost:5000/api/users/login'),
+      Uri.parse('http://52.199.72.52:5000/api/users/login'),
       headers: <String, String>{
         'Access-Control-Allow-Origin': '*', // Required for CORS support to work
         "Access-Control-Allow-Credentials": true
@@ -47,7 +47,7 @@ class CallApi {
   static Future<http.Response> newChat(data) {
     
     return http.post(
-      Uri.parse('http://localhost:5000/api/users/newChat'),
+      Uri.parse('http://52.199.72.52:5000/api/users/newChat'),
       headers: <String, String>{
         'Access-Control-Allow-Origin': '*', // Required for CORS support to work
         "Access-Control-Allow-Credentials": true
