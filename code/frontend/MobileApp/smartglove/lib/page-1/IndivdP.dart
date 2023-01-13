@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:myapp/CustomUI/OwnMessgaeCrad.dart';
 import 'package:myapp/CustomUI/ReplyCard.dart';
 import 'package:myapp/page-1/chatinterface.dart';
-import 'package:myapp/page-1/signin2.dart';
 
 import '../models/ChatModel.dart';
 import '../utils.dart';
+
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class BodyChatInterface2 extends StatefulWidget {
   const BodyChatInterface2({super.key, required this.chatModel});
@@ -16,6 +17,28 @@ class BodyChatInterface2 extends StatefulWidget {
 }
 
 class _BodyChatInterface2State extends State<BodyChatInterface2> {
+  late IO.Socket socket;
+  @override
+  void initState() {
+    super.initState();
+    connect();
+  }
+
+  // each chat connect to server
+  void connect() {
+    // socket client will connect to this server
+    socket = IO.io("http://192.168.9.94:5002", <String, dynamic>{
+      "transports": ["websocket"],
+      "autoConnect": false,
+    });
+    // connect socket server manually
+    socket.connect();
+    socket.onConnect((data) => print("Connected socket server"));
+    print(socket.connected);
+    // check whether can send msg from socket server
+    socket.emit("/test", "Hello from client");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -31,12 +54,12 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                   children: [
                     Text(
                       widget.chatModel.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18.5,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "last seen today at 12:05",
                       style: TextStyle(
                         fontSize: 13,
