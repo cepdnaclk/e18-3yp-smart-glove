@@ -80,6 +80,25 @@ const loginUser = asyncHandler(async (req, res) => {
     
   })
 
+  const regUsers = asyncHandler(async (req, res) => {
+    const { userName, password } = req.body
+    console.log(userName);
+    // Check for user email
+    const user = await User.find()
+    
+    if (user) {
+      res.json({
+        msg : "success",
+        data: user,
+        token: generateToken(user._id),
+      })
+    } else {
+      res.status(400)
+      throw new Error('Invalid credentials'+user)
+    }
+    
+  })
+
 
 //   const valid_glove_User = asyncHandler(async (req, res) => {
 //     const { modelNumber, name } = req.body
@@ -196,6 +215,7 @@ module.exports = {
   loginUser,
   getMe,
   photoUpload,
+  regUsers,
   
 }
 

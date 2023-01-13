@@ -6,6 +6,7 @@ const {
     registerUser,
     loginUser,
     getMe,
+    regUsers,
     
    
   } = require('../controllers/userController')
@@ -30,6 +31,7 @@ const { protect } = require('../middleware/authMiddleware')
 
 router.post('/', registerUser)
 router.post('/login', loginUser)
+router.get('/allUsers', regUsers)
 router.get('/me', protect, getMe)
 router.post('/upload', photoUpload)
 router.post('/newChat', valid_glove_User)
