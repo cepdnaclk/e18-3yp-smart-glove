@@ -10,11 +10,20 @@ import 'body_chat_default.dart';
 class ChatDefault extends StatelessWidget {
   final String text;
   final List<ChatModel> chatmodels;
-  const ChatDefault({Key? key, required this.text, required this.chatmodels})
-      : super(key: key);
+  final ChatModel sourceChat;
+  ChatDefault({
+    Key? key,
+    required this.text,
+    required this.chatmodels,
+    required this.sourceChat,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BodyChatDefault(text: text, chatmodels: chatmodels);
+    return BodyChatDefault(
+      text: text,
+      chatmodels: chatmodels,
+      sourceChat: sourceChat,
+    );
     // return bodyChatPage();
   }
 }

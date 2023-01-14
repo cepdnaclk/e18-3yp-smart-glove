@@ -4,8 +4,11 @@ import '../models/ChatModel.dart';
 import '../page-1/IndivdP.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({Key? key, required this.chatModel}) : super(key: key);
+  const CustomCard(
+      {Key? key, required this.chatModel, required this.sourceChat})
+      : super(key: key);
   final ChatModel chatModel;
+  final ChatModel sourceChat;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class CustomCard extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (contex) => BodyChatInterface2(
-                      chatModel: chatModel,
+                      chatModel: chatModel, sourceChat: sourceChat,
                       // sourchat: sourchat,
                     )));
       },

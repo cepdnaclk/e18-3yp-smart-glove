@@ -13,7 +13,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late ChatModel sourceChat;
+  late ChatModel SourceChat;
   List<ChatModel> Chatmodels = [
     ChatModel(
         name: "Dev ml",
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
           itemCount: Chatmodels.length,
           itemBuilder: (contex, index) => InkWell(
                 onTap: () {
-                  sourceChat = Chatmodels.removeAt(index);
+                  SourceChat = Chatmodels.removeAt(index);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -76,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           builder: (builder) => ChatDefault(
                                 text: '',
                                 chatmodels: Chatmodels,
+                                sourceChat: SourceChat,
                               )));
                 },
                 child: ButtonCard(

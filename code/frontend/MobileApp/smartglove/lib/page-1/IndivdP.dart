@@ -9,14 +9,18 @@ import '../utils.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class BodyChatInterface2 extends StatefulWidget {
-  const BodyChatInterface2({super.key, required this.chatModel});
+  const BodyChatInterface2(
+      {super.key, required this.chatModel, required this.sourceChat});
   final ChatModel chatModel;
+  final ChatModel sourceChat;
 
   @override
   State<BodyChatInterface2> createState() => _BodyChatInterface2State();
 }
 
 class _BodyChatInterface2State extends State<BodyChatInterface2> {
+  bool sendButton = false;
+  TextEditingController _controller = TextEditingController();
   late IO.Socket socket;
   @override
   void initState() {
@@ -27,16 +31,23 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   // each chat connect to server
   void connect() {
     // socket client will connect to this server
-    socket = IO.io("http://192.168.9.94:5002", <String, dynamic>{
+    socket = IO.io("http://192.168.1.122:5002", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
     // connect socket server manually
     socket.connect();
+    socket.emit("signin", widget.sourceChat.id);
+
     socket.onConnect((data) => print("Connected socket server"));
     print(socket.connected);
     // check whether can send msg from socket server
-    socket.emit("/test", "Hello from client");
+  }
+
+  void sendMessage(String message, int sourceId, int targetId) {
+    // using eventname listen to socket server
+    socket.emit("message",
+        {"message": message, "sourceId": sourceId, "targetId": targetId});
   }
 
   @override
@@ -157,110 +168,243 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                   child: Row(
                     children: [
                       // textField type msg
-                      Container(
-                        margin: EdgeInsets.only(left: 2, right: 2, bottom: 8),
-                        height: 70.0,
-                        width: MediaQuery.of(context).size.width - 80,
-                        decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 187, 181, 181),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        // ignore: unnecessary_new
-                        child: new Row(
-                          children: <Widget>[
-                            const SizedBox(width: 5),
-                            Image.asset(
-                              'assets/page-1/images/frame-2Dg.png',
-                              width: 26.06,
-                              height: 28.14,
-                            ),
-                            const SizedBox(width: 10),
-                            const Flexible(
-                              child: TextField(
+                      Row(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width - 90,
+                            child: Card(
+                              margin:
+                                  EdgeInsets.only(left: 8, right: 8, bottom: 8),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: TextFormField(
+                                controller: _controller,
+                                // focusNode: focusNode,
+                                //  Color(0xFF128C7E)
+
+                                textAlignVertical: TextAlignVertical.center,
+                                keyboardType: TextInputType.multiline,
                                 maxLines: 5,
                                 minLines: 1,
-                                decoration: InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(),
-                                  hintText: 'Write a Message ...',
+                                onChanged: (value) {
+                                  if (value.length > 0) {
+                                    setState(() {
+                                      sendButton = true;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      sendButton = false;
+                                    });
+                                  }
+                                },
+                                decoration: const InputDecoration(
+                                  filled: true, //<-- SEE HERE
+                                  fillColor: Color.fromARGB(255, 198, 213, 233),
+                                  // border: InputBorder.none,
+                                  border: UnderlineInputBorder(),
+                                  hintText: "   Write a Message ...",
+
                                   hintStyle: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey,
+                                  ),
+                                  // prefixIcon: IconButton(
+                                  //   icon: Icon(
+                                  //     show
+                                  //         ? Icons.keyboard
+                                  //         : Icons.emoji_emotions_outlined,
+                                  //   ),
+                                  //   onPressed: () {
+                                  //     if (!show) {
+                                  //       focusNode.unfocus();
+                                  //       focusNode.canRequestFocus = false;
+                                  //     }
+                                  //     setState(() {
+                                  //       show = !show;
+                                  //     });
+                                  //   },
+                                  // ),
+                                  // suffixIcon: Row(
+                                  //   mainAxisSize: MainAxisSize.min,
+                                  //   children: [
+                                  //     IconButton(
+                                  //       icon: Icon(Icons.attach_file),
+                                  //       onPressed: () {
+                                  //         showModalBottomSheet(
+                                  //             backgroundColor:
+                                  //                 Colors.transparent,
+                                  //             context: context,
+                                  //             builder: (builder) =>
+                                  //                 // bottomSheet()
+                                  //                 );
+                                  //       },
+                                  //     ),
+                                  //     IconButton(
+                                  //       icon: Icon(Icons.camera_alt),
+                                  //       onPressed: () {
+                                  //         // Navigator.push(
+                                  //         //     context,
+                                  //         //     MaterialPageRoute(
+                                  //         //         builder: (builder) =>
+                                  //         //             CameraApp()));
+                                  //       },
+                                  //     ),
+                                  //   ],
+                                  // ),
+                                  // contentPadding: EdgeInsets.all(5),
                                 ),
                               ),
                             ),
-                            Image.asset(
-                              'assets/page-1/images/frame-sJJ.png',
-                              width: 26.06,
-                              height: 28.14,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 8,
+                              right: 2,
+                              left: 2,
                             ),
-                            CircleAvatar(
-                              radius: 20,
-                              // backgroundColor: Color(0xFF128C7E),
+                            child: CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Color(0xFF128C7E),
                               child: IconButton(
-                                icon: const Icon(
-                                  Icons.mic,
+                                icon: Icon(
+                                  sendButton ? Icons.send : Icons.mic,
                                   color: Colors.white,
                                 ),
                                 onPressed: () {
-                                  // if (sendButton) {
-                                  //   _scrollController.animateTo(
-                                  //       _scrollController
-                                  //           .position.maxScrollExtent,
-                                  //       duration:
-                                  //           Duration(milliseconds: 300),
-                                  //       curve: Curves.easeOut);
-                                  //   sendMessage(
-                                  //       _controller.text,
-                                  //       widget.sourchat.id,
-                                  //       widget.chatModel.id);
-                                  //   _controller.clear();
-                                  //   setState(() {
-                                  //     sendButton = false;
-                                  //   });
-                                  // }
+                                  if (sendButton) {
+                                    sendMessage(
+                                        _controller.text,
+                                        widget.sourceChat.id,
+                                        widget.chatModel.id);
+                                    // _scrollController.animateTo(
+                                    //     _scrollController
+                                    //         .position.maxScrollExtent,
+                                    //     duration:
+                                    //         Duration(milliseconds: 300),
+                                    //     curve: Curves.easeOut);
+                                    // sendMessage(
+                                    //     _controller.text,
+                                    //     widget.sourchat.id,
+                                    //     widget.chatModel.id);
+                                    // _controller.clear();
+                                    setState(() {
+                                      sendButton = false;
+                                    });
+                                  }
                                 },
                               ),
                             ),
-                            const SizedBox(width: 10),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      // button send msg
 
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: FloatingActionButton.extended(
-                          label: Text(
-                            'SEND',
-                            style: SafeGoogleFont(
-                              'Inter',
-                              fontSize: 11,
-                              fontWeight: FontWeight.w900,
-                              height: 1,
-                              color: const Color(0xff0b0c0c),
-                            ),
-                          ), // <-- Text
-                          backgroundColor: const Color(0xff52c9c2),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ChatInterface()));
-                          },
-                          //color: const Color(0xff52c9c2),
+                      // Container(
+                      //   margin: EdgeInsets.only(left: 2, right: 2, bottom: 8),
+                      //   height: 70.0,
+                      //   width: MediaQuery.of(context).size.width - 80,
+                      //   decoration: const BoxDecoration(
+                      //       color: Color.fromARGB(255, 187, 181, 181),
+                      //       borderRadius:
+                      //           BorderRadius.all(Radius.circular(10.0))),
+                      //   // ignore: unnecessary_new
+                      //   child: new Row(
+                      //     children: <Widget>[
+                      //       const SizedBox(width: 5),
+                      //       Image.asset(
+                      //         'assets/page-1/images/frame-2Dg.png',
+                      //         width: 26.06,
+                      //         height: 28.14,
+                      //       ),
+                      //       const SizedBox(width: 10),
+                      //       const Flexible(
+                      //         child: TextField(
+                      //           maxLines: 5,
+                      //           minLines: 1,
 
-                          //     // icon: Icon( // <-- Icon
-                          //     //   Icons.download,
-                          //     //   size: 24.0,
-                          //     // ),
-                          //     onPressed: () {
-                          //       Navigator.push(
-                          //           context, MaterialPageRoute(builder: (context) => SignIn()));
-                          //     },
-                          //   ),
-                          // ]),
-                        ),
-                      ),
+                      //           decoration: InputDecoration(
+                      //             enabledBorder: UnderlineInputBorder(),
+                      //             hintText: 'Write a Message ...',
+                      //             hintStyle: TextStyle(
+                      //                 fontSize: 20,
+                      //                 fontWeight: FontWeight.bold),
+                      //           ),
+                      //         ),
+                      //       ),
+                      // Image.asset(
+                      //   'assets/page-1/images/frame-sJJ.png',
+                      //   width: 26.06,
+                      //   height: 28.14,
+                      // ),
+                      //       CircleAvatar(
+                      //         radius: 20,
+                      //         // backgroundColor: Color(0xFF128C7E),
+                      //         child: IconButton(
+                      //           icon: const Icon(
+                      //             Icons.mic,
+                      //             color: Colors.white,
+                      //           ),
+                      //           onPressed: () {
+                      //             // if (sendButton) {
+                      //             //   _scrollController.animateTo(
+                      //             //       _scrollController
+                      //             //           .position.maxScrollExtent,
+                      //             //       duration:
+                      //             //           Duration(milliseconds: 300),
+                      //             //       curve: Curves.easeOut);
+                      //             //   sendMessage(
+                      //             //       _controller.text,
+                      //             //       widget.sourchat.id,
+                      //             //       widget.chatModel.id);
+                      //             //   _controller.clear();
+                      //             //   setState(() {
+                      //             //     sendButton = false;
+                      //             //   });
+                      //             // }
+                      //           },
+                      //         ),
+                      //       ),
+                      //       const SizedBox(width: 10),
+                      //     ],
+                      //   ),
+                      // ),
+                      // // button send msg
+
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 8),
+                      //   child: FloatingActionButton.extended(
+                      //     label: Text(
+                      //       'SEND',
+                      //       style: SafeGoogleFont(
+                      //         'Inter',
+                      //         fontSize: 11,
+                      //         fontWeight: FontWeight.w900,
+                      //         height: 1,
+                      //         color: const Color(0xff0b0c0c),
+                      //       ),
+                      //     ), // <-- Text
+                      //     backgroundColor: const Color(0xff52c9c2),
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) => ChatInterface()));
+                      //     },
+                      //     //color: const Color(0xff52c9c2),
+
+                      //     //     // icon: Icon( // <-- Icon
+                      //     //     //   Icons.download,
+                      //     //     //   size: 24.0,
+                      //     //     // ),
+                      //     //     onPressed: () {
+                      //     //       Navigator.push(
+                      //     //           context, MaterialPageRoute(builder: (context) => SignIn()));
+                      //     //     },
+                      //     //   ),
+                      //     // ]),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
