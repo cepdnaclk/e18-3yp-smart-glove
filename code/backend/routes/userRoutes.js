@@ -18,6 +18,7 @@ const {
   const {
    
     photoUpload,
+    image,
   } = require('../controllers/imageController')
 
 
@@ -33,6 +34,7 @@ router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/allUsers', regUsers)
 router.get('/me', protect, getMe)
+router.post('/getImage', image)
 router.post('/upload', photoUpload)
 router.post('/newChat', valid_glove_User)
 

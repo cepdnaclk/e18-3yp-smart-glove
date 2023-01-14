@@ -1,7 +1,10 @@
 const jwt = require('jsonwebtoken')
+const fs = require('fs');
 const bcrypt = require('bcryptjs')
+const Jimp = require("jimp");
 const asyncHandler = require('express-async-handler')
 //const image = require('../models/imageModel') 
+const { readFile, writeFile } = require('fs');
 ///const gloveUser = require('../models/gloveuserModel')
 //const valid_gloveUser = require('../models/validGloveUserModel')
 // const multer = require("multer");
@@ -9,7 +12,7 @@ const asyncHandler = require('express-async-handler')
 var multer = require('multer');
 const imageModel = require('../models/imageModel');
  
-const storage = multer.diskStorage({
+const storage = multer.memoryStorage({
     destination: 'uploads',
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -23,21 +26,24 @@ var upload = multer({ storage: storage }).single('testImage');
 
 
 const photoUpload = asyncHandler( async (req, res) => {
-
+ 
   upload(req,res,(err)=>{
     if(err){
       console.log(err);
 
     }
     else{
+      //console.log(req.file);
       const newImage = new imageModel({
         name: req.body.name,
         img:{
-          data: req.file.filename,
+          data:req.file.buffer,
           contentType: "image/png",
         }
       });
+      
       newImage
+        //.create()
         .save()
         .then(()=>res.send("successful"))
         .catch((err) => console.log(err));
@@ -45,30 +51,51 @@ const photoUpload = asyncHandler( async (req, res) => {
   });
 });
 
-//   }
-//     var obj = {
-//       name: req.body.name,
-//       desc: req.body.desc,
-//       img: {
-//           data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-//           contentType: 'image/png'
-//       }
-//   }
-//   imgModel.create(obj, (err, item) => {
-//       if (err) {
-//           console.log(err);
-//       }
-//       else {
-//           // item.save();
-//           res.redirect('/');
-//       }
-//   });
+const image = asyncHandler(async (req, res) => {
+  const { name, password } = req.body
+ 
+  const imgName = name+".png"
+  
+  const user = await imageModel.findOne({name:name})
+  
+  if (user) { 
+
+      const binaryData =user['img']['data'];
+
+      Jimp.read(binaryData, (err, image) => {
+          if (err) {
+              console.error(err);
+          } else {
+              image.write(imgName, (err) => {
+                  if (err) {
+                      console.error(err);
+                  } else {
+                      console.log("Image created successfully");
+                  }
+              });
+          }
+      });
+
+      res.json({
+        msg : "success",
+        data: user,
+        //token: generateToken(user._id),
+      })
     
-// })
+
+  } 
+  else {
+      res.status(400)
+      throw new Error('Invalid credentials'+user)
+  }
+  
+})
+
 
 module.exports = {
   
   photoUpload,
+  image,
   
 }
 
