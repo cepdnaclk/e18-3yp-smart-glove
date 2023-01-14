@@ -66,6 +66,15 @@ io.on("connection",(socket)=>{
     });
     socket.on("message", (msg) =>{
        console.log(msg); 
+       let targetId = msg.targetId;
+        // get socket object of targetId
+        // inside client, no socket object of Id for so,
+        if (clients[targetId]){
+        clients[targetId].emit("message", msg);
+        }
+        else{
+            console.log("target not found");
+        }
     });
 })
 // initiate server

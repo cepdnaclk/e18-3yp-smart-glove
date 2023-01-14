@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/CustomUI/OwnMessgaeCrad.dart';
 import 'package:myapp/CustomUI/ReplyCard.dart';
+import 'package:myapp/models/MessageModel.dart';
 import 'package:myapp/page-1/chatinterface.dart';
 
 import '../models/ChatModel.dart';
@@ -20,6 +21,8 @@ class BodyChatInterface2 extends StatefulWidget {
 
 class _BodyChatInterface2State extends State<BodyChatInterface2> {
   bool sendButton = false;
+  // send/recieve msgs add to list
+  List<MessageModel> messages = [];
   TextEditingController _controller = TextEditingController();
   late IO.Socket socket;
   @override
@@ -31,7 +34,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   // each chat connect to server
   void connect() {
     // socket client will connect to this server
-    socket = IO.io("http://192.168.1.122:5002", <String, dynamic>{
+    socket = IO.io("http://192.168.9.94:5002", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
@@ -39,15 +42,29 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     socket.connect();
     socket.emit("signin", widget.sourceChat.id);
 
-    socket.onConnect((data) => print("Connected socket server"));
+    socket.onConnect((data) {
+      print("Connected socket server");
+      socket.on("message", (msg) {
+        print(msg);
+        setMessage("target", msg["message"]);
+      });
+    });
     print(socket.connected);
     // check whether can send msg from socket server
   }
 
   void sendMessage(String message, int sourceId, int targetId) {
+    setMessage("source", message);
     // using eventname listen to socket server
     socket.emit("message",
         {"message": message, "sourceId": sourceId, "targetId": targetId});
+  }
+
+  void setMessage(String type, String message) {
+    MessageModel messageModel = MessageModel(type: type, message: message);
+    setState(() {
+      messages.add(messageModel);
+    });
   }
 
   @override
@@ -147,20 +164,42 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                 // to remove overlap
                 Container(
                   height: MediaQuery.of(context).size.height - 155,
-                  child: ListView(
-                    children: [
-                      OwnMessageCard(),
-                      ReplyCard(),
-                      OwnMessageCard(),
-                      ReplyCard(),
-                      OwnMessageCard(),
-                      ReplyCard(),
-                      OwnMessageCard(),
-                      ReplyCard(),
-                      OwnMessageCard(),
-                      ReplyCard(),
-                      OwnMessageCard(),
-                    ],
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: messages.length,
+                    itemBuilder: (context, index) {
+                      if (messages[index].type == "source") {
+                        return OwnMessageCard(
+                          message: messages[index].message,
+                        );
+                      } else {
+                        return ReplyCard(
+                          message: messages[index].message,
+                        );
+                      }
+                      // return Container(
+                      //   padding: EdgeInsets.only(
+                      //       left: 14, right: 14, top: 10, bottom: 10),
+                      //   child: Align(
+                      //     alignment: (messages[index].type == "source"
+                      //         ? Alignment.topRight
+                      //         : Alignment.topLeft),
+                      //     child: Container(
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(20),
+                      //         color: (messages[index].type == "source"
+                      //             ? Colors.blue[200]
+                      //             : Colors.grey[200]),
+                      //       ),
+                      //       padding: EdgeInsets.all(16),
+                      //       child: Text(
+                      //         messages[index].message,
+                      //         style: TextStyle(fontSize: 15),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // );
+                    },
                   ),
                 ),
                 Align(
@@ -288,7 +327,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                     //     _controller.text,
                                     //     widget.sourchat.id,
                                     //     widget.chatModel.id);
-                                    // _controller.clear();
+                                    _controller.clear();
                                     setState(() {
                                       sendButton = false;
                                     });
