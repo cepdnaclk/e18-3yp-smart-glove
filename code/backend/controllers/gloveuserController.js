@@ -93,10 +93,15 @@ const valid_gloveUser = require('../models/validGloveUserModel')
   
     // Check if user exists
     const modelExists = await valid_gloveUser.findOne({modelNumber})
+    const chatExists = await gloveUser.findOne({normalUsername, modelNumber})
     
     if (!modelExists) {
       res.status(400)
       throw new Error('Model does not exists')
+    }
+    if (chatExists) {
+      res.status(400)
+      throw new Error('Chat already exists')
     }
   //  console.log(modelExists.toString());
   
