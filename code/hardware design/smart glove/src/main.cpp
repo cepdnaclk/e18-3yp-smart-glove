@@ -336,14 +336,22 @@ char findLetter(int f1,int f2, int f3, int f4, int f5, int X, int Y, int Z){
     Serial.print("\t");
     Serial.print(f5);
     Serial.print("\t");
+    
     for (int i = 0; i < 26; i++){ //Iterates through the rows of the matrix
+      
         if(f1 == Words[i][0] && f2 == Words[i][1] && f3 == Words[i][2] && f4 == Words[i][3] && f5 == Words[i][4] && X == Words[i][5] && Y == Words[i][6] && Z == Words[i][7]){
-            letter = Alphebet[i];
+            
+                   letter = Alphebet[i];
             return letter;
+            
         }
+        
     }
+    
     if(f1==0 && f2==0 && f3==0 && f4==0 && f5==0 && X==0 && Y==0 && Z==-1){
-      letter = ' ';
+      
+        letter = ' ';
+        
     }
 
     return letter;
