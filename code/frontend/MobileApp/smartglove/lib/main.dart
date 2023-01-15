@@ -27,6 +27,7 @@ import 'package:flutter/material.dart'
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/page-1/LoginScreen.dart';
 import 'package:myapp/page-1/newchat.dart';
 import 'package:myapp/utils.dart';
 //import 'package:myapp/page-1/invalidmodel.dart';
@@ -68,7 +69,11 @@ class MyApp extends StatelessWidget {
       // home: const Scaffold(
       //   body: SingleChildScrollView(
       //     child: Scene(),
-      home: GetStarted2(),
+
+      // COMMENTED FOR TEMPORY TO MAKE REAL TIME CHAT WORK=============================
+      // home: GetStarted2(),
+
+      home: LoginScreen(),
       //  ),
     );
     // );
