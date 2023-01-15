@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-//import 'dart:html';
 import 'dart:convert';
-import 'dart:html';
+
 
 import 'package:myapp/page-1/API.dart';
 import 'package:flutter/material.dart';
@@ -105,10 +104,11 @@ class BodySignIn extends State {
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  /* if (value == null || value.isEmpty) {
                     return 'Username is required';
                   }
-                  return null;
+                  return null; */
+                  return validateUserName(value!);
                 },
                 // decoration: const InputDecoration(
                 //   border: UnderlineInputBorder(),
@@ -169,10 +169,11 @@ class BodySignIn extends State {
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  /* if (value == null || value.isEmpty) {
                     return 'Password is required';
                   }
-                  return null;
+                  return null; */
+                  return validatePassword(value!);
                 },
                 // decoration: const InputDecoration(
                 //   border: UnderlineInputBorder(),
@@ -430,6 +431,22 @@ class BodySignIn extends State {
     }
 
     return state;
+  }
+ 
+  String validatePassword(String val) {
+    if (val == "" || val.isEmpty) {
+      return 'Password is required';
+    }
+    
+    return "";
+  }
+
+  String validateUserName(String val) {
+    if (val == "" || val.isEmpty) {
+      return 'UserName is required';
+    }
+    
+    return "";
   }
 
   void _clearAll() {
