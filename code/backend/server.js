@@ -8,8 +8,8 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 const connectDB = require('./config/db')
 const port = process.env.PORT || 5000
 const os = require('os');
-const appip = os.networkInterfaces()['Wi-Fi'][0].address;
-const appAddress = 'http://['+appip+']:'+port+'/';
+//const appip = os.networkInterfaces()['Wi-Fi'][0].address;
+//const appAddress = 'http://['+appip+']:'+port+'/';
 var fs = require('fs');
 var path = require('path');
 require('dotenv/config');
@@ -26,7 +26,7 @@ connectDB()
 const cors = require('cors')
 
 const corsOptions ={
-    origin:'http://52.199.72.52:5000', 
+    origin:'http://localhost:5000', 
     credentials:true,            //access-control-allow-credentials:true
 
     optionSuccessStatus:200
@@ -91,7 +91,7 @@ app.use(bodyParser.json()) */
 //     res.send(ipAddress);
 // });
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://52.199.72.52:5000');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
 
