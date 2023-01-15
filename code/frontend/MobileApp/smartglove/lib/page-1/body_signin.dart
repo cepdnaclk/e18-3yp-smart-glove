@@ -290,8 +290,8 @@ class BodySignIn extends State {
                 //   size: 24.0,
                 // ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Register()));
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => Register()));
                 },
               ),
               // Positioned(
@@ -352,6 +352,11 @@ class BodySignIn extends State {
     });
     var state = jsonDecode(res.body)["msg"];
     if (state == 'success') {
+      var res_chats = await CallApi.login({
+        'normalUsername': userName,
+      });
+      print(res_chats.toString());
+
       //return state;
       // ignore: use_build_context_synchronously
       // Navigator.push(context,

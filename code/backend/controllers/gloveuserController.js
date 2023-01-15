@@ -82,11 +82,11 @@ const valid_gloveUser = require('../models/validGloveUserModel')
 
 
   const valid_glove_User = asyncHandler(async (req, res) => {
-    const { modelNumber, name } = req.body
+    const { modelNumber, gloveUsername, normalUsername } = req.body
     const { model_Number , name_} = req.body
     //print(req.body);
     console.log(modelNumber);
-    if (!modelNumber || !name ) {
+    if (!modelNumber || !gloveUsername || !normalUsername) {
       res.status(400)
       throw new Error('Please add all fields')
     }
@@ -105,7 +105,8 @@ const valid_gloveUser = require('../models/validGloveUserModel')
     //await gloveUser.create({modelNumber:"M111",name:"one"});
     const user = await gloveUser.create({
       modelNumber,
-      name,
+      gloveUsername,
+      normalUsername,
        
     })
   
@@ -124,6 +125,25 @@ const valid_gloveUser = require('../models/validGloveUserModel')
     }
 })
 
+
+const normalUser = asyncHandler(async (req, res) => {
+  const { normalUsername} = req.body
+  console.log(normalUsername);
+  // Check for user email
+  const user = await gloveUser.find({ normalUsername })
+  
+  if (user) {
+    res.json({
+      msg : "success",
+      data: user,
+      
+    })
+  } else {
+    res.status(400)
+    throw new Error('Invalid credentials'+user)
+  }
+  
+})
 
 
   // const storage = multer.diskStorage({
@@ -200,7 +220,8 @@ module.exports = {
  // loginUser,
   getMe,
   photoUpload,
-  valid_glove_User
+  valid_glove_User,
+  normalUser,
 }
 
 /* const asyncHandler = require('express-async-handler')
