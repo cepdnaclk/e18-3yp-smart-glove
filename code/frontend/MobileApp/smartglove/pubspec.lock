@@ -40,18 +40,15 @@ packages:
       sha256: bfe67ef28df125b7dddcea62755991f807aa39a2492a23e1550161692950bbe0
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
     version: "2.10.0"
-=======
-    version: "2.9.0"
   avatar_glow:
     dependency: "direct main"
     description:
       name: avatar_glow
-      url: "https://pub.dartlang.org"
+      sha256: "3627f6f97d1f10d3c1996ae108d3488eabaf68c0cf0c3eac7e7c746a3812881d"
+      url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
->>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
   basic_utils:
     dependency: transitive
     description:
@@ -206,14 +203,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  flutter_pw_validator:
-    dependency: "direct main"
-    description:
-      name: flutter_pw_validator
-      sha256: "46eb4296d72c615d2e7d068c3ce9d10028f1425ed0b155223a1ced7906a2f238"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.5.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -227,7 +216,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -237,14 +230,10 @@ packages:
     source: hosted
     version: "3.2.0"
   fuchsia_remote_debug_protocol:
-=======
-  flutter_web_plugins:
->>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   glob:
     dependency: transitive
     description:
@@ -253,8 +242,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-=======
->>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
   google_fonts:
     dependency: "direct main"
     description:
@@ -267,7 +254,8 @@ packages:
     dependency: "direct main"
     description:
       name: highlight_text
-      url: "https://pub.dartlang.org"
+      sha256: "59dbbe4a3c9713d57f36c99efdbfb3dc871eabb6862b81ab70c2891305296878"
+      url: "https://pub.dev"
     source: hosted
     version: "1.6.0"
   http:
@@ -314,7 +302,7 @@ packages:
       sha256: "5528c2f391ededb7775ec1daa69e65a2d61276f7552de2b5f7b8d34ee9fd4ab7"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.4"
+    version: "0.6.5"
   json_annotation:
     dependency: transitive
     description:
@@ -479,10 +467,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_macos
-      sha256: "2a97e7fbb7ae9dcd0dfc1220a78e9ec3e71da691912e617e8715ff2a13086ae8"
+      sha256: cd57cb98a30ce9d12fdd1896d9d3b0517ce689f942de6ccd2708cd39b3d18a7c
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.6"
+    version: "2.0.7"
   path_provider_platform_interface:
     dependency: transitive
     description:
@@ -671,32 +659,31 @@ packages:
       sha256: dd904f795d4b4f3b870833847c461801f6750a9fa8e61ea5ac53f9422b31f250
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
     version: "1.9.1"
-=======
-    version: "1.9.0"
   speech_to_text:
     dependency: "direct main"
     description:
       name: speech_to_text
-      url: "https://pub.dartlang.org"
+      sha256: ff8fbd31d039bdbac6c7ec9f0516d37df2cbea62c45198326d3b64034e6fb920
+      url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
   speech_to_text_macos:
     dependency: transitive
     description:
       name: speech_to_text_macos
-      url: "https://pub.dartlang.org"
+      sha256: "6b5575e5a8346be1779838b0a482c259474965b5943668830b479147a75b5bfc"
+      url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
   speech_to_text_platform_interface:
     dependency: transitive
     description:
       name: speech_to_text_platform_interface
-      url: "https://pub.dartlang.org"
+      sha256: "13d90215a7554b9a8c1ce47c0a1739af8eacd2cf196ca66351e54dfd2172746d"
+      url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
->>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
   stack_trace:
     dependency: transitive
     description:

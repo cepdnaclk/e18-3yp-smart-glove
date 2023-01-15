@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+//import 'dart:html';
 
 //import 'dart:ffi';
 import 'dart:convert';
@@ -16,7 +17,6 @@ import 'package:myapp/page-1/newchat.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:email_validator/email_validator.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 int id = 0;
 String _errorMessage = "try";
@@ -30,11 +30,6 @@ class BodyRegister extends State {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   TextEditingController userInput = TextEditingController();
-
-  //String userName, email, password;
-
-  //BodyRegister(this.userName, this.email, this.password);
-
   Future save() async {
     var res = await http.post("http://localhost:5000/api/users/register" as Uri,
         headers: <String, String>{
@@ -189,8 +184,10 @@ class BodyRegister extends State {
                   return null;
                 },
                 onChanged: (value) {
-                  
-                  String val = validateEmail(value);
+                  setState(() {
+                    //userInput.text = value.toString();
+                  });
+                  validateEmail(value);
                 },
               ),
               Text(
@@ -224,10 +221,6 @@ class BodyRegister extends State {
                     return 'Password is required';
                   }
                   return null;
-                },
-
-                onChanged: (value) {  
-                  String val = validatePassword(value);
                 },
               ),
               Text(
@@ -453,7 +446,7 @@ class BodyRegister extends State {
   }
 
   Future<void> _insertData(
-    int id, String userName, String email, String password) async {
+      int id, String userName, String email, String password) async {
     // var response = CallApi().postData(data);
     var res = await CallApi.register({
       'userName': userName,
@@ -483,7 +476,7 @@ class BodyRegister extends State {
     confirmPasswordController.text = "";
   }
 
-  String validateEmail(String val) {
+  void validateEmail(String val) {
     if (val.isEmpty) {
       setState(() {
         userInput.text = "Email can not be empty";
@@ -495,23 +488,6 @@ class BodyRegister extends State {
     } else {
       userInput.text = "";
     }
-    return userInput.text;
-  }
-
-  String validatePassword(String val) {
-
-    if (val.isEmpty) {
-      setState(() {
-        userInput.text = "Password can not be empty";
-      });
-    } else if (!(RegExp(r'^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$').hasMatch(val))) {
-      setState(() {
-        userInput.text = "Invalid password";
-      });
-    } else {
-      userInput.text = "";
-    }
-    return userInput.text;
   }
 
   void alertmsg(String msg) {
@@ -540,7 +516,6 @@ class BodyRegister extends State {
       },
     );
   }
-  
 }
 
 // class Background extends StatelessWidget {
