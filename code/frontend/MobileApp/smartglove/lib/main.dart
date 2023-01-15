@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
       // COMMENTED FOR TEMPORY TO MAKE REAL TIME CHAT WORK=============================
       // home: GetStarted2(),
 
-      home: LoginScreen(),
+      home: GetStarted2(),
       //  ),
     );
     // );
