@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class ReplyCard extends StatelessWidget {
   // const ReplyCard({Key key}) : super(key: key);
-  // const ReplyCard({Key key, this.message, this.time}) : super(key: key);
-  // final String message;
+  const ReplyCard({
+    super.key,
+    required this.message,
+    // this.time
+  });
+  final String message;
   // final String time;
 
   @override
@@ -21,16 +25,16 @@ class ReplyCard extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: Stack(
             children: [
-              const Padding(
-                padding: EdgeInsets.only(
+              Padding(
+                padding: const EdgeInsets.only(
                   left: 8,
                   right: 50,
                   top: 5,
                   bottom: 10,
                 ),
                 child: Text(
-                  "message",
-                  style: TextStyle(
+                  message,
+                  style: const TextStyle(
                     fontSize: 16,
                   ),
                 ),

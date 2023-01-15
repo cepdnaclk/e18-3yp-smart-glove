@@ -317,28 +317,22 @@ class BodyRegister extends State {
                   // if (userNameController.text.toString().isEmpty ||
                   //     emailController.text.toString().isEmpty ||
                   //     passwordController.text.toString().isEmpty) {}
-                  
+
                   if (!(_formKey.currentState!.validate())) {
                     return;
-                  } 
-                  else if (userInput.text != "") {
-                    
+                  } else if (userInput.text != "") {
                     alertmsg("Please enter a valid email!");
-
-                    
-                  } 
-                  else if (passwordController.text.toString().length < 8) {
-                    
-                    alertmsg("Please enter a strong password! (Minimum 8 characters)");
-                    
-                  } else if (passwordController.text.toString() != confirmPasswordController.text.toString()) {
-                    
+                  } else if (passwordController.text.toString().length < 8) {
+                    alertmsg(
+                        "Please enter a strong password! (Minimum 8 characters)");
+                  } else if (passwordController.text.toString() !=
+                      confirmPasswordController.text.toString()) {
                     alertmsg("Please enter the same password to confirm!");
-                    
                   } else {
                     id++;
 
-                    _insertData(id, userNameController.text,emailController.text, passwordController.text);
+                    _insertData(id, userNameController.text,
+                        emailController.text, passwordController.text);
                   }
                   /* _insertData(userNameController.text, emailController.text,
               passwordController.text); */
@@ -471,14 +465,10 @@ class BodyRegister extends State {
     print(name);
     if (state == 'success') {
       // ignore: use_build_context_synchronously
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ChatDefault(text: name)));
-    } 
-    else {
-
+      // Navigator.push(context,
+      //     MaterialPageRoute(builder: (context) => ChatDefault(text: name)));
+    } else {
       alertmsg("Try Again!");
-
-      
     }
     // print(CallApi().postData(data));
     _clearAll();

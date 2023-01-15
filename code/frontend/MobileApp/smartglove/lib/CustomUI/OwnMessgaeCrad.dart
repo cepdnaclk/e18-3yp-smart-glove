@@ -1,14 +1,23 @@
+//import 'dart:ffi';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:myapp/CustomUI/ImageCard.dart';
 
 class OwnMessageCard extends StatelessWidget {
   // const OwnMessageCard({required Key key}) : super(key: key);
-  // const OwnMessageCard({Key key, this.message, this.time}) : super(key: key);
-  // final String message;
+  const OwnMessageCard({
+    super.key,
+    required this.message,
+    // this.time
+  });
+  final String message;
   // final String time;
 
   @override
   Widget build(BuildContext context) {
     // make a card for own message with padding
+    Size size = MediaQuery.of(context).size;
     return Align(
       alignment: Alignment.centerRight,
       child: ConstrainedBox(
@@ -30,34 +39,99 @@ class OwnMessageCard extends StatelessWidget {
                   bottom: 20,
                 ),
                 child: Text(
-                  "hey, how are you? Think you can help me with this?",
+                  message,
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 4,
-                right: 10,
-                child: Row(
-                  children: [
-                    Text(
-                      "09.34",
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      Icons.done_all,
-                      size: 20,
-                    ),
-                  ],
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 60,
+                  top: 30,
+                  bottom: 20,
+                ),
+                height: MediaQuery.of(context).size.height - 400,
+                width: MediaQuery.of(context).size.width - 1155,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: message.length,
+                  itemBuilder: (context, index) {
+                    String temp = message[index].toUpperCase();
+                    RegExp regExp = RegExp(r'[A-Z]');
+                    if (temp == ' ') {
+                      return const Text(
+                          "========================================");
+                      // }
+                    } 
+                    else if (!temp.contains(RegExp(r'[A-Z]'))) {
+                      return const Text(" ");
+                    } 
+                    else {
+                      print(message);
+                      return ImageCard(
+                        letter: message[index],
+                      );
+                    }
+
+                    // if (messages[index].type == "source") {
+                    //   return OwnMessageCard(
+                    //     message: messages[index].message,
+                    //   );
+                    // } else {
+                    //   return ReplyCard(
+                    //     message: messages[index].message,
+                    //   );
+                    // }
+                    // return Container(
+                    //   padding: EdgeInsets.only(
+                    //       left: 14, right: 14, top: 10, bottom: 10),
+                    //   child: Align(
+                    //     alignment: (messages[index].type == "source"
+                    //         ? Alignment.topRight
+                    //         : Alignment.topLeft),
+                    //     child: Container(
+                    //       decoration: BoxDecoration(
+                    //         borderRadius: BorderRadius.circular(20),
+                    //         color: (messages[index].type == "source"
+                    //             ? Colors.blue[200]
+                    //             : Colors.grey[200]),
+                    //       ),
+                    //       padding: EdgeInsets.all(16),
+                    //       child: Text(
+                    //         messages[index].message,
+                    //         style: TextStyle(fontSize: 15),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // );
+                  },
                 ),
               ),
+
+              // Positioned(
+              //   bottom: 4,
+              //   right: 10,
+              //   child: Row(
+              //     children: [
+              //       Text(
+              //         "09.34",
+              //         style: TextStyle(
+              //           fontSize: 11,
+              //           color: Colors.grey[600],
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: 5,
+              //       ),
+              //       Icon(
+              //         Icons.done_all,
+              //         size: 20,
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
             // children: [
             //   Text("Hey"),

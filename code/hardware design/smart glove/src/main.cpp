@@ -1,4 +1,4 @@
-
+  
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include <WiFi.h>
@@ -15,9 +15,9 @@
 
 // const int groundpin = 32;             // analog input pin 4 -- ground
 // const int powerpin = 33;              // analog input pin 5 -- voltage
-const int xpin = 26;                  // x-axis of the accelerometer
+const int xpin = 33;                  // x-axis of the accelerometer
 const int ypin = 25;                  // y-axis
-const int zpin = 33;                  // z-axis (only on 3-axis models)
+const int zpin = 26;                  // z-axis (only on 3-axis models)
 
 
 /////////////////////////////////////////
@@ -25,11 +25,11 @@ const int zpin = 33;                  // z-axis (only on 3-axis models)
 
 //const int groundpin = 32;             // analog input pin 4 -- ground
 //const int powerpin = 33;              // analog input pin 5 -- voltage
-const int f1 = 36;                  // x-axis of the accelerometer
-const int f2 = 39;                  // y-axis
+const int f5 = 36;                  // x-axis of the accelerometer
+const int f4 = 39;                  // y-axis
 const int f3 = 34;                  // z-axis (only on 3-axis models)
-const int f4 = 35;          
-const int f5 = 32;
+const int f2 = 35;          
+const int f1 = 32;
 
 float Words[26][8] = { //Matrix containing all the sensor values
 
@@ -45,11 +45,11 @@ float Words[26][8] = { //Matrix containing all the sensor values
  { 0, 0, 0, 2, 2, -1,0, 0}, //H
  { 1, 2, 2, 2, 0, 0, 1, 0}, //I
  { 1, 2, 2, 2, 0, -1,0, 0}, //J
- { 0, 0, 1, 2, 2, 0, 1, 0}, //K
+ { 0, 0, 0, 2, 2, 0, 1, 0}, //K
  { 0, 0, 2, 2, 2, 0, 1, 0}, //L
  { 1, 2, 2, 2, 2, 0, 1, 0}, //M
  { 1, 2, 2, 2, 2, 0, 1, 0}, //N
- { 0, 1, 1, 1, 1, 0, 1, 0}, //O
+ { 0, 2, 2, 2, 2, 0, 1, 0}, //O
  { 0, 0, 1, 2, 2, 0,-1, 0}, //P
  { 0, 0, 2, 2, 2, 0,-1, 0}, //Q
  { 1, 0, 0, 2, 2, 0, 1, 0}, //R
@@ -91,7 +91,7 @@ StaticJsonDocument<500> doc;
 
 void POSTData(String word);
 void getDevice();
-char findLetter(int X,int Y, int Z);
+char findLetter(int f1, int f2, int f3, int f4, int f5,int X,int Y, int Z);
 
 
 /////////////////////////////////////////
@@ -122,7 +122,7 @@ void setup()
 //  }
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
-  Serial.println(WiFi.localIP());
+  //Serial.println(WiFi.localIP());
   
   ///////////////////////////////
 }
@@ -131,7 +131,7 @@ void setup()
 void loop()
 { 
   getDevice();
-  delay(10000);
+  delay(1000);
   
   //Combine letters and make a word 
   while(letter != ' '){
@@ -177,9 +177,9 @@ void loop()
       //make a word
       WORD[k]=letter;
       k++;
-      delay(1000);
+      delay(10000);
   }
-  letter = ',';
+  Serial.println("--------");
   WiFi.begin(ssid, password);
   while(WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -247,7 +247,7 @@ void getDevice()
 
 //FUNCTION TO IDENTIFY THE LETTER
 char findLetter(int f1,int f2, int f3, int f4, int f5, int X, int Y, int Z){
-    char letter = ' ';
+    char letter = ',';
     if(X<1500){
       X=-1;
     }
@@ -294,7 +294,7 @@ char findLetter(int f1,int f2, int f3, int f4, int f5, int X, int Y, int Z){
     if(f3<2500){
       f3=0;
     }
-    else if(Z<3000){
+    else if(f3<3000){
       f3=1;
     }
     else{
@@ -309,21 +309,49 @@ char findLetter(int f1,int f2, int f3, int f4, int f5, int X, int Y, int Z){
     else{
       f4=2;
     }
-    if(f5<2500){
+    if(f5<2300){
       f5=0;
     }
-    else if(f5<3000){
+    else if(f5<2600){
       f5=1;
     }
     else{
       f5=2;
     }
-
+   // Serial.print(f1);
+    Serial.print("\n");
+    Serial.print(X);
+    Serial.print("\t");
+    Serial.print(Y);
+    Serial.print("\t");
+    Serial.print(Z);
+    Serial.print("\t");
+    Serial.print(f1);
+    Serial.print("\t");
+    Serial.print(f2);
+    Serial.print("\t");
+    Serial.print(f3);
+    Serial.print("\t");
+    Serial.print(f4);
+    Serial.print("\t");
+    Serial.print(f5);
+    Serial.print("\t");
+    
     for (int i = 0; i < 26; i++){ //Iterates through the rows of the matrix
+      
         if(f1 == Words[i][0] && f2 == Words[i][1] && f3 == Words[i][2] && f4 == Words[i][3] && f5 == Words[i][4] && X == Words[i][5] && Y == Words[i][6] && Z == Words[i][7]){
-            letter = Alphebet[i];
+            
+                   letter = Alphebet[i];
             return letter;
+            
         }
+        
+    }
+    
+    if(f1==0 && f2==0 && f3==0 && f4==0 && f5==0 && X==0 && Y==0 && Z==-1){
+      
+        letter = ' ';
+        
     }
 
     return letter;

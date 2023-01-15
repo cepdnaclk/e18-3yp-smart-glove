@@ -12,11 +12,5 @@ class SignIn extends StatefulWidget {
   // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() {
     return BodySignIn();
-    
-    
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return BodySignIn();
-  // }
 }

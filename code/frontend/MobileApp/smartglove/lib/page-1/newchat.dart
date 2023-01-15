@@ -8,17 +8,15 @@ import 'package:myapp/utils.dart';
 
 // ignore: camel_case_types
 class newchat extends StatefulWidget {
-  const newchat({super.key});
-
+  final String text;
+  // const newchat({super.key, required this.username}) : super(key: key);
+  const newchat({
+    super.key,
+    required this.text,
+  });
   @override
   // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() {
-    return BodyNewChat();
-    
-   
+    return BodyNewChat(text: text);
   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return BodyNewChat();
-//   }
 }

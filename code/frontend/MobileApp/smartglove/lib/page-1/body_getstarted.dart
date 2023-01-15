@@ -9,104 +9,115 @@ import 'package:myapp/utils.dart';
 //import 'background.dart';
 import 'package:myapp/page-1/background.dart';
 import 'package:myapp/page-1/body_register.dart';
+
+import '../models/ChatModel.dart';
+
 class BodyGetStarted extends StatelessWidget {
+  const BodyGetStarted({
+    super.key,
+    required this.chatModel,
+  });
+  final List<ChatModel> chatModel;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     // ignore: dead_code
     return Background(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children:<Widget>[
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
           Align(
             alignment: Alignment.topRight,
-          child: Image.asset(
+            child: Image.asset(
               //'assets/page-1/images/mute-removebg-preview-1.png',
               'assets/page-1/images/download-1-rpA.png',
-              height:size.height*0.14,
-          ),
+              height: size.height * 0.14,
+            ),
           ),
           Align(
             alignment: Alignment.center,
-          child: Image.asset(
+            child: Image.asset(
               //'assets/page-1/images/mute-removebg-preview-1.png',
               'assets/page-1/images/mute-removebg-preview-1.png',
-              height:size.height*0.3,
-          ),
+              height: size.height * 0.3,
+            ),
           ),
           Text(
-                      'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
-                    Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
+            'GET THINGS DONE WITH VOICE4U',
+            textAlign: TextAlign.center,
+            style: SafeGoogleFont(
+              'Inter',
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              height: 1.2125,
+              letterSpacing: 1,
+              color: const Color(0xff000000),
+            ),
+          ),
           Text(
-                  'YOU CAN CONVERT SIGNS \nINTO A TEXT OR \nVOICE USING THIS APP',
-                  textAlign: TextAlign.center,
-                  style: SafeGoogleFont(
-                    'Inter',
-                    fontSize: 13 ,
-                    fontWeight: FontWeight.w400,
-                    height: 1.2125 ,
-                    letterSpacing: 1 ,
-                    color: const Color(0xff000000),
-                  ),
-                ),
-                Text(
-                      '',
-                    //  'GET THINGS DONE WITH VOICE4U',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 20 ,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125 ,
-                        letterSpacing: 1,
-                        color: const Color(0xff000000),
-                      ),
-                    ),
+            '',
+            //  'GET THINGS DONE WITH VOICE4U',
+            textAlign: TextAlign.center,
+            style: SafeGoogleFont(
+              'Inter',
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              height: 1.2125,
+              letterSpacing: 1,
+              color: const Color(0xff000000),
+            ),
+          ),
+          Text(
+            'YOU CAN CONVERT SIGNS \nINTO A TEXT OR \nVOICE USING THIS APP',
+            textAlign: TextAlign.center,
+            style: SafeGoogleFont(
+              'Inter',
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              height: 1.2125,
+              letterSpacing: 1,
+              color: const Color(0xff000000),
+            ),
+          ),
+          Text(
+            '',
+            //  'GET THINGS DONE WITH VOICE4U',
+            textAlign: TextAlign.center,
+            style: SafeGoogleFont(
+              'Inter',
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              height: 1.2125,
+              letterSpacing: 1,
+              color: const Color(0xff000000),
+            ),
+          ),
 
-                    //Get started button - directed to SIGN IN
-                FloatingActionButton.extended(
-                      label: Text('GET STARTED',style: SafeGoogleFont(
-                      'Inter',
-                      fontSize:18,
-                      fontWeight: FontWeight.w700,
-                      height: 1.2125 ,
-                      color: const Color(0xff0b0c0c),
-                    ),), // <-- Text
-                      backgroundColor: const Color(0xff52c9c2),
-  //color: const Color(0xff52c9c2),
+          //Get started button - directed to SIGN IN
+          FloatingActionButton.extended(
+            label: Text(
+              'GET STARTED',
+              style: SafeGoogleFont(
+                'Inter',
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                height: 1.2125,
+                color: const Color(0xff0b0c0c),
+              ),
+            ), // <-- Text
+            backgroundColor: const Color(0xff52c9c2),
+            //color: const Color(0xff52c9c2),
 
-  // icon: Icon( // <-- Icon
-  //   Icons.download,
-  //   size: 24.0,
-  // ),
-                      onPressed: () {
-                        Navigator.push(context,MaterialPageRoute(
-                                                  
-                        builder: (context) => SignIn()));
-                      },
-),
+            // icon: Icon( // <-- Icon
+            //   Icons.download,
+            //   size: 24.0,
+            // ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SignIn()));
+            },
+          ),
           // Positioned(
           //           // getstarted9oY (67:32)
           //           left: 112 ,
@@ -139,7 +150,7 @@ class BodyGetStarted extends StatelessWidget {
           //               child: TextButton(
           //                 onPressed: () {
           //                 //  Navigator.push(context,MaterialPageRoute(
-                              
+
           //                  //     builder: (context) => Signin()));
           //                 },
           //                 style: TextButton.styleFrom(
@@ -155,11 +166,7 @@ class BodyGetStarted extends StatelessWidget {
           //             ),
           //           ),
           //         ),
-          
-           
-                  
-        ]
-      ));
+        ]));
   }
 }
 

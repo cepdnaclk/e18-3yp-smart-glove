@@ -27,7 +27,13 @@ const userSchema_chat1 = mongoose.Schema(
       required: [true, 'Please add a model number'],
       
     },
-    name: {
+    gloveUsername: {
+      type: String,
+      required: [true, 'Please add a name'],
+      unique: true,
+     
+    },
+    normalUsername: {
       type: String,
       required: [true, 'Please add a name'],
       unique: true,

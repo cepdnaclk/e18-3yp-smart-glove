@@ -10,14 +10,13 @@ class Register extends StatefulWidget {
   // Widget build(BuildContext context) {
   //   return BodyRegister();
   // }
- 
-  
+
   // @override
   // Widget build(BuildContext context) {
   //   return BodyRegister();
   //   throw UnimplementedError();
   // }
-  
+
   @override
   State<StatefulWidget> createState() {
     return BodyRegister();

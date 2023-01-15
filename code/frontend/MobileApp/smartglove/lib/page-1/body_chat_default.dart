@@ -3,6 +3,8 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/models/ChatModel.dart';
+import 'package:myapp/page-1/LoginScreen.dart';
 import 'package:myapp/page-1/chatinterface.dart';
 import 'package:myapp/page-1/newchat.dart';
 import 'package:myapp/page-1/signin2.dart';
@@ -16,7 +18,17 @@ import 'body_chat_List_d.dart';
 
 class BodyChatDefault extends StatelessWidget {
   final String text;
-  BodyChatDefault({Key? key, required this.text}) : super(key: key);
+  final List<ChatModel> chatmodels;
+  final ChatModel sourceChat;
+  final List gloveUsers;
+  BodyChatDefault(
+      {Key? key,
+      required this.text,
+      required this.gloveUsers,
+      required this.chatmodels,
+      required this.sourceChat})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -84,19 +96,24 @@ class BodyChatDefault extends StatelessWidget {
             //   size: 24.0,
             // ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => bodyChatPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => bodyChatPage(
+                            chatmodels: chatmodels,
+                            sourceChat: sourceChat,
+                          )));
             },
           ),
 
           const SizedBox(
-            height: 100, // <-- SEE HERE
+            height: 50,
           ),
 
           FloatingActionButton.extended(
-            heroTag: "btn1",
+            heroTag: "btn2",
             label: Text(
-              'Start New Chat',
+              'Start New Chat Here =>',
               style: SafeGoogleFont(
                 'Inter',
                 fontSize: 18,
@@ -113,32 +130,39 @@ class BodyChatDefault extends StatelessWidget {
             //   size: 24.0,
             // ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => newchat()));
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => newchat()));
             },
           ),
 
-          // Align(
-          //   alignment: Alignment.bottomRight,
-          //   child: FloatingActionButton.extended(
-          //     heroTag: "btn3",
-          //     label: Image.asset(
-          //       'assets/page-1/images/addChat.png',
-          //       width: 50,
-          //     ),
-          //     backgroundColor: const Color(0xff52c9c2),
-          //     //color: const Color(0xff52c9c2),
+          const SizedBox(
+            height: 20,
+          ),
+          Align(
+            // alignment: Alignment.bottomRight,
+            child: FloatingActionButton.extended(
+              heroTag: "btn3",
+              label: Image.asset(
+                'assets/page-1/images/addChat.png',
+                width: 50,
+              ),
+              backgroundColor: const Color(0xff52c9c2),
+              //color: const Color(0xff52c9c2),
 
-          //     // icon: Icon( // <-- Icon
-          //     //   Icons.download,
-          //     //   size: 24.0,
-          //     // ),
-          //     onPressed: () {
-          //       Navigator.push(context,
-          //           MaterialPageRoute(builder: (context) => newchat()));
-          //     },
-          //   ),
-          // ),
+              // icon: Icon( // <-- Icon
+              //   Icons.download,
+              //   size: 24.0,
+              // ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => newchat(
+                              text: text,
+                            )));
+              },
+            ),
+          ),
 
           // Positioned(
           //           // getstarted9oY (67:32)

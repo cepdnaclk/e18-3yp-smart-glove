@@ -7,17 +7,20 @@ const {
     loginUser,
     getMe,
     regUsers,
+   
     
    
   } = require('../controllers/userController')
   const {
    
     valid_glove_User,
+    normalUser,
   } = require('../controllers/gloveuserController')
 
   const {
    
     photoUpload,
+    image,
   } = require('../controllers/imageController')
 
 
@@ -33,6 +36,8 @@ router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/allUsers', regUsers)
 router.get('/me', protect, getMe)
+router.post('/getChats', normalUser)
+router.post('/getImage', image)
 router.post('/upload', photoUpload)
 router.post('/newChat', valid_glove_User)
 

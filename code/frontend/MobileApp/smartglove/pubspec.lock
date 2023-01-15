@@ -40,7 +40,18 @@ packages:
       sha256: bfe67ef28df125b7dddcea62755991f807aa39a2492a23e1550161692950bbe0
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "2.10.0"
+=======
+    version: "2.9.0"
+  avatar_glow:
+    dependency: "direct main"
+    description:
+      name: avatar_glow
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+>>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
   basic_utils:
     dependency: transitive
     description:
@@ -216,6 +227,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   frontend_server_client:
     dependency: transitive
     description:
@@ -225,10 +237,14 @@ packages:
     source: hosted
     version: "3.2.0"
   fuchsia_remote_debug_protocol:
+=======
+  flutter_web_plugins:
+>>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   glob:
     dependency: transitive
     description:
@@ -237,6 +253,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+=======
+>>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
   google_fonts:
     dependency: "direct main"
     description:
@@ -245,6 +263,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  highlight_text:
+    dependency: "direct main"
+    description:
+      name: highlight_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.6.0"
   http:
     dependency: "direct main"
     description:
@@ -289,7 +314,7 @@ packages:
       sha256: "5528c2f391ededb7775ec1daa69e65a2d61276f7552de2b5f7b8d34ee9fd4ab7"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.5"
+    version: "0.6.4"
   json_annotation:
     dependency: transitive
     description:
@@ -646,7 +671,32 @@ packages:
       sha256: dd904f795d4b4f3b870833847c461801f6750a9fa8e61ea5ac53f9422b31f250
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "1.9.1"
+=======
+    version: "1.9.0"
+  speech_to_text:
+    dependency: "direct main"
+    description:
+      name: speech_to_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.1.1"
+  speech_to_text_macos:
+    dependency: transitive
+    description:
+      name: speech_to_text_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
+  speech_to_text_platform_interface:
+    dependency: transitive
+    description:
+      name: speech_to_text_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
+>>>>>>> 53bcf5ab1792576f406f46e362fab73caf4cc2b9
   stack_trace:
     dependency: transitive
     description:

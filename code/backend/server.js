@@ -51,16 +51,31 @@ var io = require("socket.io")(server,{
 // initialize middleware
 app.use(express.json());
 app.use(cors());
+// store all clients' data
+var clients = {}
 
-// open connection on a socket io
+// open connection on a socket io socket; object of the client
 io.on("connection",(socket)=>{
     console.log("connected");
     console.log(socket.id,"socket id has joined");
     // listen to the event test
-    socket.on("/test",(msg)=>{
-
-        console.log(msg,"--data received");
-    })
+    socket.on("signin",(id)=>{
+        console.log(id,"--data received");
+        clients[id] = socket;
+        console.log(clients);
+    });
+    socket.on("message", (msg) =>{
+       console.log(msg); 
+       let targetId = msg.targetId;
+        // get socket object of targetId
+        // inside client, no socket object of Id for so,
+        if (clients[targetId]){
+        clients[targetId].emit("message", msg);
+        }
+        else{
+            console.log("target not found");
+        }
+    });
 })
 // initiate server
 server.listen(port1, "0.0.0.0",()=>{

@@ -12,12 +12,20 @@ import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/background.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/ChatModel.dart';
+import 'IndivdP.dart';
+
 class BodyNewChat extends State {
   //const BodyNewChat({super.key});
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  BodyNewChat({
+    required this.text,
+  });
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final String text;
   final modelNumberController = TextEditingController();
   final nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -227,8 +235,8 @@ class BodyNewChat extends State {
                                       //   return;
                                       // }
 
-                                      newChat(modelNumberController.text , nameController.text);
-                                     
+                                      newChat(modelNumberController.text,
+                                          nameController.text);
                                     },
                                   ),
                                 ],
@@ -248,19 +256,41 @@ class BodyNewChat extends State {
   }
 
   Future<void> newChat(String modelNumber, String name) async {
-   //console.log(name);
+    //console.log(name);
     var res = await CallApi.newChat({
       'modelNumber': modelNumber,
-      'name': name,
+      'gloveUsername': name,
+      'normalUsername': text,
     });
     var state = jsonDecode(res.body)["msg"];
     if (state == 'success') {
       //return state;
       // ignore: use_build_context_synchronously
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ChatInterface2()));
-    }
-    else {
+      ChatModel sourceChat = ChatModel(
+          name: text,
+          icon: "person.svg",
+          isGroup: false,
+          time: "13.23",
+          currentMessage: "row data",
+          status: "no",
+          select: false,
+          id: 1);
+
+      ChatModel chatModel = ChatModel(
+          name: name,
+          icon: "person.svg",
+          isGroup: false,
+          time: "13.23",
+          currentMessage: "row data",
+          status: "no",
+          select: false,
+          id: 1);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => BodyChatInterface2(
+                  chatModel: chatModel, sourceChat: sourceChat)));
+    } else {
       Widget okButton = TextButton(
         child: Text("OK"),
         onPressed: () {
@@ -286,16 +316,13 @@ class BodyNewChat extends State {
         },
       );
     }
-   
-   
+
     return state;
   }
+
   void _clearAll() {
     modelNumberController.text = "";
-   
-    nameController.text = "";
-  
-  }
 
- 
+    nameController.text = "";
+  }
 }
