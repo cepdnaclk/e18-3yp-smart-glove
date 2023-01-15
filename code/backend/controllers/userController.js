@@ -98,6 +98,7 @@ const loginUser = asyncHandler(async (req, res) => {
     }
     
   })
+ 
 
 
 //   const valid_glove_User = asyncHandler(async (req, res) => {
@@ -216,6 +217,7 @@ module.exports = {
   getMe,
   photoUpload,
   regUsers,
+ 
   
 }
 
