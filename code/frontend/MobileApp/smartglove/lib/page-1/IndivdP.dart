@@ -5,6 +5,7 @@ import 'package:myapp/CustomUI/ReplyCard.dart';
 import 'package:myapp/models/MessageModel.dart';
 import 'package:myapp/page-1/API.dart';
 import 'package:myapp/page-1/chatinterface.dart';
+import 'package:myapp/CustomUI/ImageCard.dart';
 import 'package:myapp/page-1/API.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import '../models/ChatModel.dart';
