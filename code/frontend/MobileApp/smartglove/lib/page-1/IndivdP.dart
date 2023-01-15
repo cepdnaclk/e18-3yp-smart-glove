@@ -33,7 +33,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   String _text = 'Press the button and start speaking';
   double _confidence = 1.0;
   bool isListening = false;
-  
+
   @override
   void initState() {
     super.initState();
@@ -78,8 +78,6 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   }
 
   //static final _speech = SpeechToText();
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -216,7 +214,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                     },
                   ),
                 ),
-                Text(_text),
+
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Row(
@@ -248,7 +246,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                     });
                                   } else {
                                     setState(() {
-                                      sendButton = false;
+                                      sendButton = true;
                                     });
                                   }
                                 },
@@ -257,7 +255,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                   fillColor: Color.fromARGB(255, 198, 213, 233),
                                   // border: InputBorder.none,
                                   border: UnderlineInputBorder(),
-                                  hintText: "   Write a Message ...",
+                                  hintText: "Write a Message ...",
 
                                   hintStyle: TextStyle(
                                     fontSize: 20,
@@ -311,21 +309,21 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                 ),
                               ),
                             ),
-                            Text(_text),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
                               bottom: 8,
-                              right: 2,
-                              left: 2,
+                              right: 0,
+                              left: 0,
                             ),
                             child: CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Color(0xFF128C7E),
+                              radius: 20,
+                              // backgroundColor: Color(0xFF128C7E),
                               child: AvatarGlow(
                                 animate: true,
                                 endRadius: 150,
-                                glowColor: Color.fromARGB(255, 17, 18, 18),
+                                glowColor:
+                                    const Color.fromARGB(255, 17, 18, 18),
                                 duration: const Duration(milliseconds: 2000),
                                 repeatPauseDuration:
                                     const Duration(milliseconds: 100),
@@ -334,13 +332,48 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                   // child: Icon(
                                   //     isListening ? Icons.mic : Icons.mic_none,
                                   //     size: 36),
-                                  // icon: Icon(
-                                  sendButton ? Icons.send : //   Icons.mic,
+                                  // icon: const Icon(
+                                  //   Icons.mic,
                                   //   color: Colors.white,
                                   // ),
                                   onPressed: _listen,
                                   child: Icon(
                                       isListening ? Icons.mic : Icons.mic_none),
+                                  // if (sendButton) {
+                                  //   _scrollController.animateTo(
+                                  //       _scrollController
+                                  //           .position.maxScrollExtent,
+                                  //       duration:
+                                  //           Duration(milliseconds: 300),
+                                  //       curve: Curves.easeOut);
+                                  //   sendMessage(
+                                  //       _controller.text,
+                                  //       widget.sourchat.id,
+                                  //       widget.chatModel.id);
+                                  //   _controller.clear();
+                                  //   setState(() {
+                                  //     sendButton = false;
+                                  //   });
+                                  // }
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 8,
+                              right: 0,
+                              left: 0,
+                            ),
+                            child: CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Color(0xFF128C7E),
+                              child: IconButton(
+                                icon: Icon(
+                                  sendButton ? Icons.send : Icons.send,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
                                   if (sendButton) {
                                     sendMessage(
                                         _controller.text,
@@ -358,10 +391,17 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                     //     widget.chatModel.id);
                                     _controller.clear();
                                     setState(() {
-                                      sendButton = false;
-                                    });
+                                      sendButton = true;
+                                    
+                                      isListening = false;
+                                      _speech.stop();
+                                        _controller.clear();
+                                    }
+                                    
+                                    );
+                                    _controller.clear();
                                   }
-                                ),
+                                },
                               ),
                             ),
                           ),
@@ -573,20 +613,20 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   //   );
   // }
   void _listen() async {
-    
+   _controller.clear();
     if (!isListening) {
       bool available = await _speech.initialize(
         onStatus: (val) => print('onStatus: $val'),
         onError: (val) => print('onError: $val'),
       );
       if (available) {
-        
         setState(() => isListening = true);
-        
+
         _speech.listen(
           onResult: (val) => setState(() =>
                   //_text = val.recognizedWords
-                  _text = val.recognizedWords
+                  // _text = val.recognizedWords
+                  _controller.text = val.recognizedWords
               //setState(() => this._text = text)
               // if (val.hasConfidenceRating && val.confidence > 0) {
               //   _confidence = val.confidence;
@@ -594,12 +634,13 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
               //}
               ),
         );
-        
       }
     } else {
       setState(() => isListening = false);
       _speech.stop();
+       _controller.clear();
     }
+    _controller.clear();
   }
   // Future toggleRecording() => CallApi.toggleRecording(
   //     onResult: (text) => setState(() => this._text = text),
