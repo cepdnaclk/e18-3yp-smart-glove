@@ -33,5 +33,5 @@ const userSchema_image = mongoose.Schema(
 //   }
 // )
 
-module.exports = mongoose.model('Alphabet', userSchema_image)
+module.exports = mongoose.model('alphabet', userSchema_image)
 // module.exports = mongoose.model('ChatUsers', userSchema_chat)
