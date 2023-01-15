@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler')
 //const User = require('../models/userModel') 
 const gloveUser = require('../models/gloveuserModel')
 const valid_gloveUser = require('../models/validGloveUserModel')
+const hardware_msg = require('../models/hardwareMsgModel')
 // const multer = require("multer");
 // const path = require("path");
 
@@ -150,6 +151,24 @@ const normalUser = asyncHandler(async (req, res) => {
   
 })
 
+const messages = asyncHandler(async (req, res) => {
+  
+  var read = false;
+  const user = await hardware_msg.find()
+  
+  if (user) {
+    res.json({
+      msg : "success",
+      data: user,
+      
+    })
+  } else {
+    res.status(400)
+    throw new Error('Invalid credentials'+user)
+  }
+  
+})
+
 
   // const storage = multer.diskStorage({
   //   destination: (req, file, cb) => cb(null, ".uploads"), // cb -> callback
@@ -227,6 +246,7 @@ module.exports = {
   photoUpload,
   valid_glove_User,
   normalUser,
+  messages,
 }
 
 /* const asyncHandler = require('express-async-handler')

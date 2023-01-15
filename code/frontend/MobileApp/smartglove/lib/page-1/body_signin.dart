@@ -378,7 +378,7 @@ class BodySignIn extends State {
             currentMessage: "row data",
             status: "no",
             select: false,
-            id: 1);
+            id: i+2);
 
         Chatmodels.add(temp);
       }

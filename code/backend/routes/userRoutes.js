@@ -15,6 +15,7 @@ const {
    
     valid_glove_User,
     normalUser,
+    messages,
   } = require('../controllers/gloveuserController')
 
   const {
@@ -35,11 +36,14 @@ const { protect } = require('../middleware/authMiddleware')
 router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/allUsers', regUsers)
+router.get('/hardwareMessages', messages)
 router.get('/me', protect, getMe)
 router.post('/getChats', normalUser)
 router.post('/getImage', image)
 router.post('/upload', photoUpload)
 router.post('/newChat', valid_glove_User)
+
+//hardwareMessages
 
 // router.post('/upload_image', upload.single('image'), (req, res, next) => {
  

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/CustomUI/OwnMessgaeCrad.dart';
@@ -26,6 +28,8 @@ class BodyChatInterface2 extends StatefulWidget {
 
 class _BodyChatInterface2State extends State<BodyChatInterface2> {
   bool sendButton = false;
+  bool gloveUser = true;
+  List<String> messagesList = [];
   // send/recieve msgs add to list
   List<MessageModel> messages = [];
   TextEditingController _controller = TextEditingController();
@@ -66,6 +70,8 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
 
   void sendMessage(String message, int sourceId, int targetId) {
     setMessage("source", message);
+    setMessage("dest", message);
+    gloveUser = false;
     // using eventname listen to socket server
     socket.emit("message",
         {"message": message, "sourceId": sourceId, "targetId": targetId});
@@ -111,7 +117,11 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
             actions: [
               IconButton(
                 icon: Icon(Icons.connect_without_contact_sharp),
-                onPressed: () {},
+                onPressed: () {
+                  getMessage();
+                  String msg = messagesList.toString();
+                  print(msg);
+                },
               ),
               Padding(
                 padding: const EdgeInsets.all(18.0),
@@ -181,15 +191,27 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                     shrinkWrap: true,
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
-                      if (messages[index].type == "source") {
-                        return OwnMessageCard(
-                          message: messages[index].message,
-                        );
-                      } else {
-                        return ReplyCard(
-                          message: messages[index].message,
-                        );
-                      }
+                      
+                        if (messages[index].type == "source") {
+                          gloveUser = true;
+                          return OwnMessageCard(
+                            message: messages[index].message,
+                          );
+                        } 
+                        else if(messages[index].type == "dest"){
+                          getMessage();
+                        String msg = messagesList.toString();
+                          return ReplyCard(
+                            message:  messagesList[0],
+                          );
+                        }
+                        else{
+                          return ReplyCard(
+                            message:  messages[index].message,
+                          );
+                        }
+                      
+
                       // return Container(
                       //   padding: EdgeInsets.only(
                       //       left: 14, right: 14, top: 10, bottom: 10),
@@ -641,6 +663,20 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     }
     _controller.clear();
   }
+
+  Future<void> getMessage() async {
+    var allmsgs = await CallApi.hardwareMessages();
+    var allmsgsList = ((jsonDecode)(allmsgs.body)["data"]);
+
+    for (var i = 0; i < allmsgsList.length; i++) {
+      var chats = allmsgsList[i]["msg"];
+      messagesList.add(chats);
+    }
+    print(messagesList);
+  }
+
+  
+
   // Future toggleRecording() => CallApi.toggleRecording(
   //     onResult: (text) => setState(() => this._text = text),
   //     onListening: (isListening) {
