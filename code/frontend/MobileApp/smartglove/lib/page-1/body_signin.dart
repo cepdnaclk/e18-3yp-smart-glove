@@ -104,11 +104,11 @@ class BodySignIn extends State {
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 validator: (value) {
-                  /* if (value == null || value.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Username is required';
                   }
-                  return null; */
-                  return validateUserName(value!);
+                  return null; 
+                  //return validateUserName(value!);
                 },
                 // decoration: const InputDecoration(
                 //   border: UnderlineInputBorder(),
@@ -169,11 +169,11 @@ class BodySignIn extends State {
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 validator: (value) {
-                  /* if (value == null || value.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Password is required';
                   }
-                  return null; */
-                  return validatePassword(value!);
+                  return null; 
+                  //return validatePassword(value!);
                 },
                 // decoration: const InputDecoration(
                 //   border: UnderlineInputBorder(),
@@ -231,6 +231,8 @@ class BodySignIn extends State {
                   if (!(_formKey.currentState!.validate())) {
                     return;
                   }
+                  print(userNameController.text);
+
                   var res =
                       signIN(userNameController.text, passwordController.text);
                 },
@@ -350,7 +352,7 @@ class BodySignIn extends State {
 
   Future<void> signIN(String userName, String password) async {
     List<ChatModel> Chatmodels = [];
-
+    print(userName);
     List gloveUsers = [];
     var res = await CallApi.login({
       'userName': userName,
@@ -358,6 +360,7 @@ class BodySignIn extends State {
     });
 
     var state = jsonDecode(res.body)["msg"];
+    //print(state);
     print(state);
     if (state == 'success') {
       var res_chats = await CallApi.loginUserChats({
