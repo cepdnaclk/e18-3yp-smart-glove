@@ -1,11 +1,15 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/CustomUI/OwnMessgaeCrad.dart';
 import 'package:myapp/CustomUI/ReplyCard.dart';
+import 'package:myapp/page-1/API.dart';
 import 'package:myapp/page-1/chatinterface.dart';
-
+import 'package:myapp/page-1/API.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 import '../models/ChatModel.dart';
 import '../utils.dart';
 
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class BodyChatInterface2 extends StatefulWidget {
@@ -18,16 +22,22 @@ class BodyChatInterface2 extends StatefulWidget {
 
 class _BodyChatInterface2State extends State<BodyChatInterface2> {
   late IO.Socket socket;
+  late stt.SpeechToText _speech;
+  String _text = 'Press the button and start speaking';
+  double _confidence = 1.0;
+  bool isListening = false;
+  
   @override
   void initState() {
     super.initState();
+    _speech = stt.SpeechToText();
     connect();
   }
 
   // each chat connect to server
   void connect() {
     // socket client will connect to this server
-    socket = IO.io("http://192.168.9.94:5002", <String, dynamic>{
+    socket = IO.io("http://192.168.9.45:5002", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
@@ -38,6 +48,10 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     // check whether can send msg from socket server
     socket.emit("/test", "Hello from client");
   }
+
+  //static final _speech = SpeechToText();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -149,9 +163,11 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                       OwnMessageCard(),
                       ReplyCard(),
                       OwnMessageCard(),
+                      
                     ],
                   ),
                 ),
+                Text(_text),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Row(
@@ -188,6 +204,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                 ),
                               ),
                             ),
+                            Text(_text),
                             Image.asset(
                               'assets/page-1/images/frame-sJJ.png',
                               width: 26.06,
@@ -196,12 +213,25 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                             CircleAvatar(
                               radius: 20,
                               // backgroundColor: Color(0xFF128C7E),
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.mic,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () {
+                              child: AvatarGlow(
+                                animate: true,
+                                endRadius: 150,
+                                glowColor: Color.fromARGB(255, 17, 18, 18),
+                                duration: const Duration(milliseconds: 2000),
+                                repeatPauseDuration:
+                                    const Duration(milliseconds: 100),
+                                repeat: true,
+                                child: FloatingActionButton(
+                                  // child: Icon(
+                                  //     isListening ? Icons.mic : Icons.mic_none,
+                                  //     size: 36),
+                                  // icon: const Icon(
+                                  //   Icons.mic,
+                                  //   color: Colors.white,
+                                  // ),
+                                  onPressed: _listen,
+                                  child: Icon(
+                                      isListening ? Icons.mic : Icons.mic_none),
                                   // if (sendButton) {
                                   //   _scrollController.animateTo(
                                   //       _scrollController
@@ -218,7 +248,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                   //     sendButton = false;
                                   //   });
                                   // }
-                                },
+                                ),
                               ),
                             ),
                             const SizedBox(width: 10),
@@ -360,5 +390,38 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   //     ),
   //   );
   // }
-
+  void _listen() async {
+    
+    if (!isListening) {
+      bool available = await _speech.initialize(
+        onStatus: (val) => print('onStatus: $val'),
+        onError: (val) => print('onError: $val'),
+      );
+      if (available) {
+        
+        setState(() => isListening = true);
+        
+        _speech.listen(
+          onResult: (val) => setState(() =>
+                  //_text = val.recognizedWords
+                  _text = val.recognizedWords
+              //setState(() => this._text = text)
+              // if (val.hasConfidenceRating && val.confidence > 0) {
+              //   _confidence = val.confidence;
+              // }
+              //}
+              ),
+        );
+        
+      }
+    } else {
+      setState(() => isListening = false);
+      _speech.stop();
+    }
+  }
+  // Future toggleRecording() => CallApi.toggleRecording(
+  //     onResult: (text) => setState(() => this._text = text),
+  //     onListening: (isListening) {
+  //       setState(() => this.isListening = isListening);
+  //     });
 }

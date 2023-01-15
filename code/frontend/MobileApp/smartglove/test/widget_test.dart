@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myapp/main.dart';
+import 'package:myapp/main3.dart';
 
 // ignore: depend_on_referenced_packages
 //import 'package:smartglove/main.dart';
