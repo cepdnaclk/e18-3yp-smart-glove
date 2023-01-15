@@ -45,7 +45,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   // each chat connect to server
   void connect() {
     // socket client will connect to this server
-    socket = IO.io("http://192.168.9.45:5002", <String, dynamic>{
+    socket = IO.io("http://192.168.150.94:5002", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
@@ -393,13 +393,11 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                                     _controller.clear();
                                     setState(() {
                                       sendButton = true;
-                                    
+
                                       isListening = false;
                                       _speech.stop();
-                                        _controller.clear();
-                                    }
-                                    
-                                    );
+                                      _controller.clear();
+                                    });
                                     _controller.clear();
                                   }
                                 },
@@ -614,7 +612,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   //   );
   // }
   void _listen() async {
-   _controller.clear();
+    _controller.clear();
     if (!isListening) {
       bool available = await _speech.initialize(
         onStatus: (val) => print('onStatus: $val'),
@@ -639,7 +637,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     } else {
       setState(() => isListening = false);
       _speech.stop();
-       _controller.clear();
+      _controller.clear();
     }
     _controller.clear();
   }

@@ -15,6 +15,8 @@ import 'package:myapp/page-1/chatinterface2.dart';
 import 'package:http/http.dart' as http;
 import 'package:myapp/page-1/chatDflt.dart';
 
+import '../models/ChatModel.dart';
+
 class BodySignIn extends State {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final userNameController = TextEditingController();
@@ -290,8 +292,8 @@ class BodySignIn extends State {
                 //   size: 24.0,
                 // ),
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => Register()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Register()));
                 },
               ),
               // Positioned(
@@ -346,21 +348,60 @@ class BodySignIn extends State {
   }
 
   Future<void> signIN(String userName, String password) async {
+    List<ChatModel> Chatmodels = [];
+
+    List gloveUsers = [];
     var res = await CallApi.login({
       'userName': userName,
       'password': password,
     });
+
     var state = jsonDecode(res.body)["msg"];
+    print(state);
     if (state == 'success') {
-      var res_chats = await CallApi.login({
+      var res_chats = await CallApi.loginUserChats({
         'normalUsername': userName,
       });
-      print(res_chats.toString());
+      var chatDetails = ((jsonDecode)(res_chats.body)["data"]);
+
+      for (var i = 0; i < chatDetails.length; i++) {
+        var chats = chatDetails[i]["gloveUsername"];
+        gloveUsers.add(chats);
+      }
+      print(gloveUsers);
+      for (var i = 0; i < gloveUsers.length; i++) {
+        ChatModel temp = ChatModel(
+            name: gloveUsers[i],
+            icon: "person.svg",
+            isGroup: false,
+            time: "13.23",
+            currentMessage: "row data",
+            status: "no",
+            select: false,
+            id: 1);
+
+        Chatmodels.add(temp);
+      }
+      ChatModel sourceChat = ChatModel(
+          name: userName,
+          icon: "person.svg",
+          isGroup: false,
+          time: "13.23",
+          currentMessage: "row data",
+          status: "no",
+          select: false,
+          id: 1);
 
       //return state;
       // ignore: use_build_context_synchronously
-      // Navigator.push(context,
-      //     MaterialPageRoute(builder: (context) => ChatDefault(text: userName)));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ChatDefault(
+                  text: userName,
+                  gloveUsers: gloveUsers,
+                  chatModels: Chatmodels,
+                  sourceChat: sourceChat)));
     } else {
       Widget okButton = TextButton(
         child: Text("OK"),
@@ -404,7 +445,7 @@ class BodySignIn extends State {
 //     Key key,
 //     @required this.child,
 //   ) : super(key:key);
-  
+
 //   @override
 //   Widget build(BuildContext context) {
 //     Size size = MediaQuery.of(context).size;
@@ -433,7 +474,7 @@ class BodySignIn extends State {
 //           child,
 //         ],
 //       ),
-      
+
 //     );
 //   }
 // }
