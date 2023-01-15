@@ -3,6 +3,8 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/models/ChatModel.dart';
+import 'package:myapp/page-1/LoginScreen.dart';
 import 'package:myapp/page-1/chatinterface.dart';
 import 'package:myapp/page-1/newchat.dart';
 import 'package:myapp/page-1/signin2.dart';
@@ -16,7 +18,14 @@ import 'body_chat_List_d.dart';
 
 class BodyChatDefault extends StatelessWidget {
   final String text;
-  BodyChatDefault({Key? key, required this.text}) : super(key: key);
+  final List<ChatModel> chatmodels;
+  final ChatModel sourceChat;
+  BodyChatDefault(
+      {Key? key,
+      required this.text,
+      required this.chatmodels,
+      required this.sourceChat})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -64,6 +73,8 @@ class BodyChatDefault extends StatelessWidget {
             height: 20, // <-- SEE HERE
           ),
 
+// COMMENTED FOR TEMPORY TO MAKE REAL TIME CHAT WORK=============================
+
           FloatingActionButton.extended(
             heroTag: "btn1",
             label: Text(
@@ -84,8 +95,13 @@ class BodyChatDefault extends StatelessWidget {
             //   size: 24.0,
             // ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => bodyChatPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => bodyChatPage(
+                            chatmodels: chatmodels,
+                            sourceChat: sourceChat,
+                          )));
             },
           ),
 
@@ -93,30 +109,31 @@ class BodyChatDefault extends StatelessWidget {
             height: 100, // <-- SEE HERE
           ),
 
-          FloatingActionButton.extended(
-            heroTag: "btn1",
-            label: Text(
-              'Start New Chat',
-              style: SafeGoogleFont(
-                'Inter',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                height: 1.2125,
-                color: const Color(0xff0b0c0c),
-              ),
-            ), // <-- Text
-            backgroundColor: const Color(0xff52c9c2),
-            //color: const Color(0xff52c9c2),
+// COMMENTED FOR TEMPORY TO MAKE REAL TIME CHAT WORK=============================
+          // FloatingActionButton.extended(
+          //   heroTag: "btn1",
+          //   label: Text(
+          //     'Start New Chat',
+          //     style: SafeGoogleFont(
+          //       'Inter',
+          //       fontSize: 18,
+          //       fontWeight: FontWeight.w700,
+          //       height: 1.2125,
+          //       color: const Color(0xff0b0c0c),
+          //     ),
+          //   ), // <-- Text
+          //   backgroundColor: const Color(0xff52c9c2),
+          //   //color: const Color(0xff52c9c2),
 
-            // icon: Icon( // <-- Icon
-            //   Icons.download,
-            //   size: 24.0,
-            // ),
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => newchat()));
-            },
-          ),
+          //   // icon: Icon( // <-- Icon
+          //   //   Icons.download,
+          //   //   size: 24.0,
+          //   // ),
+          //   onPressed: () {
+          //     Navigator.push(
+          //         context, MaterialPageRoute(builder: (context) => newchat()));
+          //   },
+          // ),
 
           // Align(
           //   alignment: Alignment.bottomRight,
