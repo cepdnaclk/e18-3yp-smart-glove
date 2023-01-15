@@ -45,7 +45,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   // each chat connect to server
   void connect() {
     // socket client will connect to this server
-    socket = IO.io("http://192.168.9.94:5002", <String, dynamic>{
+    socket = IO.io("http://192.168.150.94:5002", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });

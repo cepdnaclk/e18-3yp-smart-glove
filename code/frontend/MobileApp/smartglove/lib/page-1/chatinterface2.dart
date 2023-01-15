@@ -15,7 +15,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return BodyChatInterface2(
-//       chatModel: chatModel,
+//       // chatModel: chatModel,
 //     );
 //   }
 // }
