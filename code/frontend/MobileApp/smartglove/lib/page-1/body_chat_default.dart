@@ -20,12 +20,15 @@ class BodyChatDefault extends StatelessWidget {
   final String text;
   final List<ChatModel> chatmodels;
   final ChatModel sourceChat;
+  final List gloveUsers;
   BodyChatDefault(
       {Key? key,
       required this.text,
+      required this.gloveUsers,
       required this.chatmodels,
       required this.sourceChat})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -73,8 +76,6 @@ class BodyChatDefault extends StatelessWidget {
             height: 20, // <-- SEE HERE
           ),
 
-// COMMENTED FOR TEMPORY TO MAKE REAL TIME CHAT WORK=============================
-
           FloatingActionButton.extended(
             heroTag: "btn1",
             label: Text(
@@ -106,56 +107,62 @@ class BodyChatDefault extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: 100, // <-- SEE HERE
+            height: 50,
           ),
 
-// COMMENTED FOR TEMPORY TO MAKE REAL TIME CHAT WORK=============================
-          // FloatingActionButton.extended(
-          //   heroTag: "btn1",
-          //   label: Text(
-          //     'Start New Chat',
-          //     style: SafeGoogleFont(
-          //       'Inter',
-          //       fontSize: 18,
-          //       fontWeight: FontWeight.w700,
-          //       height: 1.2125,
-          //       color: const Color(0xff0b0c0c),
-          //     ),
-          //   ), // <-- Text
-          //   backgroundColor: const Color(0xff52c9c2),
-          //   //color: const Color(0xff52c9c2),
+          FloatingActionButton.extended(
+            heroTag: "btn2",
+            label: Text(
+              'Start New Chat Here =>',
+              style: SafeGoogleFont(
+                'Inter',
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                height: 1.2125,
+                color: const Color(0xff0b0c0c),
+              ),
+            ), // <-- Text
+            backgroundColor: const Color(0xff52c9c2),
+            //color: const Color(0xff52c9c2),
 
-          //   // icon: Icon( // <-- Icon
-          //   //   Icons.download,
-          //   //   size: 24.0,
-          //   // ),
-          //   onPressed: () {
-          //     Navigator.push(
-          //         context, MaterialPageRoute(builder: (context) => newchat()));
-          //   },
-          // ),
+            // icon: Icon( // <-- Icon
+            //   Icons.download,
+            //   size: 24.0,
+            // ),
+            onPressed: () {
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => newchat()));
+            },
+          ),
 
-          // Align(
-          //   alignment: Alignment.bottomRight,
-          //   child: FloatingActionButton.extended(
-          //     heroTag: "btn3",
-          //     label: Image.asset(
-          //       'assets/page-1/images/addChat.png',
-          //       width: 50,
-          //     ),
-          //     backgroundColor: const Color(0xff52c9c2),
-          //     //color: const Color(0xff52c9c2),
+          const SizedBox(
+            height: 20,
+          ),
+          Align(
+            // alignment: Alignment.bottomRight,
+            child: FloatingActionButton.extended(
+              heroTag: "btn3",
+              label: Image.asset(
+                'assets/page-1/images/addChat.png',
+                width: 50,
+              ),
+              backgroundColor: const Color(0xff52c9c2),
+              //color: const Color(0xff52c9c2),
 
-          //     // icon: Icon( // <-- Icon
-          //     //   Icons.download,
-          //     //   size: 24.0,
-          //     // ),
-          //     onPressed: () {
-          //       Navigator.push(context,
-          //           MaterialPageRoute(builder: (context) => newchat()));
-          //     },
-          //   ),
-          // ),
+              // icon: Icon( // <-- Icon
+              //   Icons.download,
+              //   size: 24.0,
+              // ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => newchat(
+                              text: text,
+                            )));
+              },
+            ),
+          ),
 
           // Positioned(
           //           // getstarted9oY (67:32)

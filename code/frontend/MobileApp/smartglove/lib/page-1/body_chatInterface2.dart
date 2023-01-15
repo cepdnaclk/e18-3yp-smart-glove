@@ -73,7 +73,7 @@
 //                     Expanded(
 //                       child: ListView(
 //                         children: [
-//                           OwnMessageCard(),
+//                           // OwnMessageCard(),
 //                         ],
 //                       ),
 //                     )
