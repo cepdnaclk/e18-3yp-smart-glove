@@ -8,8 +8,8 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 const connectDB = require('./config/db')
 const port = process.env.PORT || 5000
 const os = require('os');
-const appip = os.networkInterfaces()['Wi-Fi'][0].address;
-const appAddress = 'http://['+appip+']:'+port+'/';
+//const appip = os.networkInterfaces()['Wi-Fi'][0].address;
+//const appAddress = 'http://['+appip+']:'+port+'/';
 var fs = require('fs');
 var path = require('path');
 require('dotenv/config');

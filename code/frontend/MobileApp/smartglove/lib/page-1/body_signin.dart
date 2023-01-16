@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
-//import 'dart:html';
 import 'dart:convert';
-import 'dart:html';
+
 
 import 'package:myapp/page-1/API.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +107,8 @@ class BodySignIn extends State {
                   if (value == null || value.isEmpty) {
                     return 'Username is required';
                   }
-                  return null;
+                  return null; 
+                  //return validateUserName(value!);
                 },
                 // decoration: const InputDecoration(
                 //   border: UnderlineInputBorder(),
@@ -172,7 +172,8 @@ class BodySignIn extends State {
                   if (value == null || value.isEmpty) {
                     return 'Password is required';
                   }
-                  return null;
+                  return null; 
+                  //return validatePassword(value!);
                 },
                 // decoration: const InputDecoration(
                 //   border: UnderlineInputBorder(),
@@ -230,6 +231,8 @@ class BodySignIn extends State {
                   if (!(_formKey.currentState!.validate())) {
                     return;
                   }
+                  print(userNameController.text);
+
                   var res =
                       signIN(userNameController.text, passwordController.text);
                 },
@@ -349,7 +352,7 @@ class BodySignIn extends State {
 
   Future<void> signIN(String userName, String password) async {
     List<ChatModel> Chatmodels = [];
-
+    print(userName);
     List gloveUsers = [];
     var res = await CallApi.login({
       'userName': userName,
@@ -357,6 +360,7 @@ class BodySignIn extends State {
     });
 
     var state = jsonDecode(res.body)["msg"];
+    //print(state);
     print(state);
     if (state == 'success') {
       var res_chats = await CallApi.loginUserChats({
@@ -430,6 +434,22 @@ class BodySignIn extends State {
     }
 
     return state;
+  }
+ 
+  String validatePassword(String val) {
+    if (val == "" || val.isEmpty) {
+      return 'Password is required';
+    }
+    
+    return "";
+  }
+
+  String validateUserName(String val) {
+    if (val == "" || val.isEmpty) {
+      return 'UserName is required';
+    }
+    
+    return "";
   }
 
   void _clearAll() {
