@@ -154,7 +154,7 @@ const normalUser = asyncHandler(async (req, res) => {
 const messages = asyncHandler(async (req, res) => {
   
   var read = false;
-  const user = await hardware_msg.find()
+  const user = await hardware_msg.find({read: false})
   
   if (user) {
     res.json({
@@ -238,7 +238,31 @@ const generateToken = (id) => {
         expiresIn: '30d',
     })
 }
+//hardware_msg
+const unread_msgs = asyncHandler(async (req, res) => {
+  const { connectedUser } = req.body
+  
+  
+  // Create user
+  const user = await hardware_msg.updateMany(
+    {read: false},
+    {$set : {connectedUser: connectedUser,read: true}},
+    
+  )
 
+  if (user) {
+    res.status(201).json({
+     
+      msg: "success",
+     
+      
+    })
+  } else {
+    res.status(400)
+    throw new Error('Invalid user data')
+  }
+  
+})
 const glove_setbusy = asyncHandler(async (req, res) => {
   const { modelNumber } = req.body
   
@@ -321,6 +345,7 @@ module.exports = {
   glove_setbusy,
   glove_removebusy,
   glove,
+  unread_msgs,
 }
 
 /* const asyncHandler = require('express-async-handler')

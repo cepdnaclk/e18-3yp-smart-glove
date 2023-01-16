@@ -38,5 +38,5 @@ const userSchema_hardware = mongoose.Schema(
 //   }
 // )
 
-module.exports = mongoose.model('COLLECTION3', userSchema_hardware)
+module.exports = mongoose.model('collection3', userSchema_hardware)
 // module.exports = mongoose.model('ChatUsers', userSchema_chat)

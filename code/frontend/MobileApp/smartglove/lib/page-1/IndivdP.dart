@@ -73,9 +73,10 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
 
   Future<void> sendMessage(String message, int sourceId, int targetId) async {
     setMessage("source", message);
-    if (Disconnected == 'Connected') {
-      await getMessage();
-      setMessage("dest", message);
+    await getMessage();
+    if (Disconnected == 'Connected' && allmessages!="") {
+      //await getMessage();
+      setMessage("dest", allmessages);
     }
 
     gloveUser = false;
@@ -203,13 +204,15 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                         return OwnMessageCard(
                           message: messages[index].message,
                         );
-                      } else if (Disconnected == 'Connected') {
+                      } else if (Disconnected == 'Connected' && messages[index].type == "dest") {
                         print("mokkd oi wela tiyenne");
-                       
+
                         //var msg = messagesList.join(' ');
                         print(allmessages);
+                        
                         return ReplyCard(
-                          message: allmessages,
+                          //message: msg_,
+                          message: messages[index].message
                         );
                       } else {
                         return ReplyCard(
@@ -671,14 +674,19 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
 
   Future<void> getMessage() async {
     var allmsgs = await CallApi.hardwareMessages();
-    var allmsgsList = ((jsonDecode)(allmsgs.body)["data"]);
+    List allmsgsList = ((jsonDecode)(allmsgs.body)["data"]);
 
     for (var i = 0; i < allmsgsList.length; i++) {
       var chats = allmsgsList[i]["msg"];
       messagesList.add(chats);
     }
+    allmessages = "";
+
     allmessages = messagesList.join(' ');
+    messagesList = [];
     print(allmessages);
+    var update =
+        await CallApi.setRead({'connectedUser': widget.sourceChat.name});
   }
 
   Future<void> updateBusy() async {
