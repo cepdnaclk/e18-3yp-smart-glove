@@ -29,6 +29,7 @@ class BodyChatInterface2 extends StatefulWidget {
 class _BodyChatInterface2State extends State<BodyChatInterface2> {
   bool sendButton = false;
   bool gloveUser = true;
+  bool busy_glove = false;
   List<String> messagesList = [];
   // send/recieve msgs add to list
   List<MessageModel> messages = [];
@@ -118,7 +119,36 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
               IconButton(
                 icon: Icon(Icons.connect_without_contact_sharp),
                 onPressed: () {
-                  updateBusy();
+                  getBusy( widget.chatModel.modelNumber);
+                  if (!busy_glove) {
+                    updateBusy();
+                  } else {
+                    Widget okButton = TextButton(
+                      child: Text("OK"),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    );
+
+                    // set up the AlertDialog
+                    AlertDialog alert = AlertDialog(
+                      title: Text("Glove User is busy now!"),
+                      content: Text("Please Try Again Later!"),
+                      actions: [
+                        okButton,
+                      ],
+                    );
+
+                    // show the dialog
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return alert;
+                      },
+                    );
+                  }
+
+                  //updateBusy();
                 },
               ),
               Padding(
@@ -668,13 +698,22 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     }
     print(messagesList);
   }
-  
-  void updateBusy() {
-    
 
+  Future<void> updateBusy() async {
+    String model = widget.chatModel.modelNumber;
+    var update = await CallApi.updateBusy({'modelNumber': model});
 
+    print((jsonDecode)(update.body)["msg"]);
+  }
 
-
+  Future<void> getBusy(String model) async {
+   
+   
+    print(model);
+    var update = await CallApi.getBusy({'modelNumber': model});
+    print(((jsonDecode)(update.body)["msg"]));
+    busy_glove = (((jsonDecode)(update.body)["data"]));
+    //return busy;
   }
 
   // Future toggleRecording() => CallApi.toggleRecording(
