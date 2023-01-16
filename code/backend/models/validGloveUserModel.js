@@ -27,8 +27,8 @@ const userSchema_chat2 = mongoose.Schema(
       required: [true, 'Please add a model number'],
       
     },
-    name: {
-      type: String,
+    busy: {
+      type: Boolean,
       required: [true, 'Please add a name'],
       unique: true,
     },

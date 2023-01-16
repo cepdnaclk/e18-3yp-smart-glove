@@ -116,6 +116,57 @@ class CallApi {
     return isAvailable;
   }
 
+  
+ static Future<http.Response> updateBusy(data) {
+    return http.put(
+      Uri.parse('http://localhost:5000/api/users/setGloveBusy'),
+      headers: <String, String>{
+        'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+        "Access-Control-Allow-Credentials": true
+            .toString(), // Required for cookies, authorization headers with HTTPS
+        "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Methods": "GET,PUT,PATCH,POST,DELETE",
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode(data),
+    );
+  }
+  static Future<http.Response> setRead(data) {
+    return http.put(
+      Uri.parse('http://localhost:5000/api/users/setRead'),
+      headers: <String, String>{
+        'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+        "Access-Control-Allow-Credentials": true
+            .toString(), // Required for cookies, authorization headers with HTTPS
+        "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Methods": "GET,PUT,PATCH,POST,DELETE",
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode(data),
+    );
+  }
+  static Future<http.Response> getBusy(data) {
+    return http.post(
+      Uri.parse('http://localhost:5000/api/users/getGloveBusy'),
+      headers: <String, String>{
+        'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+        "Access-Control-Allow-Credentials": true
+            .toString(), // Required for cookies, authorization headers with HTTPS
+        "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Methods": "GET,PUT,PATCH,POST,DELETE",
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode(data),
+    );
+  }
+
+
   // static var client = http.Client();
   // static Future<bool> register(data) async {
   //   Map<String, String> requestHeaders = {

@@ -354,6 +354,7 @@ class BodySignIn extends State {
     List<ChatModel> Chatmodels = [];
     print(userName);
     List gloveUsers = [];
+    List modelNumbers = [];
     var res = await CallApi.login({
       'userName': userName,
       'password': password,
@@ -370,7 +371,9 @@ class BodySignIn extends State {
 
       for (var i = 0; i < chatDetails.length; i++) {
         var chats = chatDetails[i]["gloveUsername"];
+        var modelNumber = chatDetails[i]["modelNumber"];
         gloveUsers.add(chats);
+        modelNumbers.add(modelNumber);
       }
       print(gloveUsers);
       for (var i = 0; i < gloveUsers.length; i++) {
@@ -382,7 +385,8 @@ class BodySignIn extends State {
             currentMessage: "row data",
             status: "no",
             select: false,
-            id: i+2);
+            id: i+2,
+            modelNumber:modelNumbers[i]);
 
         Chatmodels.add(temp);
       }
@@ -394,7 +398,8 @@ class BodySignIn extends State {
           currentMessage: "row data",
           status: "no",
           select: false,
-          id: 1);
+          id: 1,
+          modelNumber:" ");
 
       //return state;
       // ignore: use_build_context_synchronously
