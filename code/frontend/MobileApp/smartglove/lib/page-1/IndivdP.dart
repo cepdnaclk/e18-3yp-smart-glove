@@ -118,9 +118,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
               IconButton(
                 icon: Icon(Icons.connect_without_contact_sharp),
                 onPressed: () {
-                  getMessage();
-                  String msg = messagesList.toString();
-                  print(msg);
+                  updateBusy();
                 },
               ),
               Padding(
@@ -191,26 +189,22 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                     shrinkWrap: true,
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
-                      
-                        if (messages[index].type == "source") {
-                          gloveUser = true;
-                          return OwnMessageCard(
-                            message: messages[index].message,
-                          );
-                        } 
-                        else if(messages[index].type == "dest"){
-                          getMessage();
+                      if (messages[index].type == "source") {
+                        gloveUser = true;
+                        return OwnMessageCard(
+                          message: messages[index].message,
+                        );
+                      } else if (messages[index].type == "dest") {
+                        getMessage();
                         String msg = messagesList.toString();
-                          return ReplyCard(
-                            message:  messagesList[0],
-                          );
-                        }
-                        else{
-                          return ReplyCard(
-                            message:  messages[index].message,
-                          );
-                        }
-                      
+                        return ReplyCard(
+                          message: messagesList[0],
+                        );
+                      } else {
+                        return ReplyCard(
+                          message: messages[index].message,
+                        );
+                      }
 
                       // return Container(
                       //   padding: EdgeInsets.only(
@@ -674,8 +668,14 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     }
     print(messagesList);
   }
-
   
+  void updateBusy() {
+    
+
+
+
+
+  }
 
   // Future toggleRecording() => CallApi.toggleRecording(
   //     onResult: (text) => setState(() => this._text = text),

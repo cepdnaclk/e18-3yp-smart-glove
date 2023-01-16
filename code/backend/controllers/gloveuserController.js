@@ -239,6 +239,77 @@ const generateToken = (id) => {
     })
 }
 
+const glove_setbusy = asyncHandler(async (req, res) => {
+  const { modelNumber } = req.body
+  
+  
+  // Create user
+  const user = await valid_gloveUser.updateOne(
+    {modelNumber: modelNumber},
+    {$set : {busy: true}}
+  )
+
+  if (user) {
+    res.status(201).json({
+     
+      msg: "success",
+     
+      
+    })
+  } else {
+    res.status(400)
+    throw new Error('Invalid user data')
+  }
+  
+})
+const glove_removebusy = asyncHandler(async (req, res) => {
+  const { modelNumber } = req.body
+ 
+  
+  // Create user
+  const user = await valid_gloveUser.updateOne(
+    {modelNumber: modelNumber},
+    {$set : {busy: false}}
+  )
+
+  if (user) {
+    res.status(201).json({
+     
+      msg: "success",
+     
+      
+    })
+  } else {
+    res.status(400)
+    throw new Error('Invalid user data')
+  }
+  
+})
+const glove = asyncHandler(async (req, res) => {
+  const { modelNumber } = req.body
+ 
+  
+  // Create user
+  const user = await valid_gloveUser.findOne(
+    {modelNumber}
+  )
+
+  if (user) {
+    res.status(201).json({
+     
+      msg: "success",
+      data: user['busy'],
+     
+      
+    })
+  } else {
+    res.status(400)
+    throw new Error('Invalid user data')
+  }
+  
+})
+
+
 module.exports = {
  // registerUser,
  // loginUser,
@@ -247,6 +318,9 @@ module.exports = {
   valid_glove_User,
   normalUser,
   messages,
+  glove_setbusy,
+  glove_removebusy,
+  glove,
 }
 
 /* const asyncHandler = require('express-async-handler')

@@ -16,6 +16,9 @@ const {
     valid_glove_User,
     normalUser,
     messages,
+    glove_setbusy,
+    glove_removebusy,
+    glove,
   } = require('../controllers/gloveuserController')
 
   const {
@@ -37,6 +40,9 @@ router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/allUsers', regUsers)
 router.get('/hardwareMessages', messages)
+router.post('/getGloveBusy', glove)
+router.put('/setGloveBusy', glove_setbusy)
+router.put('/removeGloveBusy', glove_removebusy)
 router.get('/me', protect, getMe)
 router.post('/getChats', normalUser)
 router.post('/getImage', image)
