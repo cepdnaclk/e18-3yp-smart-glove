@@ -30,7 +30,9 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   bool sendButton = false;
   bool gloveUser = true;
   bool busy_glove = false;
+  String Disconnected = 'Disconnected';
   List<String> messagesList = [];
+  var allmessages = '';
   // send/recieve msgs add to list
   List<MessageModel> messages = [];
   TextEditingController _controller = TextEditingController();
@@ -69,9 +71,13 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     // check whether can send msg from socket server
   }
 
-  void sendMessage(String message, int sourceId, int targetId) {
+  Future<void> sendMessage(String message, int sourceId, int targetId) async {
     setMessage("source", message);
-    setMessage("dest", message);
+    if (Disconnected == 'Connected') {
+      await getMessage();
+      setMessage("dest", message);
+    }
+
     gloveUser = false;
     // using eventname listen to socket server
     socket.emit("message",
@@ -119,34 +125,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
               IconButton(
                 icon: Icon(Icons.connect_without_contact_sharp),
                 onPressed: () {
-                  getBusy( widget.chatModel.modelNumber);
-                  if (!busy_glove) {
-                    updateBusy();
-                  } else {
-                    Widget okButton = TextButton(
-                      child: Text("OK"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    );
-
-                    // set up the AlertDialog
-                    AlertDialog alert = AlertDialog(
-                      title: Text("Glove User is busy now!"),
-                      content: Text("Please Try Again Later!"),
-                      actions: [
-                        okButton,
-                      ],
-                    );
-
-                    // show the dialog
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return alert;
-                      },
-                    );
-                  }
+                  getBusy(widget.chatModel.modelNumber);
 
                   //updateBusy();
                 },
@@ -155,7 +134,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                 padding: const EdgeInsets.all(18.0),
                 child: Text(
                   // disconnectedoaS (190:168)
-                  'Disconnected',
+                  Disconnected,
                   style: SafeGoogleFont(
                     'Abril Fatface',
                     fontSize: 16,
@@ -224,11 +203,13 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                         return OwnMessageCard(
                           message: messages[index].message,
                         );
-                      } else if (messages[index].type == "dest") {
-                        getMessage();
-                        String msg = messagesList.toString();
+                      } else if (Disconnected == 'Connected') {
+                        print("mokkd oi wela tiyenne");
+                       
+                        //var msg = messagesList.join(' ');
+                        print(allmessages);
                         return ReplyCard(
-                          message: messagesList[0],
+                          message: allmessages,
                         );
                       } else {
                         return ReplyCard(
@@ -696,7 +677,8 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
       var chats = allmsgsList[i]["msg"];
       messagesList.add(chats);
     }
-    print(messagesList);
+    allmessages = messagesList.join(' ');
+    print(allmessages);
   }
 
   Future<void> updateBusy() async {
@@ -707,12 +689,40 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   }
 
   Future<void> getBusy(String model) async {
-   
-   
     print(model);
     var update = await CallApi.getBusy({'modelNumber': model});
     print(((jsonDecode)(update.body)["msg"]));
-    busy_glove = (((jsonDecode)(update.body)["data"]));
+    var busy_glove1 = (((jsonDecode)(update.body)["data"]));
+    if (!busy_glove1) {
+      updateBusy();
+      setState(() {
+        Disconnected = 'Connected';
+      });
+    } else {
+      Widget okButton = TextButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      );
+
+      // set up the AlertDialog
+      AlertDialog alert = AlertDialog(
+        title: Text("Glove User is busy now!"),
+        content: Text("Please Try Again Later!"),
+        actions: [
+          okButton,
+        ],
+      );
+
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
     //return busy;
   }
 
