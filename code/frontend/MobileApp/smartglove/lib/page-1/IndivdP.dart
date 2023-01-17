@@ -49,7 +49,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   // each chat connect to server
   void connect() {
     // socket client will connect to this server
-    socket = IO.io("http://192.168.150.94:5002", <String, dynamic>{
+    socket = IO.io("http://169.254.185.99:5002", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
@@ -191,26 +191,22 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                     shrinkWrap: true,
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
-                      
-                        if (messages[index].type == "source") {
-                          gloveUser = true;
-                          return OwnMessageCard(
-                            message: messages[index].message,
-                          );
-                        } 
-                        else if(messages[index].type == "dest"){
-                          getMessage();
+                      if (messages[index].type == "source") {
+                        gloveUser = true;
+                        return OwnMessageCard(
+                          message: messages[index].message,
+                        );
+                      } else if (messages[index].type == "dest") {
+                        getMessage();
                         String msg = messagesList.toString();
-                          return ReplyCard(
-                            message:  messagesList[0],
-                          );
-                        }
-                        else{
-                          return ReplyCard(
-                            message:  messages[index].message,
-                          );
-                        }
-                      
+                        return ReplyCard(
+                          message: messagesList[0],
+                        );
+                      } else {
+                        return ReplyCard(
+                          message: messages[index].message,
+                        );
+                      }
 
                       // return Container(
                       //   padding: EdgeInsets.only(
@@ -674,8 +670,6 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     }
     print(messagesList);
   }
-
-  
 
   // Future toggleRecording() => CallApi.toggleRecording(
   //     onResult: (text) => setState(() => this._text = text),
