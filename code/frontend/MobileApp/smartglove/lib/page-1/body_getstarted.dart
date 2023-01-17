@@ -15,9 +15,9 @@ import '../models/ChatModel.dart';
 class BodyGetStarted extends StatelessWidget {
   const BodyGetStarted({
     super.key,
-    required this.chatModel,
+   
   });
-  final List<ChatModel> chatModel;
+  
 
   @override
   Widget build(BuildContext context) {

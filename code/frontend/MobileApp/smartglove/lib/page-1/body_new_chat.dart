@@ -274,7 +274,8 @@ class BodyNewChat extends State {
           currentMessage: "row data",
           status: "no",
           select: false,
-          id: 1);
+          id: 1,
+          modelNumber:" " );
 
       ChatModel chatModel = ChatModel(
           name: name,
@@ -284,7 +285,8 @@ class BodyNewChat extends State {
           currentMessage: "row data",
           status: "no",
           select: false,
-          id: 1);
+          id: 1,
+          modelNumber:modelNumber);
       Navigator.push(
           context,
           MaterialPageRoute(

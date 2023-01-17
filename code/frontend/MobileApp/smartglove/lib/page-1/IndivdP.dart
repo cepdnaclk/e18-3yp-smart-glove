@@ -29,7 +29,10 @@ class BodyChatInterface2 extends StatefulWidget {
 class _BodyChatInterface2State extends State<BodyChatInterface2> {
   bool sendButton = false;
   bool gloveUser = true;
+  bool busy_glove = false;
+  String Disconnected = 'Disconnected';
   List<String> messagesList = [];
+  var allmessages = '';
   // send/recieve msgs add to list
   List<MessageModel> messages = [];
   TextEditingController _controller = TextEditingController();
@@ -68,9 +71,14 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
     // check whether can send msg from socket server
   }
 
-  void sendMessage(String message, int sourceId, int targetId) {
+  Future<void> sendMessage(String message, int sourceId, int targetId) async {
     setMessage("source", message);
-    setMessage("dest", message);
+    await getMessage();
+    if (Disconnected == 'Connected' && allmessages != "") {
+      //await getMessage();
+      setMessage("dest", allmessages);
+    }
+
     gloveUser = false;
     // using eventname listen to socket server
     socket.emit("message",
@@ -118,16 +126,16 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
               IconButton(
                 icon: Icon(Icons.connect_without_contact_sharp),
                 onPressed: () {
-                  getMessage();
-                  String msg = messagesList.toString();
-                  print(msg);
+                  getBusy(widget.chatModel.modelNumber);
+
+                  //updateBusy();
                 },
               ),
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Text(
                   // disconnectedoaS (190:168)
-                  'Disconnected',
+                  Disconnected,
                   style: SafeGoogleFont(
                     'Abril Fatface',
                     fontSize: 16,
@@ -196,12 +204,16 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                         return OwnMessageCard(
                           message: messages[index].message,
                         );
-                      } else if (messages[index].type == "dest") {
-                        getMessage();
-                        String msg = messagesList.toString();
+                      } else if (Disconnected == 'Connected' &&
+                          messages[index].type == "dest") {
+                        print("mokkd oi wela tiyenne");
+
+                        //var msg = messagesList.join(' ');
+                        print(allmessages);
+
                         return ReplyCard(
-                          message: messagesList[0],
-                        );
+                            //message: msg_,
+                            message: messages[index].message);
                       } else {
                         return ReplyCard(
                           message: messages[index].message,
@@ -662,13 +674,64 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
 
   Future<void> getMessage() async {
     var allmsgs = await CallApi.hardwareMessages();
-    var allmsgsList = ((jsonDecode)(allmsgs.body)["data"]);
+    List allmsgsList = ((jsonDecode)(allmsgs.body)["data"]);
 
     for (var i = 0; i < allmsgsList.length; i++) {
       var chats = allmsgsList[i]["msg"];
       messagesList.add(chats);
     }
-    print(messagesList);
+    allmessages = "";
+
+    allmessages = messagesList.join(' ');
+    messagesList = [];
+    print(allmessages);
+    var update =
+        await CallApi.setRead({'connectedUser': widget.sourceChat.name});
+  }
+
+  Future<void> updateBusy() async {
+    String model = widget.chatModel.modelNumber;
+    var update = await CallApi.updateBusy({'modelNumber': model});
+
+    print((jsonDecode)(update.body)["msg"]);
+  }
+
+  Future<void> getBusy(String model) async {
+    print(model);
+    var update = await CallApi.getBusy({'modelNumber': model});
+    print(((jsonDecode)(update.body)["msg"]));
+    var busy_glove1 = (((jsonDecode)(update.body)["data"]));
+    if (!busy_glove1) {
+      updateBusy();
+      setState(() {
+        Disconnected = 'Connected';
+      });
+    } else {
+      Widget okButton = TextButton(
+        child: Text("OK"),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      );
+
+      // set up the AlertDialog
+      AlertDialog alert = AlertDialog(
+        title: Text("Glove User is busy now!"),
+        content: Text("Please Try Again Later!"),
+        actions: [
+          okButton,
+        ],
+      );
+
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+    //return busy;
   }
 
   // Future toggleRecording() => CallApi.toggleRecording(
