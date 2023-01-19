@@ -74,6 +74,10 @@ Mobile app
   - Communicate between any of Glove users, Communicative users
   - Provide long distance communication
 
+### System Design
+<p align="center">
+<img src="./images/ProposedSystem.png" width="600" height="300"></p>
+
 
 ### Data flow and Storage
 
