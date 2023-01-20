@@ -104,7 +104,13 @@ This is the overall circuit diagram for the device. It has Node MCU microcontoll
 <img src="https://user-images.githubusercontent.com/73567971/204488129-b9f57153-b902-4368-bc1f-f13935ae5482.png" width="600" height="300"></p>
 
 
-### UI Designs and Control Flow
+### Features of the design
+- Can act as both mobile & web applications
+- Chat with glove user using an unique model number
+- Communicate using voice/ text as prefer
+- Keep the privacy of chats using reconnect method
+- Translate texts to sign images for glove user
+
 
 <video src="./videos/UIDesigns.mp4" controls="controls" style="max-width: 730px;">
 </video>
@@ -168,7 +174,7 @@ The below circuit diagram shows how accelerometer readings can be taken in 3D sp
 
 ## Prototype Design
 
-<img src="./images/prototype.jpg" width="600" height="300"></p>
+<img src="./images/prototype.jpg" width="400" height="500"></p>
 
 ### Hardware Testing
 - Flex Sensor Testing
@@ -236,7 +242,7 @@ Why?
 ### Back End Technologies
 
 <p align="left">
-<img src="./images/tech.png" width="300" height="150"></p>
+<img src="./images/tech.png" width="500" height="250"></p>
 
 <p align="left">
 <img src="./images/MongoDB.png" width="300" height="150"></p>
@@ -309,10 +315,10 @@ Power
 # Final Result
 ---
 <p align="left">
-<img src="./images/testBYE.png" width="300" height="150"></p>
+<img src="./images/testBYE.png" width="500" height="250"></p>
 
 <p align="right">
-<img src="./images/testResult.png" width="300" height="150"></p>
+<img src="./images/testResult.png" width="500" height="250"></p>
 
 
 # Testing Plan
