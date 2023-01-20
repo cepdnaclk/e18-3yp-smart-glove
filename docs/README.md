@@ -73,6 +73,7 @@ Mobile app
   
   - Communicate between any of Glove users, Communicative users
   - Provide long distance communication
+    (By translating between text/voice messages & sign language)
 
 ### System Design
 <p align="center">
