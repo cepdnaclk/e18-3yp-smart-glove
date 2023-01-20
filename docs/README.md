@@ -112,6 +112,22 @@ This is the overall circuit diagram for the device. It has Node MCU microcontoll
 - Translate texts to sign images for glove user
 
 
+### Key features of the product
+
+#### Scalability
+- Implemented in AWS
+- Load balancing
+
+#### Efficiency
+- Make fast API calls GET, POST, PUT through REST API
+- Data validation done from front end
+
+#### Security aspects
+- Encrypt the password
+- Limit access to the database by whitelisting IP addresses
+- Only one user can communicate with a glove at a time
+
+
 <video src="./videos/UIDesigns.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
@@ -320,6 +336,8 @@ Power
 <p align="right">
 <img src="./images/testResult.png" width="500" height="250"></p>
 
+<video src="./videos/UIDesigns.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 # Testing Plan
 ---
