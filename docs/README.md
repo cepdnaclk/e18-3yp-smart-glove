@@ -165,6 +165,9 @@ The below circuit diagram shows how accelerometer readings can be taken in 3D sp
 <p align="left">
 <img src="./images/accelerometer.png" width="600" height="300"></p>
 
+## Prototype Design
+
+<img src="./images/prototype.png" width="600" height="300"></p>
 
 ### Hardware Testing
 - Flex Sensor Testing
