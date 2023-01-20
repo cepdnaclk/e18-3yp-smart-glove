@@ -25,11 +25,12 @@ title: Smart Glove
 3. [Hardware Design](#hardware-design)
 4. [Software Design](#software-design)
 5. [System Requirements](#system-requirements)
-6. [Testing Plan](#testing)
-7. [Detailed budget](#detailed-budget)
-8. [Timeline](#timeline)
-9. [Project Team](#team)
-10. [Links](#links)
+6. [Final Result](#final-result)
+7. [Testing Plan](#testing)
+8. [Detailed budget](#detailed-budget)
+9. [Timeline](#timeline)
+10. [Project Team](#team)
+11. [Links](#links)
 
 # Introduction
 ---
@@ -235,6 +236,9 @@ Why?
 ### Back End Technologies
 
 <p align="left">
+<img src="./images/tech.png" width="300" height="150"></p>
+
+<p align="left">
 <img src="./images/MongoDB.png" width="300" height="150"></p>
 
 Why?
@@ -301,6 +305,9 @@ Power
 
   - Rechargeable batteries to power up
   - 3.3V supply voltage
+
+# Final Result
+---
 
 
 # Testing Plan
