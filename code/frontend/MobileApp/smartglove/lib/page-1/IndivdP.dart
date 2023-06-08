@@ -52,7 +52,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   // each chat connect to server
   void connect() {
     // socket client will connect to this server
-    socket = IO.io("http://192.168.150.94:5002", <String, dynamic>{
+    socket = IO.io("http://169.254.185.99:5002", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
@@ -74,7 +74,7 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
   Future<void> sendMessage(String message, int sourceId, int targetId) async {
     setMessage("source", message);
     await getMessage();
-    if (Disconnected == 'Connected' && allmessages!="") {
+    if (Disconnected == 'Connected' && allmessages != "") {
       //await getMessage();
       setMessage("dest", allmessages);
     }
@@ -204,16 +204,16 @@ class _BodyChatInterface2State extends State<BodyChatInterface2> {
                         return OwnMessageCard(
                           message: messages[index].message,
                         );
-                      } else if (Disconnected == 'Connected' && messages[index].type == "dest") {
+                      } else if (Disconnected == 'Connected' &&
+                          messages[index].type == "dest") {
                         print("mokkd oi wela tiyenne");
 
                         //var msg = messagesList.join(' ');
                         print(allmessages);
-                        
+
                         return ReplyCard(
-                          //message: msg_,
-                          message: messages[index].message
-                        );
+                            //message: msg_,
+                            message: messages[index].message);
                       } else {
                         return ReplyCard(
                           message: messages[index].message,
