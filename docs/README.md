@@ -25,11 +25,13 @@ title: Smart Glove
 3. [Hardware Design](#hardware-design)
 4. [Software Design](#software-design)
 5. [System Requirements](#system-requirements)
-6. [Testing Plan](#testing)
-7. [Detailed budget](#detailed-budget)
-8. [Timeline](#timeline)
-9. [Project Team](#team)
-10. [Links](#links)
+6. [Final Result](#final-result)
+7. [Testing Plan](#testing)
+8. [Detailed budget](#detailed-budget)
+9. [Demonstration](#demonstartion)
+10. [Timeline](#timeline)
+11. [Project Team](#team)
+12. [Links](#links)
 
 # Introduction
 ---
@@ -73,6 +75,11 @@ Mobile app
   
   - Communicate between any of Glove users, Communicative users
   - Provide long distance communication
+    (By translating between text/voice messages & sign language)
+
+### System Design
+<p align="center">
+<img src="./images/ProposedSystem.png" width="600" height="300"></p>
 
 
 ### Data flow and Storage
@@ -98,7 +105,29 @@ This is the overall circuit diagram for the device. It has Node MCU microcontoll
 <img src="https://user-images.githubusercontent.com/73567971/204488129-b9f57153-b902-4368-bc1f-f13935ae5482.png" width="600" height="300"></p>
 
 
-### UI Designs and Control Flow
+### Features of the design
+- Can act as both mobile & web applications
+- Chat with glove user using an unique model number
+- Communicate using voice/ text as prefer
+- Keep the privacy of chats using reconnect method
+- Translate texts to sign images for glove user
+
+
+### Key features of the product
+
+#### Scalability
+- Implemented in AWS
+- Load balancing
+
+#### Efficiency
+- Make fast API calls GET, POST, PUT through REST API
+- Data validation done from front end
+
+#### Security aspects
+- Encrypt the password
+- Limit access to the database by whitelisting IP addresses
+- Only one user can communicate with a glove at a time
+
 
 <video src="./videos/UIDesigns.mp4" controls="controls" style="max-width: 730px;">
 </video>
@@ -160,6 +189,9 @@ The below circuit diagram shows how accelerometer readings can be taken in 3D sp
 <p align="left">
 <img src="./images/accelerometer.png" width="600" height="300"></p>
 
+## Prototype Design
+
+<img src="./images/prototype.jpg" width="400" height="500"></p>
 
 ### Hardware Testing
 - Flex Sensor Testing
@@ -225,6 +257,9 @@ Why?
 
 
 ### Back End Technologies
+
+<p align="left">
+<img src="./images/tech.png" width="500" height="250"></p>
 
 <p align="left">
 <img src="./images/MongoDB.png" width="300" height="150"></p>
@@ -294,6 +329,16 @@ Power
   - Rechargeable batteries to power up
   - 3.3V supply voltage
 
+# Final Result
+---
+<p align="left">
+<img src="./images/testBYE.png" width="500" height="250"></p>
+
+<p align="right">
+<img src="./images/testResult.png" width="500" height="250"></p>
+
+<video src="./videos/UIDesigns.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 # Testing Plan
 ---
@@ -337,6 +382,11 @@ Output :
 | Rechargeable Battery      |  1        |  800             |   800             |
 | Node MCU microcontroller  | 10        |   80             |   800             |
 | Total Cost                |           |                  | 33660             |
+
+# Demonstartion Video
+---
+
+https://youtu.be/ddnNoUjW6rw
 
 # Timeline
 ---
